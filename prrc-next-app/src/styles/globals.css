@@ -1,0 +1,156 @@
+@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.Nav-Header-BG {
+  background: linear-gradient(to right, #112233, #334455, #112233);
+  color: rgb(255, 255, 255);
+}
+.Nav-BG {
+  background: #393e44;
+  color: rgb(255, 255, 255);
+}
+.Nav-Margin-Left {
+  margin-left: 1.5rem;
+}
+
+.navbar-brand {
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  text-decoration: none;
+}
+
+.display-4 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  font-family: Times, Helvetica, Arial, 'sans-serif';
+}
+.col-svg-waves {
+  display: flex;
+  justify-content: center;
+}
+
+.waves {
+  width: 100%;
+  max-width: 75.3%;
+}
+@keyframes moveWave {
+  0% {
+    transform: translateX(-130%);
+  }
+  100% {
+    transform: translateX(240%);
+  }
+}
+
+.waves g.parallax use.wave1 {
+  animation: moveWave 24s linear infinite;
+  animation-fill-mode: forwards;
+}
+
+.waves g.parallax use.wave2 {
+  animation: moveWave 29s linear infinite;
+  animation-fill-mode: forwards;
+}
+
+.waves g.parallax use.wave3 {
+  animation: moveWave 33s linear infinite;
+  animation-fill-mode: forwards;
+}
+
+.waves g.parallax use.wave4 {
+  animation: moveWave 37s linear infinite;
+  animation-fill-mode: forwards;
+}
+.text-nmtred {
+  color: #78291c;
+}
+.text-nmtblue {
+  color: #0c2753;
+}
+.text-monochrome1 {
+  color: #6275ab;
+}
+.text-monochrome2 {
+  color: #bcceff;
+}
+.text-switch1 {
+  color: #daf7f4;
+}
+.text-switch2 {
+  color: #2d928d;
+}
+.bg-nmtred {
+  background-color: #78291c;
+}
+.bg-nmtblue {
+  background-color: #0c2753;
+}
+.bg-monochrome1 {
+  background-color: #6275ab;
+}
+.bg-monochrome2 {
+  background-color: #bcceff;
+}
+.bg-switch1 {
+  background-color: #daf7f4;
+}
+.bg-switch2 {
+  background-color: #2d928d;
+}
+.hover\:text-switch2:hover {
+  color: #2d928d;
+}
+.hover\:text-switch1:hover {
+  color: #daf7f4;
+}
+.hover\:bg-switch1:hover {
+  background-color: #daf7f4;
+}
+.hover\:bg-switch2:hover {
+  background-color: #2d928d;
+}
+.group-hover\:text-switch2:hover {
+  color: #2d928d;
+}
+@layer utilities {
+  .dark-hover\:text-\[\#2d928d\]:hover {
+    color: #2d928d;
+  }
+}
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Times New Roman', Times, serif; /* Direct CSS */
+  }
+}
+
+strong-custom {
+  font-weight: bold;
+  color: #78291c;
+}
