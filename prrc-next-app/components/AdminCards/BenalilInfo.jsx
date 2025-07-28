@@ -1,9 +1,20 @@
 import React from 'react';
+import AdminCard from './AdminCard';
 
-const BenalilAdmin = () => {
-  return (
-    <>
-      <div className="box-content size-90 border-0">
+const BenalilAdmin = () => (
+  <AdminCard
+    name="Nouraddine Benalil"
+    title="Systems-Network Manager/Industrial Liaison"
+    imageUrl="/nbenalil.jpg"
+    description="Nouraddine Benalil is the PRRC's computer support manager and technical leader for internet, software..."
+    phone="(575) 835-5812"
+    email="nouraddine.benalil@nmt.edu"
+    office="Kelly 157"
+  />
+);
+
+{
+  /* <div className="box-content size-90 border-0">
         <a href="#" className="group relative block bg-black h-full ">
           <div className="relative h-full w-full overflow-hidden">
             <img
@@ -41,9 +52,11 @@ const BenalilAdmin = () => {
             </div>
           </div>
         </a>
-      </div>
+      </div> */
+}
 
-      {/* <div className="flex justify-center my-12">
+{
+  /* <div className="flex justify-center my-12">
         <div className="w-5/12">
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             <img className="w-full" src="../images/nbenalil.jpg" alt="Nouraddine Benalil" />
@@ -81,9 +94,7 @@ const BenalilAdmin = () => {
             </div>
           </div>
         </div>
-      </div> */}
-    </>
-  );
-};
+      </div> */
+}
 
 export default BenalilAdmin;

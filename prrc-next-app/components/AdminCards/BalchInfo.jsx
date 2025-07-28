@@ -1,47 +1,65 @@
 import React from 'react';
 
-const BalchAdmin = () => {
-  return (
-    <>
-      <div className="box-content size-90 border-0">
-        <a href="#" className="group relative block bg-black h-full ">
-          <div className="relative h-full w-full overflow-hidden">
-            <img
-              alt="Dr. Robert Balch"
-              src="/balch.jpg"
-              className="absolute inset-0 h-120 w-full object-cover opacity-85 transition-opacity group-hover:opacity-45 "
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/23 to-transparent h-[50%] pointer-events-none" />
+import AdminCard from './AdminCard';
 
-            <div className="relative p-2 sm:p-6 lg:p-2">
-              <p className="text-sm font-medium uppercase tracking-widest text-switch2">
-                Director
-              </p>
+const BalchAdmin = () => (
+  <AdminCard
+    name="Dr. Robert Balch"
+    title="Director"
+    imageUrl="/balch.jpg"
+    description="Dr. Robert Balch is the Director of the Petroleum Recovery Research Center located on the campus..."
+    phone="(575) 835-5305"
+    email="robert.balch@nmt.edu"
+    office="Kelly 208"
+    resumeLink="Resumes/Balch-CV March 2024.docx"
+  />
+);
 
-              <p className="text-l font-bold text-white sm:text-2xl">
-                Dr. Robert Balch
-              </p>
 
-              <div className="mt-32 sm:mt-48 lg:mt-52">
-                <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
-                  <p className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-switch2">
-                    See more
-                    <span
-                      aria-hidden="true"
-                      className="block transition-all group-hover:ms-0.5 rtl:rotate-180">
-                      &rarr;
-                    </span>
-                  </p>
-                  <p className="text-sm text-white pt-1">
-                    Dr. Robert Balch is the Director of the Petroleum Recovery
-                    Research Center located on the campus...
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
+
+
+// const BalchAdmin = () => {
+//   return (
+//     <>
+//       <div className="box-content size-90 border-0">
+//         <a href="#" className="group relative block bg-black h-full ">
+//           <div className="relative h-full w-full overflow-hidden">
+//             <img
+//               alt="Dr. Robert Balch"
+//               src="/balch.jpg"
+//               className="absolute inset-0 h-120 w-full object-cover opacity-85 transition-opacity group-hover:opacity-45 "
+//             />
+//             <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/23 to-transparent h-[50%] pointer-events-none" />
+
+//             <div className="relative p-2 sm:p-6 lg:p-2">
+//               <p className="text-sm font-medium uppercase tracking-widest text-switch2">
+//                 Director
+//               </p>
+
+//               <p className="text-l font-bold text-white sm:text-2xl">
+//                 Dr. Robert Balch
+//               </p>
+
+//               <div className="mt-32 sm:mt-48 lg:mt-52">
+//                 <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+//                   <p className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-switch2">
+//                     See more
+//                     <span
+//                       aria-hidden="true"
+//                       className="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+//                       &rarr;
+//                     </span>
+//                   </p>
+//                   <p className="text-sm text-white pt-1">
+//                     Dr. Robert Balch is the Director of the Petroleum Recovery
+//                     Research Center located on the campus...
+//                   </p>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </a>
+//       </div>
       {/* <div class="row offset-2 my-5">
         <div className="col-5">
           <div class="card">
@@ -97,8 +115,6 @@ const BalchAdmin = () => {
           </div>
         </div>
       </div> */}
-    </>
-  );
-};
 
+  
 export default BalchAdmin;
