@@ -19,63 +19,138 @@ import ZhangStaff from '../StaffCards/ZhangStaff';
 export default function Staff() {
   return (
     <>
-      <div className="p-2 bg-white">
-        <StaffHeader />
+      <div>
+        <container className="mx-30 my-20 max-w-screen-xl">
+          <h1 className="text-6xl font-medium justify-center text-nmtblue p-25 mt-45 mb-5">
+            At the Petroleum Recovery Research Center, our staff focuses on
+            research and engineering.
+          </h1>
+          <div className="h-20 w-full bg-gradient-to-b from-white to-nmtblue"></div>
+        </container>
 
-        {/* <div className="p-2 bg-gray-800">
-        <StaffHeader />
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
-          <div className="h-full">
-            <AmosuStaff />
+        <div className="max-w-screen px-4 py-15 sm:px-6 lg:px-8 lg:py-14  ">
+          <div className="max-w-2xl mx-auto text-center  lg:mb-7">
+            <p className="text-4xl md:text-4xl md:leading-tight py-5 text-nmtblue">
+              Meet our Staff
+            </p>
           </div>
-          <div className="h-full">
-            <AmpohmahStaff />
-          </div>
-          <div className="h-full">
-            <BuiStaff />
-          </div>
-          <div className="h-full">
-            <CatherStaff />
-          </div>
-          <div className="h-full">
-            <CzarnotaStaff />
-          </div>
-          <div className="h-full">
-            <ElKaseehStaff />
-          </div>
-          <div className="h-full">
-            <FanStaff />
-          </div>
-          <div className="h-full">
-            <FonquergneStaff />
-          </div>
-          <div className="h-full">
-            <RuanStaff />
-          </div>
-          <div className="h-full">
-            <SerightStaff />
-          </div>
-          <div className="h-full">
-            <SimmonsStaff />
-          </div>
-          <div className="h-full">
-            <UlmerScholleStaff />
-          </div>
-          <div className="h-full">
-            <WangStaff />
-          </div>
-          <div className="h-full">
-            <YuStaff />
-          </div>
-          <div className="h-full">
-            <ZhangStaff />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 border-b-2 border-gray-50 py-10 px-40 ">
+            <div className="h-full">
+              <AmosuStaff />
+            </div>
+            <div className="h-full">
+              <AmpohmahStaff />
+            </div>
+            <div className="h-full">
+              <BuiStaff />
+            </div>
+            <div className="h-full">
+              <CatherStaff />
+            </div>
+            <div className="h-full">
+              <CzarnotaStaff />
+            </div>
+            <div className="h-full">
+              <ElKaseehStaff />
+            </div>
+            <div className="h-full">
+              <FanStaff />
+            </div>
+            <div className="h-full">
+              <FonquergneStaff />
+            </div>
+            <div className="h-full">
+              <RuanStaff />
+            </div>
+            <div className="h-full">
+              <SerightStaff />
+            </div>
+            <div className="h-full">
+              <SimmonsStaff />
+            </div>
+            <div className="h-full">
+              <UlmerScholleStaff />
+            </div>
+            <div className="h-full">
+              <WangStaff />
+            </div>
+            <div className="h-full">
+              <YuStaff />
+            </div>
+            <div className="h-full">
+              <ZhangStaff />
+            </div>
           </div>
         </div>
-      </div> */}
+        <p className="mt-1 text-gray-500 max-w-2xl text-lg mx-auto text-center px-10 pb-20 ">
+          Our dedicated staff powers every success at the PRRC. By driving
+          innovative research and sustaining critical engineering operations,
+          they achieve transformative advancements in petroleum recovery.
+        </p>
+      </div>
+    </>
+  );
+}
 
-        <div className="flex flex-1 items-center justify-center">
-          <div className="mx-auto max-w-2xl px-4 py-8 text-center">
-            <h1 className="text-5xl font-semibold tracking-loose text-gray-900">
+// export default function Staff() {
+//   return (
+//     <>
+//       <div className="p-2 bg-white">
+//         <StaffHeader />
+//         <div className="p-2 bg-gray-800">
+//           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+//             <div className="h-full">
+//               <AmosuStaff />
+//             </div>
+//             <div className="h-full">
+//               <AmpohmahStaff />
+//             </div>
+//             <div className="h-full">
+//               <BuiStaff />
+//             </div>
+//             <div className="h-full">
+//               <CatherStaff />
+//             </div>
+//             <div className="h-full">
+//               <CzarnotaStaff />
+//             </div>
+//             <div className="h-full">
+//               <ElKaseehStaff />
+//             </div>
+//             <div className="h-full">
+//               <FanStaff />
+//             </div>
+//             <div className="h-full">
+//               <FonquergneStaff />
+//             </div>
+//             <div className="h-full">
+//               <RuanStaff />
+//             </div>
+//             <div className="h-full">
+//               <SerightStaff />
+//             </div>
+//             <div className="h-full">
+//               <SimmonsStaff />
+//             </div>
+//             <div className="h-full">
+//               <UlmerScholleStaff />
+//             </div>
+//             <div className="h-full">
+//               <WangStaff />
+//             </div>
+//             <div className="h-full">
+//               <YuStaff />
+//             </div>
+//             <div className="h-full">
+//               <ZhangStaff />
+//             </div>
+//           </div>
+//         </div>
+//         /*{' '}
+//         <div className="flex flex-1 items-center justify-center">
+//           <div className="mx-auto max-w-2xl px-4 py-8 text-center">
+/* <h1 className="text-5xl font-semibold tracking-loose text-gray-900">
               This page is under maitenance.
             </h1>
 
@@ -102,11 +177,11 @@ export default function Staff() {
                   className="block transition-all -rotate-180 text-md ">
                   &rarr;
                 </span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-}
+              </a> */
+//           </div>
+//         </div>{' '}
+//         */
+//       </div>
+//     </>
+//   );
+// }

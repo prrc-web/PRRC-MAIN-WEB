@@ -22,7 +22,7 @@ export default function Homepage() {
               research groups.
             </p>
             <p class="mt-5">
-              <a
+              {/* <a
                 class="inline-flex items-center gap-x-1 text-sm text-switch2 decoration-2 hover:text-xl focus:outline-hidden focus:text-xl font-medium "
                 href="#">
                 Learn More
@@ -31,7 +31,7 @@ export default function Homepage() {
                   className="block transition-all  text-md ">
                   &rarr;
                 </span>
-              </a>
+              </a> */}
             </p>
           </div>
 

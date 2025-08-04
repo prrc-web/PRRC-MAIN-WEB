@@ -11,22 +11,22 @@ export default function Administration() {
   return (
     <>
       <div>
-        <container className="mx-30 my-20">
-          <h1 className="text-6xl font-medium justify-center text-nmtblue p-20 mt-5 mb-5">
-            Our administrative ensures all managerial operations at the
+        <container className="mx-30 my-20 max-w-screen-xl">
+          <h1 className="text-6xl font-medium justify-center text-nmtblue p-25 mt-45 mb-5">
+            Our administrative team ensures all managerial operations at the
             Petroleum Recovery Research Center.
           </h1>
           <div className="h-20 w-full bg-gradient-to-b from-white to-nmtblue"></div>
         </container>
 
-        <div className="max-w-screen px-4 py-20 sm:px-6 lg:px-8 lg:py-14  ">
-          <div className="max-w-2xl mx-auto text-center  lg:mb-14">
-            <h2 className="text-2xl font-bold md:text-4xl md:leading-tight py-10 text-nmtblue">
-              Meet our Administrative Team
-            </h2>
+        <div className="max-w-screen px-4 py-15 sm:px-6 lg:px-8 lg:py-14  ">
+          <div className="max-w-2xl mx-auto text-center  lg:mb-7">
+            <p className="text-4xl md:text-4xl md:leading-tight py-5 text-nmtblue">
+              Meet our Administration
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 border-b-2 border-gray-50 py-10 ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 border-b-2 border-gray-50 py-10 px-40 ">
             <div className="h-full">
               <BalchAdmin />
             </div>
