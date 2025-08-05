@@ -18,10 +18,10 @@ const HompageHeader = () => {
             </p>
             <div className="max-w-screen mx-auto text-lg md:text-xl leading-relaxed my-4 text-center">
               <p>
-                The PRRC's research includes improved methods of enhanced oil
+                The PRRC&apos;s research includes improved methods of enhanced oil
                 and gas recovery and diversified energy technologies related to
                 the oil and gas industry. Our research direction continues to
-                evolve with New Mexico's industry.
+                evolve with New Mexico&apos;s industry.
               </p>
             </div>
           </div>

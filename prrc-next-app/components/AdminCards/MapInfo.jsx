@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const MapInfoAdmin = () => {
   return (
@@ -57,6 +58,17 @@ const MapInfoAdmin = () => {
           </div>
         </div>
       </div>
+
+      <div>
+        {/* Replace <img> with <Image /> */}
+        <Image
+          src="/map.jpg"
+          alt="Map Information"
+          width={500}
+          height={500}
+        />
+      </div>
+      <p>Map&apos;s location is...</p>
     </>
   );
 };

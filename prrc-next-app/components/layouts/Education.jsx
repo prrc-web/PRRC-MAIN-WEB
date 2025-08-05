@@ -10,10 +10,12 @@ export default function Education() {
 
       <section className="body-font">
         <div className="bg-nmtblue h-screen w-full bg-cover bg-center relative">
-          <img
+          <Image
             alt="Our Students"
             src="/students-collage-1.webp"
-            className="absolute h-full w-full object-cover opacity-20 "
+            layout="fill"
+            objectFit="cover"
+            className="absolute opacity-20"
           />
           <div>
             <div className="container px-5 py-24 mx-auto flex flex-wrap">
@@ -23,19 +25,19 @@ export default function Education() {
                 </h1>
 
                 <p className="flex leading-relaxed mt-15 text-xl text-gray-200 font-medium sm:text-md ">
-                  The PRRC supports New Mexico Tech's educational mission
+                  The PRRC supports New Mexico Tech&apos;s educational mission
                   through teaching and collaboration with other NMIMT divisions.
                   In our graduate program, we seek out top quality students in a
                   variety of disciplines to study and work under the guidance of
                   world-renowned scientists in a research setting. The PRRC also
-                  supports NMIMT's educational goals through our inclusion of
-                  undergraduate students and high school interns in our research
-                  program. The majority of PRRC's graduate students go on to
-                  high-level energy research positions in industry or in
+                  supports NMIMT&apos;s educational goals through our inclusion
+                  of undergraduate students and high school interns in our
+                  research program. The majority of PRRC&apos;s graduate students
+                  go on to high-level energy research positions in industry or in
                   teaching positions at research universities. Many of our
-                  graduates take positions in New Mexico's hydrocarbon industry.
-                  They maintain close ties with us—PRRC graduates support the
-                  Institute as alumni and frequently send their children to
+                  graduates take positions in New Mexico&apos;s hydrocarbon
+                  industry. They maintain close ties with us—PRRC graduates support
+                  the Institute as alumni and frequently send their children to
                   NMIMT as a result of their positive educational experience.
                 </p>
               </div>
@@ -68,10 +70,12 @@ export default function Education() {
             </div>
 
             <div>
-              <img
+              <Image
                 src="/studentsPRRC.jpg"
                 className="rounded"
                 alt="Our Students"
+                width={500}
+                height={500}
               />
             </div>
           </div>
@@ -85,15 +89,17 @@ export default function Education() {
         <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-6 mx-20 my-20">
           <article class="rounded-xl border border-gray-700 bg-nmtblue p-4">
             <div class="flex items-center gap-4">
-              <img
+              <Image
                 alt=""
                 src="/Jianjia_Yu.webp"
                 class="size-16 rounded-full object-cover"
+                width={64}
+                height={64}
               />
 
               <div>
                 <h3 class="text-lg font-medium text-white">
-                  Jianjia Yu's Students
+                  Jianjia Yu&apos;s Students
                 </h3>
               </div>
             </div>
@@ -133,15 +139,17 @@ export default function Education() {
 
           <article class="rounded-xl border border-gray-700 bg-nmtblue p-4">
             <div class="flex items-center gap-4">
-              <img
+              <Image
                 alt=""
                 src="/Dung_Bui.webp"
                 class="size-16 rounded-full object-cover"
+                width={64}
+                height={64}
               />
 
               <div>
                 <h3 class="text-lg font-medium text-white">
-                  Dung Bui's Students
+                  Dung Bui&apos;s Students
                 </h3>
               </div>
             </div>
@@ -173,15 +181,17 @@ export default function Education() {
 
           <article class="rounded-xl border border-gray-700 bg-nmtblue p-4">
             <div class="flex items-center gap-4">
-              <img
+              <Image
                 alt=""
                 src="/Sai_Wang.webp"
                 class="size-16 rounded-full object-cover"
+                width={64}
+                height={64}
               />
 
               <div>
                 <h3 class="text-lg font-medium text-white">
-                  Sai Wang's Students
+                  Sai Wang&apos;s Students
                 </h3>
               </div>
             </div>
@@ -213,15 +223,17 @@ export default function Education() {
 
           <article class="rounded-xl border border-gray-700 bg-nmtblue p-4">
             <div class="flex items-center gap-4">
-              <img
+              <Image
                 alt=""
                 src="/Robert_Czarnota.webp"
                 class="size-16 rounded-full object-cover"
+                width={64}
+                height={64}
               />
 
               <div>
                 <h3 class="text-lg font-medium text-white">
-                  Robert Czarnota's Students
+                  Robert Czarnota&apos;s Students
                 </h3>
               </div>
             </div>
@@ -271,15 +283,17 @@ export default function Education() {
 
           <article class="rounded-xl border border-gray-700 bg-nmtblue p-4">
             <div class="flex items-center gap-4">
-              <img
+              <Image
                 alt=""
                 src="/Jean-Lucien.webp"
                 class="size-16 rounded-full object-cover"
+                width={64}
+                height={64}
               />
 
               <div>
                 <h3 class="text-lg font-medium text-white">
-                  Jean-Lucien's Students
+                  Jean-Lucien&apos;s Students
                 </h3>
               </div>
             </div>
@@ -325,7 +339,7 @@ export default function Education() {
                       <p className="mt-4  text-pretty text-lg text-white">
                         Questions regarding Graduate Admission requirements,
                         stipends, or policies should be directed to New Mexico
-                        Tech's Center for Graduate Studies.
+                        Tech&apos;s Center for Graduate Studies.
                       </p>
                     </div>
                   </div>
@@ -361,9 +375,12 @@ export default function Education() {
           being a part of the New Mexico Tech Family!
         </h2>
         <div className="flex items-center justify-center  bg-white">
-          <img
+          <Image
             src="/students-collage-1.webp"
             alt="Photos of our researchers, students, graduate students, and staff."
+            layout="responsive"
+            width={700}
+            height={475}
             className="max-w-screen h-auto block "
           />
         </div>

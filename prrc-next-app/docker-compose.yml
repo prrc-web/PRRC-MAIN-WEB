@@ -4,7 +4,7 @@ services:
   node:
     build: .
     ports:
-      - '3000:3000'
+      - "3000:80"
     environment:
       - NODE_ENV=development
     volumes:
@@ -16,7 +16,7 @@ services:
   nginx:
     image: nginx:alpine
     ports:
-      - '8080:80'  # Changed from 80:80 to avoid IIS conflict
+      - '8080:80'
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:

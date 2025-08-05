@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Navbar() {
   const router = useRouter();
@@ -40,7 +42,7 @@ export default function Navbar() {
   return (
     <nav className="bg-gray-900 dark:bg-gray-900 light:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a
+        <Link
           href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
           onClick={routeToHomePage}>
@@ -52,14 +54,16 @@ export default function Navbar() {
               A Division of New Mexico Tech
             </p>
           </span>
-        </a>
+        </Link>
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <a href="https://www.nmt.edu/" className="hidden md:block">
-            <img
+            <Image
               src="/Mountain_White.png"
               alt="New Mexico Tech Logo"
               className="h-20 max-w-[10em] object-contain object-end"
+              width={500}
+              height={500}
             />
           </a>
           <button
@@ -92,61 +96,61 @@ export default function Navbar() {
           id="navbar-sticky">
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-gray-900 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
-              <a
+              <Link
                 href="/"
                 className="block py-2 px-3 text-gray-300 hover:text-switch2 rounded-sm md:bg-transparent md:p-0 "
                 onClick={routeToHomePage}
                 aria-current="page">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/AdministrationPage"
                 className="block py-2 px-3 text-gray-300  rounded-sm  md:p-0 hover:text-switch2 "
                 onClick={routeToAdministrationPage}>
                 Administration
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/StaffPage"
                 className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0 "
                 onClick={routeToStaffPage}>
                 Staff
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/EducationPage"
                 className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0"
                 onClick={routeToEducationPage}>
                 Education
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/PublicationsPage"
                 className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0"
                 onClick={routeToPublicationsPage}>
                 Publications
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/ResearchPage"
                 className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0"
                 onClick={routeToResearchPage}>
                 Research
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/SafetyPage"
                 className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0"
                 onClick={routeToSafetyPage}>
                 Safety
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

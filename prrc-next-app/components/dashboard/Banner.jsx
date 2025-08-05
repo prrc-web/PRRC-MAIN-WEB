@@ -1,11 +1,14 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function Banner() {
   return (
     <div className="flex items-center justify-center  bg-white">
-      <img
+      <Image
         src="/homepage-banner.png"
         alt="Homepage Banner"
+        width={1920}
+        height={1080}
         className="max-w-screen h-auto block "
       />
     </div>

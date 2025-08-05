@@ -1,5 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Footer() {
   const router = useRouter();
@@ -33,11 +35,16 @@ export default function Footer() {
       <div className="mx-auto max-w-screen-xl px-4 pt-16 pb-6 sm:px-6 lg:px-8">
         <div className="lg:flex lg:items-center lg:justify-between">
           <div className="flex justify-start text-teal-600 sm:justify-start">
-            <a
+            <Link
               href="https://www.prrc.nmt.edu/"
               className="mt-4 max-w-85 text-center leading-relaxed dark:text-white sm:text-left lg:mt-0">
-              <img src="/PRRClogoLightoldtransparent.png" alt="PRRClogo" />
-            </a>
+              <Image
+                src="/PRRClogolightoldtransparent.png"
+                alt="PRRClogo"
+                width={500}
+                height={500}
+              />
+            </Link>
           </div>
 
           <div className=" mt-4 max-w-md text-center leading-relaxed sm:text-left lg:mt-0">
@@ -56,38 +63,38 @@ export default function Footer() {
 
             <ul className="mt-8 space-y-4 text-sm">
               <li>
-                <a
+                <Link
                   className="text-gray-300 transition hover:text-switch2"
                   href="/AdministrationPage"
                   onClick={routeToAdministraionPage}>
                   Administration
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a
+                <Link
                   className="text-gray-300 transition hover:text-switch2"
                   href="/StaffPage"
                   onClick={routeToStaffPage}>
                   Staff
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a
+                <Link
                   className="text-gray-300 transition hover:text-switch2"
                   href="#">
                   News
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a
+                <Link
                   className="text-gray-300 transition hover:text-switch2"
                   href="/EducationPage"
                   onClick={routeToEducationPage}>
                   Education
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -97,31 +104,21 @@ export default function Footer() {
 
             <ul className="mt-8 space-y-4 text-sm">
               <li>
-                <a
-                  className="text-gray-300 transition hover:text-switch2"
-                  href="ResearchPage"
-                  onClick={routeToResearchPage}>
-                  Research
-                </a>
-              </li>
-
-              <li>
-                <a
+                <Link
                   className="text-gray-300 transition hover:text-switch2"
                   href="/PublicationsPage"
                   onClick={routeToPublicationsPage}>
                   Publications
-                </a>
+                </Link>
               </li>
 
               <li></li>
               <li>
-                <a
+                <Link
                   className="text-gray-300 transition hover:text-switch2"
-                  href="/SafetyPage"
-                  onClick={routeToSafetyPage}>
+                  href="/SafetyPage">
                   Safety
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

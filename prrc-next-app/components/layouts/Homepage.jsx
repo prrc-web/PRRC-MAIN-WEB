@@ -15,14 +15,14 @@ export default function Homepage() {
               Objectives of the PRRC
             </h2>
             <p class="mt-9 text-gray-500 ">
-              In order to sustain a diversified program, the PRRC's research
+              In order to sustain a diversified program, the PRRC&apos;s research
               continuously expands to embrace important new areas. Currently
               these include membrane technology, nanotechnology, and
               chemical/optics sensors; areas of study undertaken by our newest
               research groups.
             </p>
             <p class="mt-5">
-              <a
+              {/* <a
                 class="inline-flex items-center gap-x-1 text-sm text-switch2 decoration-2 hover:text-xl focus:outline-hidden focus:text-xl font-medium "
                 href="#">
                 Learn More
@@ -31,7 +31,7 @@ export default function Homepage() {
                   className="block transition-all  text-md ">
                   &rarr;
                 </span>
-              </a>
+              </a> */}
             </p>
           </div>
 

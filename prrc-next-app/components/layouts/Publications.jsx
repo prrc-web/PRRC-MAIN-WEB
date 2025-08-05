@@ -25,7 +25,7 @@ export default function Publications() {
               that have shaped the trajectory of our work.
             </p>
             <a
-              href="#"
+              href="https://www.prrc.nmt.edu/"
               className="mt-6 pb-8 inline-block rounded-lg px-3 py-2 text-lg font-medium text-switch2 border border-transparent hover:text-xl focus:outline-hidden focus:text-xl">
               Go Back Home
               <span

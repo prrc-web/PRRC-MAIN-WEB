@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function EducationBanner() {
   const bannerStyle = {
@@ -11,19 +12,19 @@ export default function EducationBanner() {
     padding: '20px', // Adds some space around the banner
   };
 
-  const imageStyle = {
-    maxWidth: '100%', // Makes the image scale down if it's too large
-    height: 'auto', // Maintains aspect ratio
-    display: 'block', // Removes bottom margin
-    margin: '0 auto', // Centers the image
-  };
-
   return (
     <div style={bannerStyle}>
-      <img
-        style={imageStyle}
+      <Image
         src="/student-collage-1.png"
         alt="Photos of our researchers, students, graduate students, and staff."
+        width={500} // Specify the width of the image
+        height={500} // Specify the height of the image
+        style={{
+          maxWidth: '100%', // Makes the image scale down if it's too large
+          height: 'auto', // Maintains aspect ratio
+          display: 'block', // Removes bottom margin
+          margin: '0 auto', // Centers the image
+        }}
       />
     </div>
   );

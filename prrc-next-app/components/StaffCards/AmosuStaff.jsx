@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const AmosuStaff = () => {
   return (
@@ -6,9 +7,11 @@ const AmosuStaff = () => {
       <div className="box-content size-90 border-0">
         <a href="#" className="group relative block bg-black h-full ">
           <div className="relative h-full w-full overflow-hidden">
-            <img
+            <Image
               alt="Adewale Amosu PhD"
               src="/balch.jpg"
+              width={500}
+              height={500}
               className="absolute inset-0 h-120 w-full object-cover opacity-75 transition-opacity group-hover:opacity-50 "
             />
 

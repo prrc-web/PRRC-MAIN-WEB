@@ -1,4 +1,4 @@
-FROM node:20-bullseye
+FROM ubuntu:24.04
 
 WORKDIR /app
 
@@ -18,6 +18,7 @@ RUN npm ci
 COPY . .
 
 # Build the application
+ENV CI=false
 RUN npm run build
 
 CMD ["npm", "run", "dev"]

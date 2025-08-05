@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  node:
+    build: .
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - '8080:80'
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - node
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

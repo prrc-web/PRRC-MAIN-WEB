@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import SafetyHeader from '../headers/SafetyHeader';
 
 export default function Safety() {
@@ -25,11 +26,13 @@ export default function Safety() {
             <div className="mt-4 flex gap-4 sm:mt-6"></div>
           </div>
 
-          <img
+          <Image
             src="/safety-picture.png"
             alt="New Mexico Tech Safety"
-            viewBox="0 0 1024 768"
-            className="mx-auto hidden max-w-md text-gray-900 md:block h-96"></img>
+            width={500}
+            height={500}
+            className="mx-auto hidden max-w-md text-gray-900 md:block h-96"
+          />
         </div>
       </section>
 

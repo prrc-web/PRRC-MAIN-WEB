@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function BalchLayout() {
   return (
@@ -6,7 +7,13 @@ export default function BalchLayout() {
       <div class="row offset-2 my-5">
         <div className="col-5">
           <div class="card">
-            <img class="card-img-top" src="balch.jpg" alt="Dr. Robert Balch" />
+            <Image
+              class="card-img-top"
+              src="/balch.jpg"
+              alt="Dr. Robert Balch"
+              width={500}
+              height={500}
+            />
             <div class="card-body">
               <h5 class="card-title">Dr. Robert Balch</h5>
               <div>
