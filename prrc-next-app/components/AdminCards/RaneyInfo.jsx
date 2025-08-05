@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import Image from 'next/image';
 
 const RaneyAdmin = () => {
@@ -15,38 +16,66 @@ const RaneyAdmin = () => {
               className="absolute inset-0 h-120 w-full object-cover opacity-85 transition-opacity group-hover:opacity-45 "
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/23 to-transparent h-[50%] pointer-events-none" />
+=======
+import AdminCard from './AdminCard';
 
-            <div className="relative p-2 sm:p-6 lg:p-2">
-              <p className="text-sm font-medium uppercase tracking-widest text-switch2">
-                Deputy Director
-              </p>
+const RaneyAdmin = () => (
+  <AdminCard
+    name="Jennifer Raney"
+    title="Deputy Director"
+    imageUrl="/raney.jpg"
+    description=" Background in carbon capture, utilization, and storage (CCUS) projects and U.S. EPA Class VI..."
+    phone="(505) 810-3658"
+    email="jennifer.raney@nmt.edu"
+    office="Kelly"
+  />
+);
+>>>>>>> 03c0f1afbb667d0b9f2a3f2b07e9eae00ed3e6dc
 
-              <p className="text-l font-bold text-white sm:text-2xl">
-                Jennifer Raney
-              </p>
+// const RaneyAdmin = () => {
+//   return (
+//     <>
+//       <div className="box-content size-90 border-0">
+//         <a href="#" className="group relative block bg-black h-full ">
+//           <div className="relative h-full w-full overflow-hidden">
+//             <img
+//               alt="Jennifer Raney"
+//               src="/raney.jpg"
+//               className="absolute inset-0 h-120 w-full object-cover opacity-85 transition-opacity group-hover:opacity-45 "
+//             />
+//             <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/23 to-transparent h-[50%] pointer-events-none" />
 
-              <div className="mt-32 sm:mt-48 lg:mt-54">
-                <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
-                  <p className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-switch2">
-                    See more
-                    <span
-                      aria-hidden="true"
-                      className="block transition-all group-hover:ms-0.5 rtl:rotate-180">
-                      &rarr;
-                    </span>
-                  </p>
-                  <p className="text-sm text-white">
-                    Background in carbon capture, utilization, and storage
-                    (CCUS) projects and U.S. EPA Class VI...
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
+//             <div className="relative p-2 sm:p-6 lg:p-2">
+//               <p className="text-sm font-medium uppercase tracking-widest text-switch2">
+//                 Deputy Director
+//               </p>
 
-      {/* <div className="flex justify-center my-12">
+//               <p className="text-l font-bold text-white sm:text-2xl">
+//                 Jennifer Raney
+//               </p>
+
+//               <div className="mt-32 sm:mt-48 lg:mt-54">
+//                 <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+//                   <p className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-switch2">
+//                     See more
+//                     <span
+//                       aria-hidden="true"
+//                       className="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+//                       &rarr;
+//                     </span>
+//                   </p>
+//                   <p className="text-sm text-white">
+//                     Background in carbon capture, utilization, and storage
+//                     (CCUS) projects and U.S. EPA Class VI...
+//                   </p>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </a>
+//       </div>
+
+/* <div className="flex justify-center my-12">
         <div className="w-5/12">
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             <img
@@ -143,9 +172,6 @@ const RaneyAdmin = () => {
             </div>
           </div>
         </div>
-      </div> */}
-    </>
-  );
-};
+      </div> */
 
 export default RaneyAdmin;

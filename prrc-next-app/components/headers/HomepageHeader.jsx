@@ -3,9 +3,9 @@ import SvgWaves from '../svgContent/SvgWaves';
 
 const HompageHeader = () => {
   return (
-    <div className="w-screen bg-gradient-to-r from-[#112233] via-[#334455] to-[#112233]">
+    <div className="w-full bg-gradient-to-r from-[#112233] via-[#334455] to-[#112233]">
       <div className="container mx-auto px-24 pt-3 text-white">
-        <div className="w-scren mx-auto">
+        <div className="w-full mx-auto">
           <div className="rounded-lg ">
             <h1 className="text-6xl md:text-6xl sm:text-lg font-light tracking-loose mb-4 mt-35 text-center">
               Petroleum Recovery Research Center
@@ -26,7 +26,7 @@ const HompageHeader = () => {
             </div>
           </div>
           <div className="text-center mb-0 mt-27 ">
-            <SvgWaves className="w-screen max-w-screen mx-auto" />
+            <SvgWaves className="w-full mx-auto" />
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import Image from 'next/image';
 
 const CarrilloAdmin = () => {
@@ -15,38 +16,64 @@ const CarrilloAdmin = () => {
               className="absolute inset-0 h-120 w-full object-cover opacity-85 transition-opacity group-hover:opacity-45 "
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/23 to-transparent h-[50%] pointer-events-none" />
+=======
+import AdminCard from './AdminCard';
 
-            <div className="relative p-2 sm:p-6 lg:p-2">
-              <p className="text-sm font-medium uppercase tracking-widest text-switch2">
-                Administrative Coordinator
-              </p>
+const CarrilloAdmin = () => (
+  <AdminCard
+    name="Chyanne Carrillo"
+    title="Administrative Coordinator"
+    imageUrl="/prrcblankuser.jpeg"
+    description="Chyanne Carrillo coordinates the Administrative Office at the PRRC, supporting the other Admin..."
+    phone="(575) 835-5142"
+    email="chyanne.carrillo@nmt.edu<"
+    office="Kelly 206"
+  />
+);
+// <>
+//   <div className="box-content size-90 border-0">
+//     <a href="#" className="group relative block bg-black h-full ">
+//       <div className="relative h-full w-full overflow-hidden">
+//         <img
+//           alt="Chyanne Carrillo"
+//           src="/prrcblankuser.jpeg"
+//           className="absolute inset-0 h-120 w-full object-cover opacity-85 transition-opacity group-hover:opacity-45 "
+//         />
+//         <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/23 to-transparent h-[50%] pointer-events-none" />
+>>>>>>> 03c0f1afbb667d0b9f2a3f2b07e9eae00ed3e6dc
 
-              <p className="text-l font-bold text-white sm:text-2xl">
-                Chyanne Carrillo
-              </p>
+//         <div className="relative p-2 sm:p-6 lg:p-2">
+//           <p className="text-sm font-medium uppercase tracking-widest text-switch2">
+//             Administrative Coordinator
+//           </p>
 
-              <div className="mt-32 sm:mt-48 lg:mt-54">
-                <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
-                  <p className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-switch2">
-                    See more
-                    <span
-                      aria-hidden="true"
-                      className="block transition-all group-hover:ms-0.5 rtl:rotate-180">
-                      &rarr;
-                    </span>
-                  </p>
-                  <p className="text-sm text-white">
-                    Chyanne Carrillo coordinates the Administrative Office at
-                    the PRRC, supporting the other Admin...
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
+//           <p className="text-l font-bold text-white sm:text-2xl">
+//             Chyanne Carrillo
+//           </p>
 
-      {/* <div className="flex justify-center my-12">
+//           <div className="mt-32 sm:mt-48 lg:mt-54">
+//             <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+//               <p className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-switch2">
+//                 See more
+//                 <span
+//                   aria-hidden="true"
+//                   className="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+//                   &rarr;
+//                 </span>
+//               </p>
+//               <p className="text-sm text-white">
+//                 Chyanne Carrillo coordinates the Administrative Office at
+//                 the PRRC, supporting the other Admin...
+//               </p>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </a>
+//   </div>
+
+{
+  /* <div className="flex justify-center my-12">
         <div className="w-5/12">
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             <img
@@ -86,9 +113,7 @@ const CarrilloAdmin = () => {
             </div>
           </div>
         </div>
-      </div> */}
-    </>
-  );
-};
+      </div> */
+}
 
 export default CarrilloAdmin;

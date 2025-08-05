@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import Image from 'next/image';
 
 const AmosuStaff = () => {
@@ -14,38 +15,67 @@ const AmosuStaff = () => {
               height={500}
               className="absolute inset-0 h-120 w-full object-cover opacity-75 transition-opacity group-hover:opacity-50 "
             />
+=======
+import StaffCard from './StaffCard';
 
-            <div className="relative p-2 sm:p-6 lg:p-2">
-              <p className="text-sm font-medium uppercase tracking-widest text-switch2">
-                Postdoctoral Research Engineer REACT Group
-              </p>
+const AmosuStaff = () => (
+  <StaffCard
+    name="Adewale Amosu PhD"
+    title="Postdoctoral Research Engineer"
+    imageUrl="/prrcblankuser.jpeg"
+    description="Multi-disciplinary research focuses on solving problems encountered in the study of the..."
+    phone="--"
+    email="adewale.amosu@nmt.edu"
+    office="--"
+  />
+);
+>>>>>>> 03c0f1afbb667d0b9f2a3f2b07e9eae00ed3e6dc
 
-              <p className="text-l font-bold text-white sm:text-2xl">
-                Adewale Amosu PhD
-              </p>
+export default AmosuStaff;
 
-              <div className="mt-32 sm:mt-48 lg:mt-48">
-                <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
-                  <p className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-switch2">
-                    See more
-                    <span
-                      aria-hidden="true"
-                      className="block transition-all group-hover:ms-0.5 rtl:rotate-180">
-                      &rarr;
-                    </span>
-                  </p>
-                  <p className="text-sm text-white pt-1">
-                    Multi-disciplinary research focuses on solving problems
-                    encountered in the study of the...
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
+// const AmosuStaff = () => {
+//   return (
+//     <>
+//       <div className="box-content size-90 border-0">
+//         <a href="#" className="group relative block bg-black h-full ">
+//           <div className="relative h-full w-full overflow-hidden">
+//             <img
+//               alt="Adewale Amosu PhD"
+//               src="/balch.jpg"
+//               className="absolute inset-0 h-120 w-full object-cover opacity-75 transition-opacity group-hover:opacity-50 "
+//             />
 
-      {/* <div class="row offset-2 my-5">
+//             <div className="relative p-2 sm:p-6 lg:p-2">
+//               <p className="text-sm font-medium uppercase tracking-widest text-switch2">
+//                 Postdoctoral Research Engineer REACT Group
+//               </p>
+
+//               <p className="text-l font-bold text-white sm:text-2xl">
+//                 Adewale Amosu PhD
+//               </p>
+
+//               <div className="mt-32 sm:mt-48 lg:mt-48">
+//                 <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+//                   <p className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-switch2">
+//                     See more
+//                     <span
+//                       aria-hidden="true"
+//                       className="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+//                       &rarr;
+//                     </span>
+//                   </p>
+//                   <p className="text-sm text-white pt-1">
+//                     Multi-disciplinary research focuses on solving problems
+//                     encountered in the study of the...
+//                   </p>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </a>
+//       </div>
+
+/* <div class="row offset-2 my-5">
         <div className="col-5">
           <div class="card">
             <img class="card-img-top" src="" alt="" />
@@ -124,9 +154,4 @@ const AmosuStaff = () => {
             </div>
           </div>
         </div>
-      </div> */}
-    </>
-  );
-};
-
-export default AmosuStaff;
+      </div> */
