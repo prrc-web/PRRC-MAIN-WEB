@@ -10,7 +10,7 @@ const AdminCard = ({
   phone,
   email,
   office,
-  resumeLink
+  resumeLink,
 }) => {
   return (
     <div className="box-content size-90 border-0">
@@ -41,7 +41,7 @@ const AdminCard = ({
                   </span>
                 </div>
                 <p className="text-sm text-white pt-1">{description}</p>
-                
+
                 {/* Contact Information */}
                 {phone && (
                   <div className="text-white mt-2">
@@ -58,9 +58,9 @@ const AdminCard = ({
                     <i className="fas fa-building mr-2"></i>O: {office}
                   </div>
                 )}
-                
+
                 {resumeLink && (
-                  <button 
+                  <button
                     className="btn btn-primary mt-2"
                     onClick={() => window.open(resumeLink, '_blank')}>
                     Resume
@@ -84,7 +84,7 @@ AdminCard.propTypes = {
   phone: PropTypes.string,
   email: PropTypes.string,
   office: PropTypes.string,
-  resumeLink: PropTypes.string
+  resumeLink: PropTypes.string,
 };
 
 export default AdminCard;
