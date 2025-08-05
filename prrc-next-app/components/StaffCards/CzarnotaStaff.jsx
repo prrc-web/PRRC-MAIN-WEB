@@ -4,7 +4,7 @@ import StaffCard from './StaffCard';
 const RobertCzarnotaStaff = () => (
   <StaffCard
     name="Robert Czarnota, PhD"
-    title="Research Associate III, Research Group within PRRC: Gas Flooding Process & Flow Heterogeneities"
+    title="Research Associate III"
     imageUrl="/prrcblankuser.jpeg"
     description="Resesarch and Applications: Performing experimental research related to Carbon Capture, Utilization, and Storage (CCUS) sponsored by DOE..."
     phone="(575)-835-5805"

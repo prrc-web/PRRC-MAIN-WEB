@@ -25,7 +25,7 @@ const SvgWaves = () => {
         animationSpeed = '19s';
       } else if (window.innerWidth < 850) {
         newScale = 2.15;
-      } else if (window.innerWidth < 1200) {
+      } else if (window.innerWidth < 1250) {
         newScale = 2.13;
         animationSpeed = '20s';
       } else {
@@ -50,7 +50,7 @@ const SvgWaves = () => {
 
   return (
     <svg
-      className="waves w-screen max-w-screen transform-gpu "
+      className="waves w-full overflow-hidden transform-gpu "
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 24 120 20"

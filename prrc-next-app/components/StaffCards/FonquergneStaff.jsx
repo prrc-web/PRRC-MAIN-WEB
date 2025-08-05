@@ -4,7 +4,7 @@ import StaffCard from './StaffCard';
 const FonquergneStaff = () => (
   <StaffCard
     name="Jean-Lucien Fonquergne"
-    title="Research Associate III, Research Group within PRRC: Gas Flooding Process & Flow Heterogeneities"
+    title="Research Associate Outreach and Industrial Services"
     imageUrl="/prrcblankuser.jpeg"
     description="Research & Applications: Lead Community Benefits Plan (CBP) for: San Juan CCS Hub CarbonSAFE phase III... "
     phone="(505)-361-0231"

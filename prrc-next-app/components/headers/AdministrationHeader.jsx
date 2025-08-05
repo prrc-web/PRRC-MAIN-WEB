@@ -5,7 +5,7 @@ const AdministrationHeader = () => {
   return (
     <>
       <div className="w-full  bg-gradient-to-r from-[#112233] via-[#334455] to-[#112233]">
-        <div className="container mx-auto px-24 pt-3 text-white">
+        <div className="container mx-auto px-4 pt-3 text-white">
           <div className="w-full ">
             <div className="rounded-lg ">
               <h1 className="text-6xl md:text-6xl font-semibold tracking-loose mb-0 mt-35 text-center">
@@ -14,7 +14,7 @@ const AdministrationHeader = () => {
               <h4 className="text-2xl md:text-3xl  text-center"></h4>
             </div>
             <div className="text-center mb-0 mt-27 ">
-              <SvgWaves className="w-full max-w-4xl mx-auto" />
+              <SvgWaves className="w-full" />
             </div>
           </div>
         </div>

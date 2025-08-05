@@ -4,7 +4,7 @@ import StaffCard from './StaffCard';
 const AmosuStaff = () => (
   <StaffCard
     name="Adewale Amosu PhD"
-    title="Postdoctoral Research Engineer REACT Group"
+    title="Postdoctoral Research Engineer"
     imageUrl="/prrcblankuser.jpeg"
     description="Multi-disciplinary research focuses on solving problems encountered in the study of the..."
     phone="--"

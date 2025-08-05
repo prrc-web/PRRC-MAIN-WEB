@@ -4,7 +4,7 @@ import StaffCard from './StaffCard';
 const FanStaff = () => (
   <StaffCard
     name="Tianguang Fan, M.S."
-    title="Research Associate III, Research Group within PRRC: Gas Flooding Process & Flow Heterogeneities"
+    title="Research Scientist"
     imageUrl="/prrcblankuser.jpeg"
     description="Research & Applications: Asphaltene onset study and deposition in capillary tubing. Asphaltene instability evaluation and phase behavior at reservoir "
     phone="(575) 835-5542"

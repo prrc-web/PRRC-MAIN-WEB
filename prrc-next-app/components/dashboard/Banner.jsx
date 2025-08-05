@@ -2,11 +2,11 @@ import React from 'react';
 
 export default function Banner() {
   return (
-    <div className="flex items-center justify-center  bg-white">
+    <div className="w-full overflow-hidden bg-white">
       <img
         src="/homepage-banner.png"
         alt="Homepage Banner"
-        className="max-w-screen h-auto block "
+        className="w-screen h-auto object-cover "
       />
     </div>
   );

@@ -4,7 +4,7 @@ import StaffCard from './StaffCard';
 const AmpohmahStaff = () => (
   <StaffCard
     name="William Ampomah PhD"
-    title="Assistant Professor of Petroleum Engineering Section Head REACT - PRRC Commissioner, NM Oil Conservation Commission"
+    title="Assistant Professor"
     imageUrl="/prrcblankuser.jpeg"
     description="CO2 Capture, Utilization & Storage (CCUS) research, primarily focused on geologic CO2 storage and enhanced oil recovery..."
     phone="(575)-835-5018"
