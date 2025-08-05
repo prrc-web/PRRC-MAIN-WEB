@@ -9,20 +9,22 @@ export default function Education() {
       <EducationHeader />
 
       <section className="body-font">
-        <div className="bg-nmtblue h-screen w-full bg-cover bg-center relative">
+        <div className="bg-nmtblue w-full bg-cover bg-center relative">
           <img
             alt="Our Students"
             src="/students-collage-1.webp"
-            className="absolute h-full w-full object-cover opacity-20 "
+            className="absolute h-full w-full object-cover opacity-20"
           />
           <div>
-            <div className="container px-5 py-24 mx-auto flex flex-wrap">
+            <div className="container px-5 py-10 md:py-24 mx-auto flex flex-wrap">
               <div className="mx-auto max-w-prose relative">
-                <h1 className="pt-16 text-6xl font-bold title-font text-white ">
+                {/* Responsive heading */}
+                <h1 className="pt-8 md:pt-16 text-4xl md:text-5xl lg:text-6xl font-bold title-font text-white">
                   Our mission and promise to our students
                 </h1>
 
-                <p className="flex leading-relaxed mt-15 text-xl text-gray-200 font-medium sm:text-md ">
+                {/* Responsive paragraph */}
+                <p className="leading-relaxed mt-6 md:mt-15 text-base md:text-lg lg:text-xl text-gray-200 font-medium">
                   The PRRC supports New Mexico Tech's educational mission
                   through teaching and collaboration with other NMIMT divisions.
                   In our graduate program, we seek out top quality students in a
@@ -45,15 +47,15 @@ export default function Education() {
       </section>
 
       <section>
-        <div className="mx-auto max-w-screen bg-gray-50  py-12 px-12">
-          <div className="grid sm:grid-cols-1 gap-4 md:grid-cols-2 md:items-center md:gap-8">
+        <div className="mx-auto max-w-screen bg-gray-50 py-8 md:py-12 px-4 md:px-12">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:items-center md:gap-8">
             <div>
               <div className="max-w-lg md:max-w-none">
-                <h1 className="text-5xl font-semibold text-gray-900 mb-4 ">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 mb-4">
                   Graduate Research Program
                 </h1>
 
-                <p className="mt-8 text-gray-700">
+                <p className="mt-4 md:mt-8 text-gray-700 text-base md:text-lg">
                   Our research assistantship program offers excellent
                   opportunities for students to develop and publish research
                   under the guidance of our scientists. In addition to graduate
@@ -67,10 +69,10 @@ export default function Education() {
               </div>
             </div>
 
-            <div>
+            <div className="order-first md:order-last">
               <img
                 src="/studentsPRRC.jpg"
-                className="rounded"
+                className="rounded w-full"
                 alt="Our Students"
               />
             </div>
@@ -78,55 +80,65 @@ export default function Education() {
         </div>
       </section>
 
-      <div className="bg-gray-200 py-12">
-        <h1 className="text-5xl font-semibold text-gray-900 mb-4 text-center pt-20">
+      <div className="bg-gray-200 py-8 md:py-12">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 mb-4 text-center pt-10 md:pt-20">
           Our Students
         </h1>
-        <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-6 mx-20 my-20">
-          <article class="rounded-xl border border-gray-700 bg-nmtblue p-4">
-            <div class="flex items-center gap-4">
+
+        {/* Responsive student cards grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 px-4 md:mx-20 my-8 md:my-20">
+          {/* Student cards remain the same but with responsive text */}
+          <article className="rounded-xl border border-gray-700 bg-nmtblue p-4">
+            <div className="flex items-center gap-4">
               <img
                 alt=""
                 src="/Jianjia_Yu.webp"
-                class="size-16 rounded-full object-cover"
+                className="size-16 rounded-full object-cover"
               />
 
               <div>
-                <h3 class="text-lg font-medium text-white">
+                <h3 className="text-lg font-medium text-white">
                   Jianjia Yu's Students
                 </h3>
               </div>
             </div>
 
-            <ul class="mt-4 space-y-2">
+            <ul className="mt-4 space-y-2">
               <li>
-                <a class="block h-full rounded-lg border border-gray-700 p-4">
-                  <strong class="font-medium text-white">Zongjie He</strong>
-
-                  <p class="mt-1 text-xs font-medium text-gray-300">Graduate</p>
-                </a>
-              </li>
-
-              <li>
-                <a class="block h-full rounded-lg border border-gray-700 p-4">
-                  <strong class="font-medium text-white">
-                    Gabriela Torres Fernandez
-                  </strong>
-
-                  <p class="mt-1 text-xs font-medium text-gray-300">Graduate</p>
-                </a>
-              </li>
-
-              <li>
-                <a class="block h-full rounded-lg border border-gray-700 p-4">
-                  <strong class="font-medium text-white">
-                    Carlos Carrillo
-                  </strong>
-
-                  <p class="mt-1 text-xs font-medium text-gray-300">
-                    Undergraduate
+                <a className="block h-full rounded-lg border border-gray-700 p-4">
+                  <strong className="font-medium text-white">Zongjie He</strong>
+                  <p className="mt-1 text-xs font-medium text-gray-300">
+                    Graduate
                   </p>
                 </a>
+              </li>
+              <li>
+                //{' '}
+                <a class="block h-full rounded-lg border border-gray-700 p-4">
+                  //{' '}
+                  <strong class="font-medium text-white">
+                    // Gabriela Torres Fernandez //{' '}
+                  </strong>
+                  //{' '}
+                  <p class="mt-1 text-xs font-medium text-gray-300">Graduate</p>
+                  //{' '}
+                </a>
+                //{' '}
+              </li>
+              <li>
+                //{' '}
+                <a class="block h-full rounded-lg border border-gray-700 p-4">
+                  //{' '}
+                  <strong class="font-medium text-white">
+                    // Carlos Carrillo //{' '}
+                  </strong>
+                  //{' '}
+                  <p class="mt-1 text-xs font-medium text-gray-300">
+                    // Undergraduate //{' '}
+                  </p>
+                  //{' '}
+                </a>
+                //{' '}
               </li>
             </ul>
           </article>
@@ -309,67 +321,435 @@ export default function Education() {
             </ul>
           </article>
         </div>
+      </div>
 
-        <section className="bg-gray-800 lg:grid lg:h-screen lg:place-content-center">
-          <div class="bg-gray-800">
-            <div class="max-w-5xl mx-auto px-4 xl:px-0 pt-24 lg:pt-32 pb-24">
-              <h1 class="font-semibold text-white text-6xl pb-15 text-center">
-                Graduate Admission
-              </h1>
-              <div class="max-w-4xl">
-                <div
-                  href="#"
-                  className="block rounded-md border border-gray-300 p-4 shadow-sm sm:p-6">
-                  <div className="sm:flex sm:justify-between sm:gap-4 lg:gap-6">
-                    <div className="mt-4 sm:mt-0">
-                      <p className="mt-4  text-pretty text-lg text-white">
-                        Questions regarding Graduate Admission requirements,
-                        stipends, or policies should be directed to New Mexico
-                        Tech's Center for Graduate Studies.
-                      </p>
-                    </div>
+      <section className="bg-gray-800 lg:grid lg:min-h-[50vh] lg:place-content-center">
+        <div className="bg-gray-800">
+          <div className="max-w-5xl mx-auto px-4 xl:px-0 pt-12 md:pt-24 lg:pt-32 pb-12 md:pb-24">
+            <h1 className="font-semibold text-white text-3xl md:text-4xl lg:text-5xl pb-8 md:pb-15 text-center">
+              Graduate Admission
+            </h1>
+            <div className="max-w-4xl">
+              <div className="block rounded-md border border-gray-300 p-4 shadow-sm sm:p-6">
+                <div className="sm:flex sm:justify-between sm:gap-4 lg:gap-6">
+                  <div className="mt-4 sm:mt-0">
+                    <p className="text-pretty text-base md:text-lg text-white">
+                      Questions regarding Graduate Admission requirements,
+                      stipends, or policies should be directed to New Mexico
+                      Tech's Center for Graduate Studies.
+                    </p>
                   </div>
-
-                  <dl className="mt-6 flex gap-4 lg:gap-6">
-                    <div>
-                      <dt className="text-sm font-medium text-white">PHONE</dt>
-
-                      <dd className="text-xs text-white">(575) 835-5513</dd>
-                    </div>
-
-                    <div>
-                      <dt className="text-sm font-medium text-white">EMAIL</dt>
-
-                      <dd className="text-xs text-white">graduate@nmt.edu</dd>
-                    </div>
-                    <div>
-                      <dt className="text-sm font-medium text-white">OFFICE</dt>
-
-                      <dd className="text-xs text-white">
-                        Fidel Center - Room 275
-                      </dd>
-                    </div>
-                  </dl>
                 </div>
+
+                <dl className="mt-6 flex flex-wrap gap-4 lg:gap-6">
+                  <div>
+                    <dt className="text-sm font-medium text-white">PHONE</dt>
+                    <dd className="text-xs text-white">(575) 835-5513</dd>
+                  </div>
+                  <div>
+                    <dt className="text-sm font-medium text-white">EMAIL</dt>
+                    <dd className="text-xs text-white">graduate@nmt.edu</dd>
+                  </div>
+                  <div>
+                    <dt className="text-sm font-medium text-white">OFFICE</dt>
+                    <dd className="text-xs text-white">
+                      Fidel Center - Room 275
+                    </dd>
+                  </div>
+                </dl>
               </div>
             </div>
           </div>
-        </section>
-
-        <h2 className="text-2xl font-medium text-gray-900 text-center px-50 mt-50 mb-50">
-          We value everyone of our students and all of our staff. Thanks for
-          being a part of the New Mexico Tech Family!
-        </h2>
-        <div className="flex items-center justify-center  bg-white">
-          <img
-            src="/students-collage-1.webp"
-            alt="Photos of our researchers, students, graduate students, and staff."
-            className="max-w-screen h-auto block "
-          />
         </div>
-      </div>
+      </section>
 
-      {/* <div className="about-us-container section-container-bg-dark">
+      <h2 className="text-xl md:text-2xl font-medium text-gray-900 text-center px-4 md:px-50 mt-8 md:mt-50 mb-8 md:mb-50">
+        We value everyone of our students and all of our staff. Thanks for being
+        a part of the New Mexico Tech Family!
+      </h2>
+      <div className="flex items-center justify-center bg-white px-4 pb-8">
+        <img
+          src="/students-collage-1.webp"
+          alt="Photos of our researchers, students, graduate students, and staff."
+          className="w-full max-w-screen-lg h-auto block"
+        />
+      </div>
+    </>
+  );
+}
+
+// import React from 'react';
+// import EducationHeader from '../headers/EducationHeaders';
+// import Image from 'next/image';
+// import EducationBanner from '../dashboard/EducationBanner';
+
+// export default function Education() {
+//   return (
+//     <>
+//       <EducationHeader />
+
+//       <section className="body-font">
+//         <div className="bg-nmtblue h-screen w-full bg-cover bg-center relative">
+//           <img
+//             alt="Our Students"
+//             src="/students-collage-1.webp"
+//             className="absolute h-full w-full object-cover opacity-20 "
+//           />
+//           <div>
+//             <div className="container px-5 py-24 mx-auto flex flex-wrap">
+//               <div className="mx-auto max-w-prose relative">
+//                 <h1 className="pt-16 text-6xl font-bold title-font text-white ">
+//                   Our mission and promise to our students
+//                 </h1>
+
+//                 <p className="flex leading-relaxed mt-15 text-xl text-gray-200 font-medium sm:text-md ">
+//                   The PRRC supports New Mexico Tech's educational mission
+//                   through teaching and collaboration with other NMIMT divisions.
+//                   In our graduate program, we seek out top quality students in a
+//                   variety of disciplines to study and work under the guidance of
+//                   world-renowned scientists in a research setting. The PRRC also
+//                   supports NMIMT's educational goals through our inclusion of
+//                   undergraduate students and high school interns in our research
+//                   program. The majority of PRRC's graduate students go on to
+//                   high-level energy research positions in industry or in
+//                   teaching positions at research universities. Many of our
+//                   graduates take positions in New Mexico's hydrocarbon industry.
+//                   They maintain close ties with us—PRRC graduates support the
+//                   Institute as alumni and frequently send their children to
+//                   NMIMT as a result of their positive educational experience.
+//                 </p>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       <section>
+//         <div className="mx-auto max-w-screen bg-gray-50  py-12 px-12">
+//           <div className="grid sm:grid-cols-1 gap-4 md:grid-cols-2 md:items-center md:gap-8">
+//             <div>
+//               <div className="max-w-lg md:max-w-none">
+//                 <h1 className="text-5xl font-semibold text-gray-900 mb-4 ">
+//                   Graduate Research Program
+//                 </h1>
+
+//                 <p className="mt-8 text-gray-700">
+//                   Our research assistantship program offers excellent
+//                   opportunities for students to develop and publish research
+//                   under the guidance of our scientists. In addition to graduate
+//                   students in Petroleum Engineering, the PRRC supports graduate
+//                   students from a variety of disciplines including Chemical
+//                   Engineering, Chemistry, Computer Science, Electrical
+//                   Engineering, Civil & Environmental Engineering,
+//                   Geochemistry/Geology, Geophysics, Hydrology, and Mechanical
+//                   Engineering.
+//                 </p>
+//               </div>
+//             </div>
+
+//             <div>
+//               <img
+//                 src="/studentsPRRC.jpg"
+//                 className="rounded"
+//                 alt="Our Students"
+//               />
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       <div className="bg-gray-200 py-12">
+//         <h1 className="text-5xl font-semibold text-gray-900 mb-4 text-center pt-20">
+//           Our Students
+//         </h1>
+//         <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-6 mx-20 my-20">
+//           <article class="rounded-xl border border-gray-700 bg-nmtblue p-4">
+//             <div class="flex items-center gap-4">
+//               <img
+//                 alt=""
+//                 src="/Jianjia_Yu.webp"
+//                 class="size-16 rounded-full object-cover"
+//               />
+
+//               <div>
+//                 <h3 class="text-lg font-medium text-white">
+//                   Jianjia Yu's Students
+//                 </h3>
+//               </div>
+//             </div>
+
+//             <ul class="mt-4 space-y-2">
+//               <li>
+//                 <a class="block h-full rounded-lg border border-gray-700 p-4">
+//                   <strong class="font-medium text-white">Zongjie He</strong>
+
+//                   <p class="mt-1 text-xs font-medium text-gray-300">Graduate</p>
+//                 </a>
+//               </li>
+
+//               <li>
+//                 <a class="block h-full rounded-lg border border-gray-700 p-4">
+//                   <strong class="font-medium text-white">
+//                     Gabriela Torres Fernandez
+//                   </strong>
+
+//                   <p class="mt-1 text-xs font-medium text-gray-300">Graduate</p>
+//                 </a>
+//               </li>
+
+//               <li>
+//                 <a class="block h-full rounded-lg border border-gray-700 p-4">
+//                   <strong class="font-medium text-white">
+//                     Carlos Carrillo
+//                   </strong>
+
+//                   <p class="mt-1 text-xs font-medium text-gray-300">
+//                     Undergraduate
+//                   </p>
+//                 </a>
+//               </li>
+//             </ul>
+//           </article>
+
+//   <article class="rounded-xl border border-gray-700 bg-nmtblue p-4">
+//     <div class="flex items-center gap-4">
+//       <img
+//         alt=""
+//         src="/Dung_Bui.webp"
+//         class="size-16 rounded-full object-cover"
+//       />
+
+//       <div>
+//         <h3 class="text-lg font-medium text-white">
+//           Dung Bui's Students
+//         </h3>
+//       </div>
+//     </div>
+
+//     <ul class="mt-4 space-y-2">
+//       <li>
+//         <a class="block h-full rounded-lg border border-gray-700 p-4">
+//           <strong class="font-medium text-white">Anthony Hama</strong>
+
+//           <p class="mt-1 text-xs font-medium text-gray-300">
+//             Ph.D. Student
+//           </p>
+//         </a>
+//       </li>
+
+//       <li>
+//         <a class="block h-full rounded-lg border border-gray-700 p-4">
+//           <strong class="font-medium text-white">
+//             Nathaniel Nimo Yeboah
+//           </strong>
+
+//           <p class="mt-1 text-xs font-medium text-gray-300">
+//             Master Student
+//           </p>
+//         </a>
+//       </li>
+//     </ul>
+//   </article>
+
+//   <article class="rounded-xl border border-gray-700 bg-nmtblue p-4">
+//     <div class="flex items-center gap-4">
+//       <img
+//         alt=""
+//         src="/Sai_Wang.webp"
+//         class="size-16 rounded-full object-cover"
+//       />
+
+//       <div>
+//         <h3 class="text-lg font-medium text-white">
+//           Sai Wang's Students
+//         </h3>
+//       </div>
+//     </div>
+
+//     <ul class="mt-4 space-y-2">
+//       <li>
+//         <a class="block h-full rounded-lg border border-gray-700 p-4">
+//           <strong class="font-medium text-white">
+//             Elizabeth Appiah
+//           </strong>
+
+//           <p class="mt-1 text-xs font-medium text-gray-300">
+//             Graduate Research Assistant
+//           </p>
+//         </a>
+//       </li>
+
+//       <li>
+//         <a class="block h-full rounded-lg border border-gray-700 p-4">
+//           <strong class="font-medium text-white">Mercy Akomprah</strong>
+
+//           <p class="mt-1 text-xs font-medium text-gray-300">
+//             Undergraduate Research Assistant
+//           </p>
+//         </a>
+//       </li>
+//     </ul>
+//   </article>
+
+//   <article class="rounded-xl border border-gray-700 bg-nmtblue p-4">
+//     <div class="flex items-center gap-4">
+//       <img
+//         alt=""
+//         src="/Robert_Czarnota.webp"
+//         class="size-16 rounded-full object-cover"
+//       />
+
+//       <div>
+//         <h3 class="text-lg font-medium text-white">
+//           Robert Czarnota's Students
+//         </h3>
+//       </div>
+//     </div>
+
+//     <ul class="mt-4 space-y-2">
+//       <li>
+//         <a class="block h-full rounded-lg border border-gray-700 p-4">
+//           <strong class="font-medium text-white">
+//             Godsway Akpabli
+//           </strong>
+
+//           <p class="mt-1 text-xs font-medium text-gray-300">
+//             Undergraduate
+//           </p>
+//         </a>
+//       </li>
+
+//       <li>
+//         <a class="block h-full rounded-lg border border-gray-700 p-4">
+//           <strong class="font-medium text-white">
+//             Kwamena Opoku Duartey
+//           </strong>
+
+//           <p class="mt-1 text-xs font-medium text-gray-300">Graduate</p>
+//         </a>
+//       </li>
+
+//       <li>
+//         <a class="block h-full rounded-lg border border-gray-700 p-4">
+//           <strong class="font-medium text-white">
+//             Justice Sarkodie Kyeremeh
+//           </strong>
+
+//           <p class="mt-1 text-xs font-medium text-gray-300">Graduate</p>
+//         </a>
+//       </li>
+
+//       <li>
+//         <a class="block h-full rounded-lg border border-gray-700 p-4">
+//           <strong class="font-medium text-white">Anthony Morgan</strong>
+
+//           <p class="mt-1 text-xs font-medium text-gray-300">Postdoc</p>
+//         </a>
+//       </li>
+//     </ul>
+//   </article>
+
+//   <article class="rounded-xl border border-gray-700 bg-nmtblue p-4">
+//     <div class="flex items-center gap-4">
+//       <img
+//         alt=""
+//         src="/Jean-Lucien.webp"
+//         class="size-16 rounded-full object-cover"
+//       />
+
+//       <div>
+//         <h3 class="text-lg font-medium text-white">
+//           Jean-Lucien's Students
+//         </h3>
+//       </div>
+//     </div>
+
+//     <ul class="mt-4 space-y-2">
+//       <li>
+//         <a class="block h-full rounded-lg border border-gray-700 p-4">
+//           <strong class="font-medium text-white">Hadrian Keith</strong>
+
+//           <p class="mt-1 text-xs font-medium text-gray-300">
+//             Undergraduate
+//           </p>
+//         </a>
+//       </li>
+
+//       <li>
+//         <a class="block h-full rounded-lg border border-gray-700 p-4">
+//           <strong class="font-medium text-white">
+//             Gabriel Frimpong
+//           </strong>
+
+//           <p class="mt-1 text-xs font-medium text-gray-300">
+//             Undergraduate
+//           </p>
+//         </a>
+//       </li>
+//     </ul>
+//   </article>
+// </div>
+
+//         <section className="bg-gray-800 lg:grid lg:h-screen lg:place-content-center">
+//           <div class="bg-gray-800">
+//             <div class="max-w-5xl mx-auto px-4 xl:px-0 pt-24 lg:pt-32 pb-24">
+//               <h1 class="font-semibold text-white text-6xl pb-15 text-center">
+//                 Graduate Admission
+//               </h1>
+//               <div class="max-w-4xl">
+//                 <div
+//                   href="#"
+//                   className="block rounded-md border border-gray-300 p-4 shadow-sm sm:p-6">
+//                   <div className="sm:flex sm:justify-between sm:gap-4 lg:gap-6">
+//                     <div className="mt-4 sm:mt-0">
+//                       <p className="mt-4  text-pretty text-lg text-white">
+//                         Questions regarding Graduate Admission requirements,
+//                         stipends, or policies should be directed to New Mexico
+//                         Tech's Center for Graduate Studies.
+//                       </p>
+//                     </div>
+//                   </div>
+
+//                   <dl className="mt-6 flex gap-4 lg:gap-6">
+//                     <div>
+//                       <dt className="text-sm font-medium text-white">PHONE</dt>
+
+//                       <dd className="text-xs text-white">(575) 835-5513</dd>
+//                     </div>
+
+//                     <div>
+//                       <dt className="text-sm font-medium text-white">EMAIL</dt>
+
+//                       <dd className="text-xs text-white">graduate@nmt.edu</dd>
+//                     </div>
+//                     <div>
+//                       <dt className="text-sm font-medium text-white">OFFICE</dt>
+
+//                       <dd className="text-xs text-white">
+//                         Fidel Center - Room 275
+//                       </dd>
+//                     </div>
+//                   </dl>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </section>
+
+//         <h2 className="text-2xl font-medium text-gray-900 text-center px-50 mt-50 mb-50">
+//           We value everyone of our students and all of our staff. Thanks for
+//           being a part of the New Mexico Tech Family!
+//         </h2>
+//         <div className="flex items-center justify-center  bg-white">
+//           <img
+//             src="/students-collage-1.webp"
+//             alt="Photos of our researchers, students, graduate students, and staff."
+//             className="max-w-screen h-auto block "
+//           />
+//         </div>
+//       </div>
+
+/* <div className="about-us-container section-container-bg-dark">
         <div className="row m-5">
           <div className="col-md-12">
             <div className="row">
@@ -480,7 +860,4 @@ export default function Education() {
             </div>
           </div>
         </div>
-      </div> */}
-    </>
-  );
-}
+      </div> */
