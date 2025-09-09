@@ -3,7 +3,6 @@ import Image from 'next/image';
 
 export default function Banner() {
   return (
-<<<<<<< HEAD
     <div className="flex items-center justify-center  bg-white">
       <Image
         src="/homepage-banner.png"
@@ -11,13 +10,6 @@ export default function Banner() {
         width={1920}
         height={1080}
         className="max-w-screen h-auto block "
-=======
-    <div className="w-full overflow-hidden bg-white">
-      <img
-        src="/homepage-banner.png"
-        alt="Homepage Banner"
-        className="w-screen h-auto object-cover "
->>>>>>> 03c0f1afbb667d0b9f2a3f2b07e9eae00ed3e6dc
       />
     </div>
   );

@@ -1,9 +1,4 @@
-import React from 'react';
-<<<<<<< HEAD
-import Image from 'next/image';
-=======
 import AdminCard from './AdminCard';
->>>>>>> 03c0f1afbb667d0b9f2a3f2b07e9eae00ed3e6dc
 
 const BenalilAdmin = () => (
   <AdminCard

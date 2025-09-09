@@ -1,21 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-import Image from 'next/image';
-
-const AmosuStaff = () => {
-  return (
-    <>
-      <div className="box-content size-90 border-0">
-        <a href="#" className="group relative block bg-black h-full ">
-          <div className="relative h-full w-full overflow-hidden">
-            <Image
-              alt="Adewale Amosu PhD"
-              src="/balch.jpg"
-              width={500}
-              height={500}
-              className="absolute inset-0 h-120 w-full object-cover opacity-75 transition-opacity group-hover:opacity-50 "
-            />
-=======
 import StaffCard from './StaffCard';
 
 const AmosuStaff = () => (
@@ -29,7 +12,6 @@ const AmosuStaff = () => (
     office="--"
   />
 );
->>>>>>> 03c0f1afbb667d0b9f2a3f2b07e9eae00ed3e6dc
 
 export default AmosuStaff;
 
@@ -91,7 +73,7 @@ export default AmosuStaff;
                 <i class="fa fa-building"></i> O: --
               </div>
 
-              <button class="btn btn-primary" onclick="openPDF ()">
+              <button class="btn btn-primary" onclick="openPDF () ">
                 Resume
               </button>
             </div>
