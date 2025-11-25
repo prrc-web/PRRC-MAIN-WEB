@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # MongoDB Database
   mongodb:
@@ -20,38 +18,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # Payload CMS Backend
-  payload-backend:
-    build:
-      context: ./payload-backend
-      dockerfile: Dockerfile.dev
-    container_name: prrc-payload-backend
-    restart: unless-stopped
-    ports:
-      - "3001:3001"
-    environment:
-      - MONGODB_URI=mongodb://mongodb:27017/prrc
-      - PAYLOAD_SECRET=${PAYLOAD_SECRET:-default-secret-change-in-production}
-      - PAYLOAD_PUBLIC_SERVER_URL=http://localhost:3001
-      - PORT=3001
-      - NODE_ENV=development
-      - FRONTEND_URL=http://localhost:3000
-    volumes:
-      - ./payload-backend/src:/app/src
-      - ./payload-backend/public:/app/public
-      - ./payload-backend/payload.config.ts:/app/payload.config.ts
-      - payload_uploads:/app/uploads
-    depends_on:
-      mongodb:
-        condition: service_healthy
-    networks:
-      - prrc-network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-
   # Next.js Frontend
   nextjs-frontend:
     build:
@@ -59,22 +25,40 @@ services:
       dockerfile: Dockerfile.dev
     container_name: prrc-nextjs-frontend
     restart: unless-stopped
-    ports:
-      - "3000:3000"
+    # Expose internal port only; nginx will expose externally on 3000
+    expose:
+      - "3000"
     environment:
-      - NEXT_PUBLIC_API_URL=http://localhost:3001
-      - NEXT_PUBLIC_API_URL_INTERNAL=http://payload-backend:3001
+      - NEXT_PUBLIC_API_URL=http://localhost:3000
+      - NEXT_PUBLIC_API_URL_INTERNAL=http://localhost:3000
+      - MONGODB_URI=mongodb://mongodb:27017/prrc
+      - PAYLOAD_SECRET=${PAYLOAD_SECRET:-default-secret-change-in-production}
+      - PAYLOAD_PUBLIC_SERVER_URL=http://localhost:3000
       - PORT=3000
       - NODE_ENV=development
-    volumes:
-      - ./prrc-next-app/src:/app/src
-      - ./prrc-next-app/public:/app/public
-      - ./prrc-next-app/components:/app/components
-      - ./prrc-next-app/package.json:/app/package.json
-    depends_on:
-      - payload-backend
+      - WATCHPACK_POLLING=true
+    # volumes:
+    # - ./prrc-next-app:/app:cached
+    # - /app/node_modules
+    # - /app/.next
     networks:
       - prrc-network
+
+  # Nginx reverse proxy to serve frontend + backend on same host:port
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: prrc-nginx
+    ports:
+      - "3000:80"
+    # nginx.conf copied at build time to the image to avoid macOS file lock issues
+    depends_on:
+      - nextjs-frontend
+      - mongodb
+    networks:
+      - prrc-network
+    restart: unless-stopped
 
 networks:
   prrc-network:

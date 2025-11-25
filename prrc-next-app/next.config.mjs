@@ -3,6 +3,6 @@
 const nextConfig = {
   reactStrictMode: true,
   serverExternalPackages: ['payload'],
-}
+};
 
-export default nextConfig
+export default nextConfig;

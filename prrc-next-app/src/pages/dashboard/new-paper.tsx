@@ -5,6 +5,8 @@ import {
   createPaper,
 } from '../../lib/payload-api';
 
+import AdminGuard from '../../components/AdminGuard';
+
 export default function NewPaper() {
   const [title, setTitle] = useState('');
   const [abstract, setAbstract] = useState('');
@@ -43,50 +45,52 @@ export default function NewPaper() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>New Research Paper</h1>
-      <form onSubmit={submit}>
-        <div>
-          <label>Title</label>
-          <input value={title} onChange={(e) => setTitle(e.target.value)} />
-        </div>
-        <div>
-          <label>Abstract</label>
-          <textarea
-            value={abstract}
-            onChange={(e) => setAbstract(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Authors</label>
-          <select
-            multiple
-            value={selectedAuthors}
-            onChange={(e) =>
-              setSelectedAuthors(
-                Array.from(e.target.selectedOptions, (o) => o.value),
-              )
-            }>
-            {researchers.map((r) => (
-              <option key={r.id} value={r.id}>
-                {r.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label>PDF</label>
-          <input
-            type="file"
-            accept="application/pdf,image/*"
-            onChange={(e) => setFile(e.target.files?.[0] || null)}
-          />
-        </div>
-        <div>
-          <button type="submit">Create</button>
-        </div>
-      </form>
-      {message && <p>{message}</p>}
-    </div>
+    <AdminGuard>
+      <div style={{ padding: 20 }}>
+        <h1>New Research Paper</h1>
+        <form onSubmit={submit}>
+          <div>
+            <label>Title</label>
+            <input value={title} onChange={(e) => setTitle(e.target.value)} />
+          </div>
+          <div>
+            <label>Abstract</label>
+            <textarea
+              value={abstract}
+              onChange={(e) => setAbstract(e.target.value)}
+            />
+          </div>
+          <div>
+            <label>Authors</label>
+            <select
+              multiple
+              value={selectedAuthors}
+              onChange={(e) =>
+                setSelectedAuthors(
+                  Array.from(e.target.selectedOptions, (o) => o.value),
+                )
+              }>
+              {researchers.map((r) => (
+                <option key={r.id} value={r.id}>
+                  {r.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label>PDF</label>
+            <input
+              type="file"
+              accept="application/pdf,image/*"
+              onChange={(e) => setFile(e.target.files?.[0] || null)}
+            />
+          </div>
+          <div>
+            <button type="submit">Create</button>
+          </div>
+        </form>
+        {message && <p>{message}</p>}
+      </div>
+    </AdminGuard>
   );
 }

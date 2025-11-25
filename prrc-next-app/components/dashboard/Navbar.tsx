@@ -1,49 +1,35 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { ADMIN_ROUTES } from '@/lib/config';
+import { useEffect, useState } from 'react';
+import { getCurrentUser, logoutUser } from '@/lib/payload-api';
+import { User } from '@/types/payload-types';
 
 export default function Navbar() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
 
-  const routeToHomePage = () => {
-    router.push('/');
-  };
-
-  const routeToAdministrationPage = () => {
-    router.push('/AdministrationPage');
-  };
-
-  const routeToStaffPage = () => {
-    router.push('/StaffPage');
-  };
-
-  const routeToEducationPage = () => {
-    router.push('/EducationPage');
-  };
-
-  const routeToPublicationsPage = () => {
-    router.push('/PublicationsPage');
-  };
-
-  const routeToResearchPage = () => {
-    router.push('/ResearchPage');
-  };
-
-  const routeToSafetyPage = () => {
-    router.push('/SafetyPage');
-  };
+  useEffect(() => {
+    getCurrentUser()
+      .then((data: { user: User }) => {
+        if (data?.user) {
+          setLoggedIn(true);
+        }
+      })
+      .catch(() => setLoggedIn(false));
+  }, []);
 
   return (
     <nav className="bg-gray-900 dark:bg-gray-900 light:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a
+        <Link
           href="/"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-          onClick={routeToHomePage}>
+          className="flex items-center space-x-3 rtl:space-x-reverse">
           <span className="self-center text-wrap text-white ">
             <h4 className="text-lg font-light font-header">
               Petroleum Recovery Research Center
@@ -52,7 +38,7 @@ export default function Navbar() {
               A Division of New Mexico Tech
             </p>
           </span>
-        </a>
+        </Link>
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <a href="https://www.nmt.edu/" className="hidden md:block">
@@ -78,9 +64,9 @@ export default function Navbar() {
               viewBox="0 0 17 14">
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 1h15M1 7h15M1 13h15"
               />
             </svg>
@@ -92,62 +78,67 @@ export default function Navbar() {
           id="navbar-sticky">
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-gray-900 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
-              <a
+              <Link
                 href="/"
                 className="block py-2 px-3 text-gray-300 hover:text-switch2 rounded-sm md:bg-transparent md:p-0 "
-                onClick={routeToHomePage}
                 aria-current="page">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="/AdministrationPage"
-                className="block py-2 px-3 text-gray-300  rounded-sm  md:p-0 hover:text-switch2 "
-                onClick={routeToAdministrationPage}>
+              <Link
+                href={ADMIN_ROUTES.FRONTEND_ADMIN}
+                className="block py-2 px-3 text-gray-300  rounded-sm  md:p-0 hover:text-switch2 ">
                 Administration
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/StaffPage"
-                className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0 "
-                onClick={routeToStaffPage}>
+                className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0 ">
                 Staff
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/EducationPage"
-                className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0"
-                onClick={routeToEducationPage}>
+                className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0">
                 Education
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/PublicationsPage"
-                className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0"
-                onClick={routeToPublicationsPage}>
+                className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0">
                 Publications
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/ResearchPage"
-                className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0"
-                onClick={routeToResearchPage}>
+                className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0">
                 Research
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/SafetyPage"
-                className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0"
-                onClick={routeToSafetyPage}>
+                className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0">
                 Safety
-              </a>
+              </Link>
             </li>
+            {loggedIn && (
+              <li>
+                <button
+                  onClick={async () => {
+                    await logoutUser();
+                    window.location.href = '/';
+                  }}
+                  className="block py-2 px-3 text-gray-300 rounded-sm hover:text-switch2 md:p-0">
+                  Logout
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       </div>

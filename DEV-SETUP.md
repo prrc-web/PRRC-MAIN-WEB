@@ -1,4 +1,6 @@
-# Development Setup Guide
+# Development Setup Guide — DEPRECATED
+
+This document has been merged into the root `README.md`. Please consult `README.md` for setup, testing and Docker commands.
 
 ## Prerequisites Check
 
@@ -56,7 +58,7 @@ npm run dev
 
 **Step 3: Start Frontend (separate terminal)**
 
-```bash
+````bash
 cd /Users/punkdad/Desktop/PRRC-MAIN-WEB/PRRC-MAIN-WEB/prrc-next-app
 
 # Install dependencies (if not done)
@@ -64,7 +66,19 @@ npm install
 
 # Start development server
 npm run dev
-```
+
+> Tip: If you are contributing to the repo and want to enable pre-commit linting and formatting hooks, run the following in the `prrc-next-app` folder:
+
+```bash
+cd prrc-next-app
+npm install
+npm run prepare  # installs husky hooks and enables pre-commit checks
+````
+
+Alternatively, at the repository root you can run `scripts/setup-husky.sh` to prepare the sample husky configuration for `prrc-next-app` (macOS / Linux).
+This script now prepares hooks for both `prrc-next-app` (frontend) and `payload-backend` (backend).
+
+````
 
 ## Testing the Backend
 
@@ -72,7 +86,7 @@ npm run dev
 
 ```bash
 curl http://localhost:3001/health
-```
+````
 
 Expected response:
 
@@ -85,7 +99,7 @@ Expected response:
 
 ### 2. Access Admin Panel
 
-Open browser: http://localhost:3001/admin
+Open browser: http://localhost:3001/admin-panel
 
 - First time: Create admin user
 - Subsequent: Login with credentials
@@ -206,13 +220,13 @@ docker-compose restart payload-backend  # Restart backend
 
 ## Services & Ports
 
-| Service        | Port  | URL                            |
-| -------------- | ----- | ------------------------------ |
-| Frontend       | 3000  | http://localhost:3000          |
-| Backend API    | 3001  | http://localhost:3001/api      |
-| Backend Admin  | 3001  | http://localhost:3001/admin    |
-| Backend Health | 3001  | http://localhost:3001/health   |
-| MongoDB        | 27017 | mongodb://localhost:27017/prrc |
+| Service        | Port  | URL                               |
+| -------------- | ----- | --------------------------------- |
+| Frontend       | 3000  | http://localhost:3000             |
+| Backend API    | 3001  | http://localhost:3001/api         |
+| Backend Admin  | 3001  | http://localhost:3001/admin-panel |
+| Backend Health | 3001  | http://localhost:3001/health      |
+| MongoDB        | 27017 | mongodb://localhost:27017/prrc    |
 
 ## Environment Variables
 
@@ -233,6 +247,12 @@ FRONTEND_URL=http://localhost:3000
 NEXT_PUBLIC_API_URL=http://localhost:3001
 PORT=3000
 NODE_ENV=development
+
+# Optional: Admin and router configuration
+NEXT_PUBLIC_FRONTEND_ADMIN_PATH=/AdministrationPage
+NEXT_PUBLIC_BACKEND_ADMIN_PATH=/admin-panel
+NEXT_PUBLIC_FRONTEND_ADMIN_LOGIN=/admin/login
+NEXT_PUBLIC_ROUTER_MODE=app
 ```
 
 ## Next Steps
@@ -254,4 +274,4 @@ NODE_ENV=development
 
 ---
 
-**Current Status:** Ready to test once MongoDB is running!
+**Current Status:** This file is deprecated — see `README.md` for current setup and commands.

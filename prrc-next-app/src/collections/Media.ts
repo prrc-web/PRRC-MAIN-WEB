@@ -1,0 +1,38 @@
+import type { CollectionConfig } from 'payload';
+
+export const Media: CollectionConfig = {
+  slug: 'media',
+  upload: {
+    staticDir: 'public/media',
+    imageSizes: [
+      {
+        name: 'thumbnail',
+        width: 400,
+        height: 300,
+        position: 'center',
+      },
+      {
+        name: 'card',
+        width: 768,
+        height: 1024,
+        position: 'center',
+      },
+      {
+        name: 'tablet',
+        width: 1024,
+        position: 'center',
+      },
+    ],
+    adminThumbnail: 'thumbnail',
+    mimeTypes: ['image/*', 'application/pdf'],
+  },
+  access: {
+    read: () => true,
+  },
+  fields: [
+    {
+      name: 'alt',
+      type: 'text',
+    },
+  ],
+};

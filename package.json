@@ -1,0 +1,13 @@
+{
+  "name": "prrc-main-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start:dev": "concurrently \"cd payload-backend && npm run dev\" \"cd prrc-next-app && npm run dev\"",
+    "check-admin-routes": "node scripts/check-admin-routes.js",
+    "test:admin-config": "node scripts/test-admin-routes-export.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

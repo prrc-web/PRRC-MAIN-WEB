@@ -1,6 +1,10 @@
-# Changelog: PRRC Next.js Application
+# Changelog: PRRC Next.js Application — DEPRECATED
 
-## 2025-11-10: PayloadCMS 3.x + Next.js 15.x Integration Issues
+This changelog was consolidated into the root `CHANGELOG.md`. Please see the canonical changelog for the single source of truth:
+
+`../CHANGELOG.md`
+
+The archived local changelog has been kept for reference but will no longer be updated.
 
 ### Critical Compatibility Problems Discovered
 
@@ -30,7 +34,7 @@ export default buildConfig({
   },
   routes: {
     api: '/api',
-    admin: '/admin',
+    admin: '/admin-panel',
   },
   secret: process.env.PAYLOAD_SECRET || '',
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3001',
@@ -197,7 +201,7 @@ export async function GET(req, { params }) {
 ### Current State
 
 - ✅ Development server runs without crashes
-- ✅ Homepage accessible at `http://localhost:3001`
+- ✅ Homepage accessible at `http://localhost:3000`
 - ✅ Admin panel loads at `/admin/create-first-user`
 - ❌ **API routes completely non-functional**
 - ❌ **Cannot create admin users**
@@ -334,6 +338,37 @@ const { docs } = await res.json();
 - ✅ **Simple CORS** - Standard cross-origin setup
 - ✅ **Works immediately** - No complex Next.js integration
 
+### Final Consolidation & Dev Fixes (2025-11-18)
+
+After the decision to run Payload as a standalone backend, additional dev work cleaned up remaining issues and added features:
+
+- Freed port 3001 by removing the duplicate `prrc-cms-server` and fixed local port conflicts that produced EADDRINUSE errors.
+- Adjusted `dotenv` ordering and added an optional `SEED_ADMIN` flow to create an admin at startup for convenience in development.
+- Added `papers` and `newsletters` collections to the CMS and wired minimal frontend helpers to create and list these resources.
+- Consolidated documentation and removed legacy compose files (e.g., `docker-compose.prod.yml`), moved all canonical docs to `prrc-next-app/specs/` and `README.md`.
+
+Developers should now run each service separately and review `payload-backend/.env.example` for the new variables required for seeding and server URL configuration.
+
+### 🧹 2025-11-19: Frontend DX and Admin Path Consolidation
+
+#### Implemented
+
+- Centralized admin routes and router mode config (see `src/lib/config.ts`) and added env vars in `.env.example` to control admin URLs and router defaults.
+- Replaced hard-coded admin path strings across frontend code with `ADMIN_ROUTES.*` constants to remove duplication and confusion between App Router (RSC) and Pages Router usage.
+- Consolidated ESLint config (`.eslintrc.cjs`), added `lint:fix`, `format` scripts, and set up `husky` + `lint-staged` for pre-commit formatting and linting.
+- Created helper script `scripts/setup-husky.sh` and added `npm run prepare` to the frontend `package.json` to install Husky hooks.
+- Documented these changes in `prrc-next-app/README.md` and `.env.example`.
+
+#### Files Changed (front-end)
+
+- `src/lib/config.ts` (new centralized admin router config)
+- `src/pages/admin/login.tsx`, `src/pages/admin/signup.tsx`, `src/pages/admin/index.tsx` (redirects to `ADMIN_ROUTES`)
+- `src/components/AdminGuard.tsx` (uses `ADMIN_ROUTES` for login redirect)
+- `src/components/dashboard/Navbar.tsx`, `src/components/dashboard/Footer.tsx` (use `ADMIN_ROUTES` for links)
+- `prrc-next-app/package.json`, `.eslintrc.cjs`, `.env.example`, `README.md`, `scripts/setup-husky.sh`, `.husky/pre-commit`
+
+Notes: This file is deprecated; the canonical changelog is `../CHANGELOG.md` and has the same entry recorded for 2.1.3.
+
 #### Next.js App Changes Needed
 
 Remove all PayloadCMS integration from `prrc-next-app`:
@@ -350,17 +385,17 @@ Remove all PayloadCMS integration from `prrc-next-app`:
 ```bash
 cd ../payload-backend
 npm install
-npm run dev  # Runs on localhost:3001
+npm run dev  # Runs on localhost:3000 (frontend); Payload runs on localhost:3001
 ```
 
 **Terminal 2:**
 
 ```bash
 cd prrc-next-app
-npm run dev  # Runs on localhost:3001
+npm run dev  # Runs on localhost:3001 (payload-backend)
 ```
 
-Admin accessible at: `http://localhost:3001/admin`
+Admin accessible at: `http://localhost:3001/admin-panel`
 
 #### Why This Is Better
 

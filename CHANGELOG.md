@@ -51,6 +51,101 @@ All notable changes to the PRRC Web Application project are documented in this f
 
 - The repo has been consolidated to a single backend `payload-backend` and frontend `prrc-next-app` to simplify development and deployment. Documentation has been consolidated accordingly.
 
+## [2.1.0] - 2025-11-18
+
+### 🛠️ Emergency Debugging & Consolidation
+
+#### Fixed / Implemented
+
+- Resolved a local port conflict that prevented the Payload backend from starting (EADDRINUSE). The conflict was caused by duplicate services running the old `prrc-cms-server` and a second `payload` service. Removed duplicate server and freed port 3001 for `payload-backend`.
+- Started local MongoDB for development using Docker Compose and updated development docs to include `docker compose up -d mongodb` and troubleshooting steps.
+- Fixed `payload` initialization ordering by loading environment variables (`dotenv`) before importing `payload.config.ts`. This prevents missing `PAYLOAD_SECRET` or reentrancy errors during startup.
+- Added a small admin seeding mechanism (controlled by `SEED_ADMIN=true`) to create a first admin user when the server boots during development.
+- Added `papers` and `newsletters` collections in Payload and wire-up front-end helpers to create and fetch these resources.
+- Added health endpoints and root `/api` index to `payload-backend` for easier monitoring and testing.
+- Consolidated documentation and removed legacy `prrc-cms-server` and `docker-compose.prod.yml` duplicate files.
+
+#### Notes
+
+- This patch moved the CMS to `payload-backend` (canonical) on port 3001. The Next.js frontend remains at port 3000. The project now runs as two independent services which resolves numerous module and dependency conflicts.
+- Key variables: `MONGODB_URI`, `PAYLOAD_SECRET`, `PAYLOAD_PUBLIC_SERVER_URL`, `SEED_ADMIN`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`.
+- After this change, developers should run the backend and frontend separately in dev (`npm run dev` in each service), or start everything with `docker compose up`.
+
+### ⚙️ Follow-ups
+
+- Add role-based access rules for `papers` and `newsletters` and better indexing/search.
+- Add demo seed data for easier manual testing.
+- Add tests for `papers` create/read paths and admin seeding behavior.
+
+## [2.1.1] - 2025-11-10
+
+### ⚠️ PayloadCMS / Next.js Compatibility Investigation
+
+- Documented the early discovery of severe compatibility issues when embedding PayloadCMS 3.56.0 into Next.js 15.x App Router. Attempts to proxy admin/API routes and use the official `@payloadcms/next` handlers were not reliable.
+- Notable fixes and observations:
+  - Temporary downgrade/upgrade of Next.js / React during debugging
+  - Added `.npmrc` with `legacy-peer-deps` for dependency installation
+  - Identified that Payload requires different module boundaries; moving Payload to a standalone backend resolved the majority of conflicts
+
+### ✅ Resolution
+
+- Switched architecture to run PayloadCMS as a separate Express server (see `/payload-backend`) and use REST API from Next.js frontend. This mitigated all major compatibility problems and simplified CI/deploy.
+
+## [2.1.2] - 2025-11-19
+
+## [2.1.3] - 2025-11-19
+
+### 🧹 Frontend cleanups + Developer Experience improvements
+
+#### Implemented
+
+- Centralized frontend admin and router configuration (`src/lib/config.ts`) so the project has a single source of truth for admin paths and router mode:
+  - `ADMIN_ROUTES.FRONTEND_ADMIN` (defaults to `/AdministrationPage`)
+  - `ADMIN_ROUTES.BACKEND_ADMIN` (defaults to `/admin-panel`)
+  - `ADMIN_ROUTES.FRONTEND_ADMIN_LOGIN` (defaults to `/admin/login`)
+  - `ROUTER.MODE` (`app` | `pages`)
+- Replaced duplicate / hard-coded admin path strings across UI and pages with `ADMIN_ROUTES.*` constants:
+  - `src/pages/admin/login.tsx`, `src/pages/admin/signup.tsx`, `src/pages/admin/index.tsx` (redirects)
+  - `src/components/AdminGuard.tsx` (redirects to login)
+  - `src/components/dashboard/Navbar.tsx`, `src/components/dashboard/Footer.tsx`
+- Consolidated ESLint configuration to a single, easy-to-maintain file `prrc-next-app/.eslintrc.cjs` and removed the legacy `.eslintrc.json` and moved away from conflicting `eslint.config.cjs` behavior.
+- Added developer tooling and DX improvements for consistent format/linting and pre-commit hooks:
+  - `prrc-next-app/package.json` scripts: `lint:fix`, `format`, `dev:docker`, `prepare`
+  - `husky` + `lint-staged` configuration and `.husky/pre-commit` hook
+  - `scripts/setup-husky.sh` helper to install husky hooks and devDeps for `prrc-next-app`
+- Updated docs and examples to centralize admin path configuration and demonstrate how to use `NEXT_PUBLIC_*` variables for admin and router configuration (see `.env.example`, `README.md`).
+
+### ⚙️ Additional Repository Improvements
+
+- Applied the same `husky` + `lint-staged` DX improvements to `payload-backend` to run pre-commit linting and formatting there as well.
+- Added a `scripts/setup-husky.sh` helper to install hooks for both `prrc-next-app` and `payload-backend`.
+- Added a simple route-checker script to detect hard-coded admin path strings in the frontend source (`scripts/check-admin-routes.js`) and a tiny test that verifies `ADMIN_ROUTES` exports expected keys (`scripts/test-admin-routes-export.js`).
+- Added a repository-level `start:dev` script to concurrently run both services locally (`npm run start:dev`).
+
+#### Files modified (high-level)
+
+- `prrc-next-app/src/lib/config.ts` (new consolidated config)
+- `prrc-next-app/.eslintrc.cjs` (new ESLint configuration)
+- `prrc-next-app/package.json` (scripts, devDeps, lint-staged)
+- `prrc-next-app/.husky/pre-commit` (lint-staged hook)
+- `prrc-next-app/.env.example` (new `NEXT_PUBLIC_*` variables)
+- Updated a range of frontend components/pages to use `ADMIN_ROUTES.*`
+- `scripts/setup-husky.sh` added to help devs install hooks; `scripts/clear-next-cache.sh` already present for DX
+
+#### Notes
+
+- Developers should run `npm install` and `npm run prepare` in `prrc-next-app` to ensure the hooks are setup for Husky.
+- Existing hard-coded admin links and login redirects were migrated to `ADMIN_ROUTES.*`. If you need the frontend-admin path changed, update the env var `NEXT_PUBLIC_FRONTEND_ADMIN_PATH`.
+- This iteration focuses on developer ergonomics and configuration unification; the admin panel still runs on the separate `payload-backend` server at `/admin-panel` on port 3001 by default.
+
+### 📚 Documentation consolidation
+
+- Merged developer guides (DEV-SETUP.md), frontend README, backend README, and test docs into canonical locations:
+  - `CHANGELOG.md` for change history
+  - `README.md` for setup and quick start
+  - `/prrc-next-app/specs/spec.md`, `/prrc-next-app/specs/tasks.md`, `/prrc-next-app/specs/plan.md` for detailed specs and planning
+- Deprecated non-canonical docs (moved to single-sourced docs). All changes are now documented only in canonical files.
+
 ---
 
 ## [2.0.1] - 2024-11-13
@@ -452,8 +547,9 @@ For teams upgrading from v1.x to v2.0.0:
 
 5. **Verify services**
    - Frontend: http://localhost:3000
-   - Backend: http://localhost:3001/admin
-   - API: http://localhost:3001/api
+
+- Backend: http://localhost:3001/admin-panel
+- API: http://localhost:3001/api
 
 **Breaking Changes:**
 

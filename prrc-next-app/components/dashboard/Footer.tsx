@@ -1,11 +1,12 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import { ADMIN_ROUTES } from '@/lib/config';
 
 export default function Footer() {
   const router = useRouter();
 
   const routeToAdministraionPage = () => {
-    router.push('/AdministrationPage');
+    router.push(ADMIN_ROUTES.FRONTEND_ADMIN);
   };
 
   const routeToStaffPage = () => {
@@ -58,7 +59,7 @@ export default function Footer() {
               <li>
                 <a
                   className="text-gray-300 transition hover:text-switch2"
-                  href="/AdministrationPage"
+                  href={ADMIN_ROUTES.FRONTEND_ADMIN}
                   onClick={routeToAdministraionPage}>
                   Administration
                 </a>
@@ -99,7 +100,7 @@ export default function Footer() {
               <li>
                 <a
                   className="text-gray-300 transition hover:text-switch2"
-                  href="ResearchPage"
+                  href="/ResearchPage"
                   onClick={routeToResearchPage}>
                   Research
                 </a>

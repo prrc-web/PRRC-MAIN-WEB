@@ -1,5 +1,17 @@
 # PRRC Next.js Application Specification
 
+## Documentation Policy
+
+All project documentation must follow the project doc policy. Canonical docs are:
+
+- `CHANGELOG.md` (root)
+- `README.md` (root)
+- `prrc-next-app/specs/spec.md` (this file)
+- `prrc-next-app/specs/tasks.md`
+- `prrc-next-app/specs/plan.md`
+
+Avoid duplicate docs in other locations. When merging, move content to the canonical files and delete the originals. Keep docs concise and single-sourced.
+
 ## Project Overview
 
 This is a Next.js web application for the Petroleum Recovery Research Center (PRRC), a division of New Mexico Tech. The application serves as a public-facing website for the research center, providing information about their research activities, staff, publications, education programs, and administrative details.
@@ -25,7 +37,7 @@ The application uses a **decoupled architecture** with separate frontend and bac
 
 ```
 ┌─────────────────────────────────────┐
-│     Next.js Frontend (Port 3001)    │
+│     Next.js Frontend (Port 3000)    │
 │  ─────────────────────────────────  │
 │  - Pages Router (main website)      │
 │  - React components                 │
@@ -86,6 +98,23 @@ const { docs: media } = await response.json();
 
 - **Next.js App**: `/prrc-next-app` (this repository)
 - **CMS Server**: `/payload-backend` (sibling directory)
+
+### Admin login from the frontend
+
+The project includes a lightweight frontend login at `/admin/login` which proxies to the Payload backend login endpoint (`/api/users/login`) and sets the backend auth cookie. After a successful login the browser is redirected to `http://localhost:3001/admin-panel` (the Payload Admin UI). There is also an admin-only signup UI at `/admin/signup` that allows an existing admin to create additional users via the backend API.
+
+### Admin routing and configuration (2025-11-19)
+
+To avoid duplication and confusion between App Router (RSC) and Pages Router implementations, admin paths are centralized in `src/lib/config.ts` and configurable via environment variables. The configuration values are available at runtime via `process.env` and include:
+
+- NEXT_PUBLIC_FRONTEND_ADMIN_PATH — The path for the frontend admin UI (default `/AdministrationPage`).
+- NEXT_PUBLIC_BACKEND_ADMIN_PATH — The path for the Payload backend admin UI (default `/admin-panel`).
+- NEXT_PUBLIC_FRONTEND_ADMIN_LOGIN — The path for the frontend login UI (default `/admin/login`).
+- NEXT_PUBLIC_ROUTER_MODE — The router mode the project is targeting: `app` or `pages` (used for documentation and integrations)
+
+Code that performs redirects or renders frontend admin links should use the exported `ADMIN_ROUTES` constants from `src/lib/config.ts` instead of hard-coded strings. This makes it safe to change routes and keeps the codebase consistent between router patterns.
+
+> Note: The canonical development ports are: Next.js frontend → 3000, Payload CMS backend (admin + API) → 3001. If you need to change these, update `.env` in `payload-backend` and the `next dev` command in `prrc-next-app/package.json`.
 
 ### Conversion Summary (condensed)
 
@@ -151,7 +180,7 @@ The application showcases research areas including:
 
 The application consists of two separate services:
 
-1. **Next.js Frontend** (Port 3001)
+1. **Next.js Frontend** (Port 3000)
    - Public-facing website
    - React components and pages
    - Static asset serving
@@ -197,6 +226,9 @@ The application consists of two separate services:
 - `DELETE /api/researchers/:id` - Delete researcher (auth required)
 - `GET /api/media` - List media files
 - `POST /api/media` - Upload media (auth required)
+- `GET /api/papers` - List published papers
+- `GET /api/newsletters` - List newsletters
+- `POST /api/papers` - Create a paper (auth required)
 - `POST /api/users/login` - User authentication
 - `GET /api/users/me` - Get current user
 
@@ -218,6 +250,11 @@ The application uses environment variables split between two services:
 - `NEXT_PUBLIC_SERVER_URL` - Public URL for the Next.js app
 - `CMS_API_URL` - URL of the PayloadCMS API server
 
+**Additional Notes (CMS):**
+
+- `SEED_ADMIN=true` when set in `payload-backend/.env` will attempt to create the first admin user on startup using `ADMIN_EMAIL` and `ADMIN_PASSWORD`. Set these only in dev.
+- New collections: `papers` and `newsletters`. The frontend has helpers in `src/lib/payload-api.ts` to fetch and create these records.
+
 ## Consolidated Documentation (from DOCUMENTATION.md)
 
 ### Getting Started
@@ -231,7 +268,7 @@ Prerequisites: Docker Desktop, Node.js 20+, Git.
 docker compose up
 ```
 
-3. Create the first admin user via `http://localhost:3001/admin`.
+3. Create the first admin user via `http://localhost:3001/admin-panel`.
 
 ### Development Guide Highlights
 

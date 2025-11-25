@@ -2,3 +2,9 @@ node_modules
 .git
 Dockerfile
 .dockerignore
+*.tgz
+.next
+.env
+.env.local
+package-lock.json
+node_modules

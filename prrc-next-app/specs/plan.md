@@ -46,9 +46,11 @@ prrc-next-app/
 3. **Verify the application runs correctly**
    - Start the development server with `npm run dev`
    - If receiving "address already in use" error, either:
-     - Stop the process using the port: `lsof -ti:3001 | xargs kill -9` (on macOS/Linux)
-     - Or modify the package.json to use a different port: `"dev": "next dev -H 0.0.0.0 -p XXXX"`
-   - Access the application at the appropriate URL (default: `http://localhost:3001`)
+     - Stop the process using the port: `lsof -ti:3000 | xargs kill -9` (for Next.js frontend) or `lsof -ti:3001 | xargs kill -9` (for Payload backend) on macOS/Linux
+   - Or modify the package.json to use a different port: `"dev": "next dev -H 0.0.0.0 -p XXXX"`
+   - Access the application at the appropriate URL:
+     - Frontend (Next.js): http://localhost:3000
+   - Backend (Payload admin): http://localhost:3001/admin-panel
 
 ### Phase 2: Content Implementation and CMS Integration
 
@@ -154,6 +156,7 @@ prrc-next-app/
 
 1. Set up the development environment as described above
 2. Resolve any port conflicts if needed
+   - If you use `SEED_ADMIN=true` (in `payload-backend/.env`) the backend will attempt to create the first admin user on startup. This flag is for development only.
 3. Run the existing codebase to understand current functionality
 4. Review the tasks in tasks.md for specific implementation priorities
 5. Implement content for missing pages as needed

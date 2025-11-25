@@ -16,7 +16,7 @@
 
 ## Current Status
 
-The project specification has been established based on the existing QWEN.md documentation. The tech stack and architecture have been documented, along with functional requirements for the PRRC website.
+The project specification has been established and canonicalized in `spec.md` (content originally derived from `QWEN.md`). `QWEN.md` is deprecated; use `spec.md` for architecture and `README.md` for setup.
 
 ## Next Steps
 

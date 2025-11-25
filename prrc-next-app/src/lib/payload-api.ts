@@ -1,4 +1,5 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+// Prefer relative API paths so the frontend can proxy /api to the backend.
+const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
 
 export async function fetchFromPayload<T>(
   endpoint: string,
@@ -38,12 +39,46 @@ export async function getUsers() {
   return fetchFromPayload('users');
 }
 
+export async function deleteUser(id: string) {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
+  const res = await fetch(`${API_URL}/api/users/${id}`, {
+    method: 'DELETE',
+    credentials: 'include',
+  });
+  if (!res.ok) throw new Error('Failed to delete user');
+  return res.json();
+}
+
 export async function getPapers() {
   return fetchFromPayload('papers');
 }
 
 export async function getNewsletters() {
   return fetchFromPayload('newsletters');
+}
+
+export async function getResearcher(id: string) {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
+  const res = await fetch(`${API_URL}/api/researchers/${id}`, {
+    credentials: 'include',
+  });
+  if (!res.ok) throw new Error('Failed to fetch researcher');
+  return res.json();
+}
+
+export async function updateResearcher(id: string, data: any) {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
+  const res = await fetch(`${API_URL}/api/researchers/${id}`, {
+    method: 'PATCH',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    const p = await res.json().catch(() => ({}));
+    throw new Error(p?.message || 'Failed to update researcher');
+  }
+  return res.json();
 }
 
 export async function searchPapers(query: string) {
@@ -53,7 +88,7 @@ export async function searchPapers(query: string) {
 }
 
 export async function createPaper(payload: any) {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
   const url = `${API_URL}/api/papers`;
   const response = await fetch(url, {
     method: 'POST',
@@ -68,7 +103,7 @@ export async function createPaper(payload: any) {
 }
 
 export async function uploadMediaFile(file: File) {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
   const form = new FormData();
   form.append('file', file);
   // Payload expects a POST to /api/media with form data
@@ -78,5 +113,55 @@ export async function uploadMediaFile(file: File) {
     credentials: 'include',
   });
   if (!res.ok) throw new Error('Upload failed');
+  return res.json();
+}
+
+// Auth helpers
+export async function loginUser(email: string, password: string) {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
+  const res = await fetch(`${API_URL}/api/users/login`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password }),
+  });
+  if (!res.ok) {
+    const payload = await res.json().catch(() => ({}));
+    throw new Error(payload?.message || `${res.status} ${res.statusText}`);
+  }
+  return res.json();
+}
+
+export async function getCurrentUser() {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
+  const res = await fetch(`${API_URL}/api/users/me`, {
+    credentials: 'include',
+  });
+  if (!res.ok) return null;
+  return res.json();
+}
+
+export async function createUser(payload: any) {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+  const res = await fetch(`${API_URL}/api/users`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    const p = await res.json().catch(() => ({}));
+    throw new Error(p?.message || `${res.status} ${res.statusText}`);
+  }
+  return res.json();
+}
+
+export async function logoutUser() {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+  const res = await fetch(`${API_URL}/api/users/logout`, {
+    method: 'POST',
+    credentials: 'include',
+  });
+  if (!res.ok) throw new Error('Logout failed');
   return res.json();
 }

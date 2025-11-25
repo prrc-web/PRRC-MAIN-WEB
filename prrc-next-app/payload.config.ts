@@ -1,7 +1,11 @@
-import { buildConfig } from 'payload'
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { slateEditor } from '@payloadcms/richtext-slate'
-import type { CollectionConfig } from 'payload'
+import { buildConfig } from 'payload';
+import { mongooseAdapter } from '@payloadcms/db-mongodb';
+import { slateEditor } from '@payloadcms/richtext-slate';
+import { Users } from './src/collections/Users';
+import { Media } from './src/collections/Media';
+import { Resumes } from './src/collections/Resumes';
+import { Events } from './src/collections/Events';
+import { Documents } from './src/collections/Documents';
 
 export default buildConfig({
   admin: {
@@ -9,102 +13,10 @@ export default buildConfig({
   },
   routes: {
     api: '/api',
-    admin: '/admin',
   },
   secret: process.env.PAYLOAD_SECRET || '',
-  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3001',
-  collections: [
-    {
-      slug: 'users',
-      auth: true,
-      fields: [
-        {
-          name: 'displayName',
-          type: 'text',
-        },
-      ],
-    },
-    {
-      slug: 'media',
-      upload: {
-        staticDir: 'public/media',
-        imageSizes: [
-          {
-            name: 'thumbnail',
-            width: 400,
-            height: 300,
-            position: 'center'
-          },
-          {
-            name: 'card',
-            width: 768,
-            height: 1024,
-            position: 'center'
-          },
-          {
-            name: 'tablet',
-            width: 1024,
-            position: 'center'
-          },
-        ],
-        adminThumbnail: 'thumbnail',
-        mimeTypes: ['image/*'],
-      },
-      fields: [
-        {
-          name: 'alt',
-          type: 'text',
-          required: true,
-        },
-      ],
-    },
-    {
-      slug: 'researchers',
-      admin: {
-        useAsTitle: 'name',
-      },
-      fields: [
-        {
-          name: 'name',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'title',
-          type: 'text',
-        },
-        {
-          name: 'bio',
-          type: 'richText',
-        },
-        {
-          name: 'profilePicture',
-          type: 'upload',
-          relationTo: 'media',
-        },
-        {
-          name: 'contact',
-          type: 'group',
-          fields: [
-            {
-              name: 'email',
-              type: 'text',
-              required: true,
-            },
-            {
-              name: 'phone',
-              type: 'text',
-            },
-          ],
-        },
-        {
-          name: 'resume',
-          type: 'upload',
-          relationTo: 'media',
-        },
-      ],
-    },
-  ],
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
+  collections: [Users, Media, Resumes, Events, Documents],
   editor: slateEditor({}),
   db: mongooseAdapter({
     url: process.env.MONGODB_URI || 'mongodb://localhost:27017/prrc',

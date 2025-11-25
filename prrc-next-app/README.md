@@ -1,6 +1,14 @@
-# PRRC Next.js Application
+# PRRC Next.js Application — DEPRECATED
 
-A Next.js web application for the Petroleum Recovery Research Center (PRRC), New Mexico Tech.
+This README was merged into the root `README.md` and `/prrc-next-app/specs/spec.md` per the project's documentation policy.
+
+See the canonical docs:
+
+- Root README: `../README.md`
+- Spec: `./spec.md`
+- Tasks: `./tasks.md`
+
+This file is kept for backward compatibility only and should not be used as a primary source of truth.
 
 ## Project Status: ✅ CMS SEPARATED - WORKING SOLUTION
 
@@ -13,7 +21,7 @@ The admin panel compatibility issues have been resolved by running PayloadCMS as
 ```
 ┌─────────────────────────┐
 │  Next.js Frontend       │  Fetches data via
-│  localhost:3001         │  ────────────────┐
+│  localhost:3000         │  ────────────────┐
 │  (Public website)       │                  │
 └─────────────────────────┘                  │
                                              ▼
@@ -31,13 +39,13 @@ The admin panel compatibility issues have been resolved by running PayloadCMS as
 
 ### What Works ✅
 
-- Public-facing website (`http://localhost:3001`)
+- Public-facing website (`http://localhost:3000`)
 - Homepage and all content pages
 - Navigation and layouts
 - Static content rendering
-- **PayloadCMS Admin Panel** (`http://localhost:3001/admin`)
+- **PayloadCMS Admin Panel** (`http://localhost:3001/admin-panel`)
 - **REST API for content management** (`http://localhost:3001/api`)
-- **PayloadCMS Admin Panel** (`http://localhost:3001/admin`)
+- **PayloadCMS Admin Panel** (`http://localhost:3001/admin-panel`)
 - **REST API for content management** (`http://localhost:3001/api`)
 - User authentication
 - Content management functionality
@@ -87,7 +95,13 @@ Start the CMS:
 npm run dev
 ```
 
-Access admin at: `http://localhost:3001/admin`
+Access admin at: `http://localhost:3001/admin-panel`
+
+Alternatively, use the frontend login at: `http://localhost:3000/admin/login` to authenticate and then access the backend admin UI. To access the backend admin UI after signing in, go to `http://localhost:3001/admin-panel`. To create new users (admin only), use `http://localhost:3000/admin/signup`.
+
+Important: To avoid a Next.js router conflict we keep the frontend `/admin` route for the Next app (this is the website admin page). The Payload backend admin UI is now hosted at `/admin-panel` and reachable directly at `http://localhost:3001/admin-panel` or via the same-origin nginx proxy when running the full stack. If you run Next locally without nginx, use `/admin/login` to sign in and then go to the backend admin at `http://localhost:3001/admin-panel`.
+
+Configuration: To avoid duplication between App Router and Pages Router, we added `NEXT_PUBLIC_ROUTER_MODE` and centralized admin paths in `NEXT_PUBLIC_FRONTEND_ADMIN_PATH` and `NEXT_PUBLIC_BACKEND_ADMIN_PATH` (see `.env.example`). You can set `NEXT_PUBLIC_ROUTER_MODE=app` or `NEXT_PUBLIC_ROUTER_MODE=pages` to indicate which router is being targeted by integrations referencing the admin routes.
 
 #### 2. Next.js Frontend (This Repository)
 
@@ -109,11 +123,18 @@ Start the frontend:
 npm run dev
 ```
 
-Access website at: `http://localhost:3001`
+If you've added or updated the `devDependencies` in `package.json`, run:
+
+```bash
+npm install
+npm run prepare   # install husky pre-commit hooks (optional, recommended)
+```
+
+Access website at: `http://localhost:3000`
 
 ### Why Two Servers?
 
-PayloadCMS 3.x has compatibility issues when embedded in Next.js 15.x. Running it as a standalone Express server eliminates all module conflicts. See [Changelog](./specs/changelog.md) for technical details.
+PayloadCMS 3.x has compatibility issues when embedded in Next.js 15.x. Running it as a standalone Express server eliminates all module conflicts. See [CHANGELOG.md](../CHANGELOG.md) for technical details.
 
 ### Fetching CMS Data
 
@@ -173,7 +194,7 @@ prrc-next-app/
 │   ├── changelog.md              # All changes and decisions
 │   ├── tasks.md                  # Task tracking
 │   ├── plan.md                   # Implementation phases
-│   └── docpolicy.md              # Documentation policy
+│   └── docpolicy.md              # Documentation policy (moved to spec.md)
 │
 ├── next.config.mjs               # Next.js configuration
 ├── .env                          # Environment variables (not in git)
@@ -182,10 +203,20 @@ prrc-next-app/
 
 **PayloadCMS** now lives in `../payload-backend/` with the rest of the backend/server code.
 
+### Important: App Router vs Pages Router
+
+This project contains both Next.js App Router (`src/app`) and Pages Router (`src/pages`). To avoid confusion:
+
+- The **Frontend site** uses Pages Router pages within `src/pages` (e.g., `/AdministrationPage`, `/StaffPage`).
+- The **Payload Admin RSC integration** lives in `src/app/(payload)` and is not a full frontend route — it enables Payload's React Server Component integration only.
+- If you want to change which router to use for admin-related features, set `NEXT_PUBLIC_ROUTER_MODE` in `.env` to `app` or `pages` and make sure your integration codepoints write to `src/app` or `src/pages` accordingly. We recommend keeping the frontend pages under `src/pages` and keeping Payload UI at `BACKEND_ADMIN` (`/admin-panel`).
+
+All references to the frontend admin path are centralized in `src/lib/config.ts` to avoid duplication and confusion between these router styles. Update `NEXT_PUBLIC_FRONTEND_ADMIN_PATH` if you want to publish the frontend admin under a different path.
+
 ## Available Scripts
 
 ```bash
-npm run dev          # Start development server (localhost:3001)
+npm run dev          # Start development server (localhost:3000)
 npm run build        # Build for production
 npm run start        # Run production server
 npm run lint         # Run ESLint
@@ -219,10 +250,10 @@ npm run lint         # Run ESLint
 **Solution**: PayloadCMS now runs as a standalone Express server.
 
 - PayloadCMS Server: `http://localhost:3001`
-- Admin Panel: `http://localhost:3001/admin`
+- Admin Panel: `http://localhost:3001/admin-panel`
 - REST API: `http://localhost:3001/api/*`
 
-This eliminates all compatibility issues between PayloadCMS and Next.js. See [Changelog](./specs/changelog.md#solution-implemented-standalone-cms-server-2025-11-11) for implementation details.
+This eliminates all compatibility issues between PayloadCMS and Next.js. See [CHANGELOG.md](../CHANGELOG.md) for implementation details.
 
 ### API Integration
 
@@ -300,7 +331,7 @@ All project documentation lives in `/specs`:
 - `tasks.md` - Task tracking
 - `plan.md` - Implementation roadmap
 
-See [specs/docpolicy.md](./specs/docpolicy.md) for details.
+See [specs/spec.md](./specs/spec.md#documentation-policy) for details.
 
 ### Prettier Configuration
 
@@ -313,7 +344,7 @@ Code formatting is handled by Prettier with custom rules:
 
 ## Docker Deployment
 
-```bash
+````bash
 # Build and run with Docker Compose
 docker-compose up -d
 
@@ -322,6 +353,42 @@ docker-compose logs -f
 
 # Stop containers
 docker-compose down
+
+### Run only the frontend (no DB)
+
+If you already run MongoDB (locally or via the separate `payload-backend` compose), you can start only the frontend service to avoid starting the DB container:
+
+```bash
+# start only the frontend service defined as `node`
+docker compose up node
+```
+docker compose up node
+```
+
+```env
+MONGODB_URI=mongodb://host.docker.internal:27017/prrc
+```
+
+To bring up the mongo container inside this compose, run it with the `db` profile:
+
+```bash
+docker compose up --profile db
+```
+
+Note: if `prrc-next-app` previously created containers that exposed port 3001 then stopping the payload backend won't allow `prrc-next-app` to use 3001 anyway — change of `node` port to 3000 in `docker-compose.yml` prevents this conflict.
+
+This keeps `docker compose up` lightweight (frontend-only) while still letting you opt-in to the DB if desired.
+
+### Connect to a mongo from the backend compose
+
+If you prefer to use the `payload-backend` compose that already starts a mongo container, you can run both compose files together so services are created on the same network:
+
+```bash
+docker compose -f ../payload-backend/docker-compose.yml -f docker-compose.yml up
+```
+
+This makes the `mongo` host reachable from the Next container using the `mongo` hostname defined in the backend compose file.
+
 ```
 
 Nginx reverse proxy is configured in `nginx.conf`.
@@ -330,7 +397,7 @@ Nginx reverse proxy is configured in `nginx.conf`.
 
 1. Review [specs/spec.md](./specs/spec.md) for architecture
 2. Check [specs/tasks.md](./specs/tasks.md) for current work
-3. Update [specs/changelog.md](./specs/changelog.md) with all changes
+3. Update [CHANGELOG.md](../CHANGELOG.md) with all changes
 4. Follow code style conventions
 5. Test locally before committing
 
@@ -339,7 +406,7 @@ Nginx reverse proxy is configured in `nginx.conf`.
 For questions or issues:
 
 - Review documentation in `/specs`
-- Check [specs/changelog.md](./specs/changelog.md) for known issues
+- Check [CHANGELOG.md](../CHANGELOG.md) for known issues
 - Contact PRRC IT team
 
 ## License
@@ -348,8 +415,10 @@ Proprietary - Petroleum Recovery Research Center, New Mexico Tech
 
 ---
 
-**Last Updated**: November 11, 2025  
-**Status**: Production Ready - CMS Separated  
-**Next.js Version**: 15.0.3  
-**PayloadCMS**: 3.56.0 (standalone server on port 3001)  
+**Last Updated**: November 11, 2025
+**Status**: Production Ready - CMS Separated
+**Next.js Version**: 15.0.3
+**PayloadCMS**: 3.56.0 (standalone server on port 3001)
 **Architecture**: Decoupled CMS + Frontend
+```
+````
