@@ -38,6 +38,12 @@ export const Resumes: CollectionConfig = {
       },
     },
     {
+      name: 'resumeFile',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Resume PDF',
+    },
+    {
       name: 'title',
       type: 'text',
       required: true,

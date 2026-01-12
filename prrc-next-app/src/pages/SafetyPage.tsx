@@ -1,5 +1,5 @@
-import React from "react";
-import Safety from "../../components/layouts/Safety";
+import React from 'react';
+import Safety from '../components/layouts/Safety';
 
 export default function SafetyPage() {
   return (

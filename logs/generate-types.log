@@ -1,0 +1,20 @@
+
+node:internal/process/promises:332
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/punkdad/Desktop/PRRC-MAIN-WEB/PRRC-MAIN-WEB/prrc-next-app/src/collections/Users/Users' imported from /Users/punkdad/Desktop/PRRC-MAIN-WEB/PRRC-MAIN-WEB/prrc-next-app/payload.config.ts
+    at finalizeResolution (node:internal/modules/esm/resolve:274:11)
+    at moduleResolve (node:internal/modules/esm/resolve:864:10)
+    at defaultResolve (node:internal/modules/esm/resolve:990:11)
+    at nextResolve (node:internal/modules/esm/hooks:769:28)
+    at resolve (file:///Users/punkdad/Desktop/PRRC-MAIN-WEB/PRRC-MAIN-WEB/prrc-next-app/node_modules/payload/node_modules/tsx/dist/esm/index.mjs?1767743153636:2:5346)
+    at nextResolve (node:internal/modules/esm/hooks:769:28)
+    at AsyncLoaderHooksOnLoaderHookWorker.resolve (node:internal/modules/esm/hooks:265:30)
+    at handleMessage (node:internal/modules/esm/worker:251:24)
+    at Immediate.checkForMessages (node:internal/modules/esm/worker:193:28)
+    at process.processImmediate (node:internal/timers:504:21) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///Users/punkdad/Desktop/PRRC-MAIN-WEB/PRRC-MAIN-WEB/prrc-next-app/src/collections/Users/Users'
+}
+
+Node.js v25.2.1

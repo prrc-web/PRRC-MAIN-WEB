@@ -1,5 +1,5 @@
-import React from "react";
-import Education from "../../components/layouts/Education";
+import React from 'react';
+import Education from '../components/layouts/Education';
 
 export default function EducationPage() {
   return (

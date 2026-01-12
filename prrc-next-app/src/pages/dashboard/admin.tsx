@@ -1,16 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import AdminGuard from '../../components/AdminGuard';
-import { getCurrentUser, uploadMediaFile } from '../../lib/payload-api';
+import {
+  getCurrentUser,
+  uploadMediaFile,
+  createResume,
+  getMyResume,
+  updateResume,
+} from '../../lib/payload-api';
 import AdminUsersList from '../../components/AdminUsersList';
 
 export default function AdminDashboard() {
   const [user, setUser] = useState<any | null>(null);
   const [resumeFile, setResumeFile] = useState<File | null>(null);
+  const [existingResume, setExistingResume] = useState<any | null>(null);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
     getCurrentUser().then((data: any) => {
-      setUser(data?.user || null);
+      const u = data?.user || null;
+      setUser(u);
+      if (u) {
+        getMyResume(u.id).then((res) => {
+          if (res) setExistingResume(res);
+        });
+      }
     });
   }, []);
 
@@ -18,18 +31,30 @@ export default function AdminDashboard() {
     e.preventDefault();
     if (!resumeFile || !user) return;
     try {
-      // In the new schema, Resumes are a separate collection linked to the user
-      // For now, we'll just upload the file to Media
+      // 1. Upload file to Media collection
       const uploadRes = await uploadMediaFile(resumeFile);
       const mediaId = uploadRes?.doc?.id || uploadRes?.id;
       if (!mediaId) throw new Error('Upload failed');
 
-      // TODO: Create or update a Resume document linked to this user
-      // This logic needs to be updated to match the new Resumes collection structure
-
-      setMessage(
-        'Resume uploaded (Media only). Full resume linking pending implementation.',
-      );
+      // 2. Create or Update Resume record
+      if (existingResume) {
+        await updateResume(existingResume.id, {
+          resumeFile: mediaId,
+        });
+        setMessage('Resume updated successfully.');
+      } else {
+        await createResume({
+          owner: user.id,
+          title: 'Researcher Resume',
+          resumeFile: mediaId,
+        });
+        setMessage('Resume created successfully.');
+      }
+      
+      // Refresh resume data
+      const updated = await getMyResume(user.id);
+      setExistingResume(updated);
+      
     } catch (err: any) {
       setMessage(err.message || 'Upload failed');
     }

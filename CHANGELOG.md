@@ -2,6 +2,37 @@
 
 All notable changes to the PRRC Web Application project are documented in this file.
 
+## [2.1.0] - 2025-11-24
+
+### 🚀 Major Architecture Update: Integrated Payload CMS
+
+#### Changed
+
+- **Architecture**: Merged `payload-backend` into `prrc-next-app`. Payload CMS 3.0 now runs directly within the Next.js App Router.
+- **Infrastructure**: Removed the separate backend container. Docker Compose now runs only `nextjs-frontend`, `mongodb`, and `nginx`.
+- **Configuration**: Refactored `payload.config.ts` to use modular collection files.
+
+#### Added
+
+- **Collections**:
+  - `Users`: Added role-based access (`admin`, `researcher`).
+  - `Resumes`: New collection for researcher resumes.
+  - `Documents`: Research paper management with workflow (`draft`, `pending`, `published`).
+  - `Events`: Calendar event management.
+  - `Media`: File upload handling.
+- **Security**: Implemented Role-Based Access Control (RBAC) in all collections.
+- **Admin Dashboard**: Fixed `/dashboard/admin` route and `AdminGuard` component to support multiple roles.
+
+#### Fixed
+
+- **API Routes**: Restored missing `src/app/(payload)/api/[...slug]/route.ts` to fix "Invalid Server Actions request" error.
+- **Layout Conflicts**: Removed conflicting `src/app/layout.tsx` that was breaking Payload's admin UI.
+- **Admin Panel**: Fixed issue where Admin Panel components wouldn't load due to incorrect role checking.
+
+#### Removed
+
+- **Directory**: Deleted `payload-backend/` as it is now obsolete.
+
 ## [2.0.2] - 2024-11-13
 
 ### 🔧 Phase 2: Backend TypeScript Conversion

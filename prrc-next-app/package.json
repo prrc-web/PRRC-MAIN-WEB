@@ -3,7 +3,6 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "prepare": "husky install",
     "dev": "next dev --hostname 0.0.0.0 --port 3000",
     "dev:docker": "docker compose -f ../docker-compose.yml up --build",
     "clean:next": "rm -rf .next",
@@ -13,7 +12,10 @@
     "lint:fix": "next lint --fix",
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
-    "check-admin-routes": "node ../scripts/check-admin-routes.js"
+    "test": "jest",
+    "check-admin-routes": "node ../scripts/check-admin-routes.js",
+    "generate:types": "npx payload generate:types",
+    "generate:types:log": "npx payload generate:types > ../logs/generate-types.log 2>&1 &"
   },
   "dependencies": {
     "@nextui-org/dropdown": "^2.1.25",
@@ -48,10 +50,9 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
+    "lint-staged": "^15.0.0",
     "prettier": "^3.3.2",
-    "typescript": "5.9.3",
-    "husky": "^8.0.0",
-    "lint-staged": "^15.0.0"
+    "typescript": "5.9.3"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx|json|css|scss|md)": [

@@ -58,17 +58,45 @@ export async function getNewsletters() {
 }
 
 export async function getResearcher(id: string) {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
-  const res = await fetch(`${API_URL}/api/researchers/${id}`, {
-    credentials: 'include',
-  });
-  if (!res.ok) throw new Error('Failed to fetch researcher');
-  return res.json();
+  // Deprecated: Researchers are now Users with role 'researcher'
+  return null;
 }
 
 export async function updateResearcher(id: string, data: any) {
+  // Deprecated
+  return null;
+}
+
+export async function createResume(payload: any) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
-  const res = await fetch(`${API_URL}/api/researchers/${id}`, {
+  const res = await fetch(`${API_URL}/api/resumes`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    const p = await res.json().catch(() => ({}));
+    throw new Error(p?.message || 'Failed to create resume');
+  }
+  return res.json();
+}
+
+export async function getMyResume(userId: string) {
+  // Fetch resume where owner equals userId
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
+  const query = `where[owner][equals]=${userId}`;
+  const res = await fetch(`${API_URL}/api/resumes?${query}`, {
+    credentials: 'include',
+  });
+  if (!res.ok) return null;
+  const data = await res.json();
+  return data.docs?.[0] || null;
+}
+
+export async function updateResume(id: string, data: any) {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
+  const res = await fetch(`${API_URL}/api/resumes/${id}`, {
     method: 'PATCH',
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
@@ -76,7 +104,7 @@ export async function updateResearcher(id: string, data: any) {
   });
   if (!res.ok) {
     const p = await res.json().catch(() => ({}));
-    throw new Error(p?.message || 'Failed to update researcher');
+    throw new Error(p?.message || 'Failed to update resume');
   }
   return res.json();
 }
