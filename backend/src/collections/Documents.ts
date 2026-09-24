@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload';
+import type { CollectionConfig, Where } from 'payload';
 
 export const Documents: CollectionConfig = {
   slug: 'documents',
@@ -10,28 +10,32 @@ export const Documents: CollectionConfig = {
     read: ({ req: { user } }) => {
       if (user?.roles?.includes('admin')) return true;
 
-      return {
-        or: [
-          {
-            status: {
-              equals: 'published',
-            },
+      // Preserve original behavior: anonymous users still see published docs.
+      // An explicitly-typed Where[] keeps each condition's keys concrete, so the
+      // optional-undefined properties that trip Payload's strict Where typing
+      // under TS strict mode never appear (the bare `user?.id` form did).
+      const or: Where[] = [
+        {
+          status: {
+            equals: 'published',
           },
-          {
-            owner: {
-              equals: user?.id,
-            },
-          },
-        ],
-      };
+        },
+      ];
+      if (user) {
+        or.push({ owner: { equals: user.id } });
+      }
+
+      return { or };
     },
     create: ({ req: { user } }) => Boolean(user),
     update: ({ req: { user } }) => {
       if (user?.roles?.includes('admin')) return true;
+      // Must be logged in to own/update a document.
+      if (!user) return false;
 
       return {
         owner: {
-          equals: user?.id,
+          equals: user.id,
         },
       };
     },

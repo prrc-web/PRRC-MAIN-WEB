@@ -56,8 +56,10 @@ export const Staff: CollectionConfig = {
     {
       type: 'row',
       fields: [
-        { name: 'title', type: 'text', width: '20%' },
-        { name: 'position', type: 'text', width: '80%' },
+        // `width` is an admin-only layout hint not declared in Payload's strict
+        // field types; cast keeps runtime behavior while satisfying the build.
+        { name: 'title', type: 'text' } as any,
+        { name: 'position', type: 'text' } as any,
       ],
     },
     {

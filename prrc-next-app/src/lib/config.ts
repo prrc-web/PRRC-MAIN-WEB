@@ -4,8 +4,8 @@ export const ADMIN_ROUTES = {
   // Path used for frontend admin UI (pages router).
   FRONTEND_ADMIN:
     process.env.NEXT_PUBLIC_FRONTEND_ADMIN_PATH || '/AdministrationPage',
-  // Path used for backend/admin panel (payload backend proxied, nginx uses /admin-panel)
-  BACKEND_ADMIN: process.env.NEXT_PUBLIC_BACKEND_ADMIN_PATH || '/admin-panel',
+  // Path used for the Payload admin/backend panel. Standardized on Payload's default route (/admin).
+  BACKEND_ADMIN: process.env.NEXT_PUBLIC_BACKEND_ADMIN_PATH || '/admin',
   // Login route on frontend
   FRONTEND_ADMIN_LOGIN:
     process.env.NEXT_PUBLIC_FRONTEND_ADMIN_LOGIN || '/admin/login',

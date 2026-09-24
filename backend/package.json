@@ -1,0 +1,29 @@
+{
+  "name": "prrc-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PRRC Payload CMS backend — serves the admin panel + REST/GraphQL API on :3001. No public UI.",
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0 --port 3001",
+    "build": "next build",
+    "start": "next start --port 3001",
+    "generate:types": "payload generate:types"
+  },
+  "dependencies": {
+    "@payloadcms/db-mongodb": "3.89.0",
+    "@payloadcms/next": "3.89.0",
+    "@payloadcms/richtext-slate": "3.89.0",
+    "next": "15.5.25",
+    "payload": "3.89.0",
+    "graphql": "^16.12.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "sharp": "0.32.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "19.2.4",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.0.0"
+  }
+}

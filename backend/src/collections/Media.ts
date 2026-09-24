@@ -31,17 +31,21 @@ export const Media: CollectionConfig = {
     create: ({ req: { user } }) => Boolean(user),
     update: ({ req: { user } }) => {
       if (user?.roles?.includes('admin')) return true;
+      // Must be logged in to own the resource.
+      if (!user) return false;
       return {
         owner: {
-          equals: user?.id,
+          equals: user.id,
         },
       };
     },
     delete: ({ req: { user } }) => {
       if (user?.roles?.includes('admin')) return true;
+      // Must be logged in to own the resource.
+      if (!user) return false;
       return {
         owner: {
-          equals: user?.id,
+          equals: user.id,
         },
       };
     },
