@@ -11,4 +11,6 @@ const BenalilAdmin = () => (
     email="nouraddine.benalil@nmt.edu"
     office="Kelly 157"
   />
+);
+
 export default BenalilAdmin;
