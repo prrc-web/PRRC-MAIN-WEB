@@ -19,7 +19,7 @@ Focus: Getting visible changes in front of stakeholders to buy development time.
 
 [ ] Define schema: Name, Title, Position, Headshot (Upload), Bio (RichText), Contact Info, Social Links, Resume (Upload). - COMPLETED: Implemented in Staff collection
 
-[ ] Import and register collection in payload.config.ts. - COMPLETED: Staff collection registered
+[ ] Import and register collection in payload.config.ts. - COMPLETED: Staff collection registered in backend/payload.config.ts (collections now live in backend/src/collections/)
 
 [ ] Run npm run generate:types to update TypeScript interfaces. - COMPLETED: Types generated
 
@@ -48,7 +48,9 @@ Focus: Reducing mental overhead and preparing for automation.
 
 [ ] Identify legacy files from previous Payload 2.0 or Express implementations.
 
-[ ] Standardize src folder (ensure all Payload config lives strictly within Next.js structure).
+[x] Extract standalone backend — payload.config.ts, collections, and MongoDB connection moved out of prrc-next-app into backend/ (prrc-backend); frontend now runs in frontend-only mode.
+
+[ ] Standardize src folder (NOTE: inverted by the split — Payload config no longer lives within the Next.js frontend; it lives in backend/. Keep frontend payload.config.minimal.ts collection-free).
 
 [ ] Dependency Cleanup
 
