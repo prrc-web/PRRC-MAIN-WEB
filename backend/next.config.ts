@@ -6,6 +6,11 @@ import type { NextConfig } from 'next';
 // @payload-config alias, route handlers, and admin UI.
 const nextConfig: NextConfig = withPayload({
   reactStrictMode: true,
+  // Pin the workspace root so Next.js doesn't infer /Users/punkdad/ from the
+  // stray home-dir package-lock.json (which has no packages) and then try to
+  // watch/trace across the entire home tree at startup — that inference leaves
+  // `next dev` idle at ~0% CPU before it binds the port.
+  outputFileTracingRoot: __dirname,
   // Let Payload (and its db/editor packages) be resolved at runtime, not bundled.
   serverExternalPackages: [
     'payload',

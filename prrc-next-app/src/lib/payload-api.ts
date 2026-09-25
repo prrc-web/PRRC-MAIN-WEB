@@ -162,11 +162,18 @@ export async function loginUser(email: string, password: string) {
 
 export async function getCurrentUser() {
   const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
-  const res = await fetch(`${API_URL}/api/users/me`, {
-    credentials: 'include',
-  });
-  if (!res.ok) return null;
-  return res.json();
+  try {
+    const res = await fetch(`${API_URL}/api/users/me`, {
+      credentials: 'include',
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (error) {
+    // Backend unreachable (e.g. running frontend-only without the Payload API).
+    // Degrade gracefully instead of crashing callers that render during SSR/initial mount.
+    console.warn('getCurrentUser: backend unavailable, treating as anonymous user.', error);
+    return null;
+  }
 }
 
 export async function createUser(payload: any) {
