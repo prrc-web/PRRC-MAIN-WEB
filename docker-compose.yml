@@ -18,6 +18,29 @@ services:
       timeout: 5s
       retries: 5
 
+  # Payload CMS Backend (admin + API on :3001) — mirrors local `npm run dev`
+  payload-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: prrc-payload-backend
+    restart: unless-stopped
+    # Expose internal port only; nginx proxies :3000/admin-panel and :3000/api to it
+    expose:
+      - "3001"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/prrc
+      - PAYLOAD_SECRET=${PAYLOAD_SECRET:-default-secret-change-in-production}
+      - PAYLOAD_PUBLIC_SERVER_URL=http://localhost:3000
+      - PAYLOAD_ADMIN_ROUTE=/admin-panel
+      - PORT=3001
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+    depends_on:
+      - mongodb
+    networks:
+      - prrc-network
+
   # Next.js Frontend
   nextjs-frontend:
     build:
@@ -55,6 +78,7 @@ services:
     # nginx.conf copied at build time to the image to avoid macOS file lock issues
     depends_on:
       - nextjs-frontend
+      - payload-backend
       - mongodb
     networks:
       - prrc-network
