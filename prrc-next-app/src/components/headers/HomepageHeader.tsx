@@ -3,7 +3,7 @@ import SvgWaves from '../svgContent/SvgWaves';
 
 const HompageHeader = () => {
   return (
-    <div className="max-w-screen bg-gradient-to-r from-[#112233] via-[#334455] to-[#112233]">
+    <div className="max-w-screen mt-28 bg-gradient-to-r from-[#112233] via-[#334455] to-[#112233]">
       <div className="container mx-auto px-24 pt-3 text-white">
         <div className="max-w-screen">
           <div className="rounded-lg ">

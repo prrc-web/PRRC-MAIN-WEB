@@ -36,7 +36,7 @@ export default function Footer() {
           <div className="flex justify-start text-teal-600 sm:justify-start">
             <a
               href="https://www.prrc.nmt.edu/"
-              className="mt-4 max-w-85 text-center leading-relaxed dark:text-white sm:text-left lg:mt-0">
+              className="mt-4 max-w-md text-center leading-relaxed dark:text-white sm:text-left lg:mt-0">
               <img src="/PRRClogoLightoldtransparent.png" alt="PRRClogo" />
             </a>
           </div>
@@ -182,11 +182,11 @@ export default function Footer() {
               Socorro, NM 87801
             </p>
 
-            <div className="mx-auto mt-4 max-w-md sm:mx-0 sm:items-left">
+            <div className="mx-auto mt-4 max-w-sm sm:mx-0 sm:items-left">
               <iframe
                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDQ3kd7yOhrnyuSOwDZThfTzgqSyKq6OgU&amp;q=Kelly+Building,+Olive+Dr,+Socorro,+NM+87801"
                 frameBorder="0"
-                className="w-80 h-40 sm:w-80 sm:h-40"></iframe>
+                className="max-w-sm sm:h-40"></iframe>
             </div>
           </div>
 
@@ -249,12 +249,12 @@ export default function Footer() {
                 href="nmt.edu"
                 rel="noreferrer"
                 target="_blank"
-                className="text-teal-700 transition hover:text-teal-700/75">
+                className="text-teal-700 max-w-sm transition hover:text-teal-700/75">
                 <span className="sr-only">New Mexico Tech Website</span>
                 <img
                   src="/Mountain_White.png"
                   alt="NMTlogo"
-                  className="max-w-25"
+                  className="max-w-40"
                 />
               </a>
             </li>
