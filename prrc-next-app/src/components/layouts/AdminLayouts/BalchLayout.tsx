@@ -5,7 +5,7 @@ const BalchProfileLayout = () => (
   <AdminProfile
     name="Dr. Robert Balch"
     title="Director"
-    imageUrl="/balch.jpg"
+    imageUrl="/PRRClogolightoldtransparent.png"
     phone="(575) 835-5305"
     email="robert.balch@nmt.edu"
     office="Kelly 208"

@@ -135,7 +135,7 @@ export default function Homepage() {
             <div className="aspect-w-16 aspect-h-9">
               <img
                 className="w-full object-cover rounded-t-xl opacity-85 transition-opacity group-hover:opacity-45 overflow-hidden"
-                src="/NewMexicoTechECAM.jpeg"
+                src="/PRRClogolightoldtransparent.png"
                 alt="Blog Image"
               />
             </div>

@@ -5,7 +5,7 @@ const WeiAdmin = () => (
   <AdminCard
     name="Rouke Wei"
     title="Associate Director of Operation and Finance"
-    imageUrl="/wei.jpg"
+    imageUrl="/PRRClogolightoldtransparent.png"
     description="Rouke Wei oversees administrative and business duties at the PRRC. Rouke offers pre-award and..."
     phone="(575)-835-5398"
     email="rouke.wei@nmt.edu"

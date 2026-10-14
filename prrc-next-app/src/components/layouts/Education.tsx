@@ -12,7 +12,7 @@ export default function Education() {
         <div className="bg-nmtblue w-full bg-cover bg-center relative">
           <img
             alt="Our Students"
-            src="/students-collage-1.webp"
+            src="/PRRClogolightoldtransparent.png"
             className="absolute h-full w-full object-cover opacity-20"
           />
           <div>
@@ -90,9 +90,11 @@ export default function Education() {
           {/* Student cards remain the same but with responsive text */}
           <article className="rounded-xl border border-gray-700 bg-nmtblue p-4">
             <div className="flex items-center gap-4">
-              <img
+              <Image
                 alt=""
-                src="/Jianjia_Yu.webp"
+                src="/PRRClogolightoldtransparent.png"
+                width={64}
+                height={64}
                 className="size-16 rounded-full object-cover"
               />
 
@@ -145,9 +147,11 @@ export default function Education() {
 
           <article className="rounded-xl border border-gray-700 bg-nmtblue p-4">
             <div className="flex items-center gap-4">
-              <img
+              <Image
                 alt=""
-                src="/Dung_Bui.webp"
+                src="/PRRClogolightoldtransparent.png"
+                width={64}
+                height={64}
                 className="size-16 rounded-full object-cover"
               />
 
@@ -185,9 +189,11 @@ export default function Education() {
 
           <article className="rounded-xl border border-gray-700 bg-nmtblue p-4">
             <div className="flex items-center gap-4">
-              <img
+              <Image
                 alt=""
-                src="/Sai_Wang.webp"
+                src="/PRRClogolightoldtransparent.png"
+                width={64}
+                height={64}
                 className="size-16 rounded-full object-cover"
               />
 
@@ -225,9 +231,11 @@ export default function Education() {
 
           <article className="rounded-xl border border-gray-700 bg-nmtblue p-4">
             <div className="flex items-center gap-4">
-              <img
+              <Image
                 alt=""
-                src="/Robert_Czarnota.webp"
+                src="/PRRClogolightoldtransparent.png"
+                width={64}
+                height={64}
                 className="size-16 rounded-full object-cover"
               />
 
@@ -283,9 +291,11 @@ export default function Education() {
 
           <article className="rounded-xl border border-gray-700 bg-nmtblue p-4">
             <div className="flex items-center gap-4">
-              <img
+              <Image
                 alt=""
-                src="/Jean-Lucien.webp"
+                src="/PRRClogolightoldtransparent.png"
+                width={64}
+                height={64}
                 className="size-16 rounded-full object-cover"
               />
 
@@ -369,7 +379,7 @@ export default function Education() {
       </h2>
       <div className="flex items-center justify-center bg-white px-4 pb-8">
         <img
-          src="/students-collage-1.webp"
+          src="/PRRClogolightoldtransparent.png"
           alt="Photos of our researchers, students, graduate students, and staff."
           className="w-full max-w-screen-lg h-auto block"
         />

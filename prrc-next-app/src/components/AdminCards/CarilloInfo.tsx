@@ -5,7 +5,7 @@ const CarrilloAdmin = () => (
   <AdminCard
     name="Chyanne Carrillo"
     title="Administrative Coordinator"
-    imageUrl="/prrcblankuser.jpeg"
+    imageUrl="/PRRClogolightoldtransparent.png"
     description="Chyanne Carrillo coordinates the Administrative Office at the PRRC, supporting the other Admin..."
     phone="(575) 835-5142"
     email="chyanne.carrillo@nmt.edu<"

@@ -11,3 +11,9 @@ coverage
 payload-backend/payload.config.ts
 prrc-cms-server/node_modules
 prrc-next-app/.next
+
+# Visual-QA output from scripts/screenshot_pages.py (regenerate with the script)
+screens/
+
+# Dev-server / tooling logs
+logs/

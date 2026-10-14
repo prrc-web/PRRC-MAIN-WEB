@@ -8,7 +8,7 @@ const BalchInfoCard = () => (
     <AdminCard
       name="Dr. Robert Balch"
       title="Director"
-      imageUrl="/balch.jpg"
+      imageUrl="/PRRClogolightoldtransparent.png"
       description="Dr. Robert Balch is the Director of the Petroleum Recovery Research Center located on the campus..."
       phone="(575) 835-5305"
       email="robert.balch@nmt.edu"

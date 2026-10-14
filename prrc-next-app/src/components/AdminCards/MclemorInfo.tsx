@@ -5,7 +5,7 @@ const MclemorAdmin = () => (
   <AdminCard
     name="Jim McLemore"
     title="Coordinator Instrument Technician III"
-    imageUrl="/jmclemore.jpg"
+    imageUrl="/PRRClogolightoldtransparent.png"
     description="Jim McLemore provides technical laboratory support to all PRRC research groups, including design and..."
     phone="(575)-835-5398<"
     email="jim.mclemore@nmt.edu"

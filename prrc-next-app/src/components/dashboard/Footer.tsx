@@ -37,7 +37,7 @@ export default function Footer() {
             <a
               href="https://www.prrc.nmt.edu/"
               className="mt-4 max-w-md text-center leading-relaxed dark:text-white sm:text-left lg:mt-0">
-              <img src="/PRRClogoLightoldtransparent.png" alt="PRRClogo" />
+              <img src="/PRRClogolightoldtransparent.png" alt="PRRClogo" />
             </a>
           </div>
 

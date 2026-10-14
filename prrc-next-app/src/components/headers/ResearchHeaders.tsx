@@ -38,10 +38,11 @@ const ResearchHeader = () => {
           </div>
           </div>
 
-          {/* Researcher image — right side, only slightly larger than the text, 80% opacity */}
+          {/* Placeholder illustration — temporary stand-in for the bespoke vector
+              Dory is drawing. Replaced the lab-coat photo 2026-10-14. */}
           <img
-            src="/vecteezy_a-woman-in-a-lab-coat-is-holding-a-glass-with-yellow-liquid_72153341.jpg"
-            alt="Researcher holding a glass of yellow liquid"
+            src="/AddressingKeyTechnicalChallenges.svg"
+            alt="Research illustration"
             className="h-auto w-[clamp(200px,52vw,500px)] opacity-60 select-none pointer-events-none"
           />
         </div>

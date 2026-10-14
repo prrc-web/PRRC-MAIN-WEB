@@ -17,6 +17,7 @@
     "type-check": "tsc --noEmit",
     "test": "jest",
     "check-admin-routes": "node ../scripts/check-admin-routes.js",
+    "check:assets": "python3 ../scripts/check_asset_budget.py",
     "generate:types": "npx payload generate:types",
     "generate:types:log": "npx payload generate:types > ../logs/generate-types.log 2>&1 &"
   },

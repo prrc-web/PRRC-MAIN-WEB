@@ -3,11 +3,8 @@ import React from 'react';
 export default function Banner() {
   return (
     <div className="w-full overflow-hidden bg-white">
-      <img
-        src="/homepage-banner.png"
-        alt="Homepage Banner"
-        className="w-screen h-auto object-cover "
-      />
+      {/* Banner image removed 2026-10-14 — homepage-banner.png (1.21MB) deleted.
+          This area is being redesigned; add the new banner asset here. */}
     </div>
   );
 }
