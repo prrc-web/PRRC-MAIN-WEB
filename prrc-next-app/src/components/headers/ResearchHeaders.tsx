@@ -9,7 +9,8 @@ const ResearchHeader = () => {
       {/* Subtle dark wash behind text so it stays crisp over the contour lines */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent pointer-events-none" />
       <div className="relative z-20 mx-auto w-screen max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
-        <div className="max-w-prose text-left">
+        <div className="flex flex-col lg:flex-row items-start justify-center lg:items-center lg:justify-between gap-10 lg:gap-16">
+          <div className="w-full min-w-0 max-w-prose text-left">
           <h1 className="text-4xl font-bold text-white sm:text-5xl">
             Our
             <strong className="text-indigo-300"> Research </strong>
@@ -35,6 +36,14 @@ const ResearchHeader = () => {
               Learn More
             </a> */}
           </div>
+          </div>
+
+          {/* Researcher image — right side, only slightly larger than the text, 80% opacity */}
+          <img
+            src="/vecteezy_a-woman-in-a-lab-coat-is-holding-a-glass-with-yellow-liquid_72153341.jpg"
+            alt="Researcher holding a glass of yellow liquid"
+            className="h-auto w-[clamp(200px,52vw,500px)] opacity-60 select-none pointer-events-none"
+          />
         </div>
       </div>
     </section>

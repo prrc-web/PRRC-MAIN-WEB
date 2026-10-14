@@ -1,41 +1,24 @@
 import React from 'react';
 import ResearchHeader from '../headers/ResearchHeaders';
+import ResearchGroupCards from '../ResearchGroups/ResearchGroupCards';
 
 export default function Research() {
   return (
     <div>
       <ResearchHeader />
 
-      <div className="flex flex-1 items-center justify-center">
-        <div className="mx-auto max-w-2xl px-4 py-8 text-center">
-          <h1 className="text-5xl font-semibold tracking-loose text-gray-900">
-            Our Research Hub is under maitenance.
-          </h1>
-
-          <p className="mt-7 text-2xl text-gray-800">
-            We appreciate your patience as we work to restore the hub.
-          </p>
-          <div className="mt-10 border-t border-gray-400">
-            <p className="mt-10 text-gray-500">
-              Since the 1970s, PRRC has been at the forefront of research in
-              diverse oil and gas-related fields, continually evolving over the
-              years. While our early publications were archived in physical
-              form, the Publication Office has seamlessly transitioned into the
-              digital age. Now, you can find our groundbreaking research on this
-              webpage. Explore decades of insights, innovations, and discoveries
-              that have shaped the trajectory of our work.
-            </p>
-            <a
+      <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {Array.from({ length: 9 }).map((_, i) => (
+            <ResearchGroupCards
+              key={i}
+              name=""
+              title=""
+              imageUrl="/PRRClogolightoldtransparent.png"
+              description=""
               href="#"
-              className="mt-6 pb-8 inline-block rounded-lg px-3 py-2 text-lg font-medium text-switch2 border border-transparent hover:text-xl focus:outline-hidden focus:text-xl">
-              Go Back Home
-              <span
-                aria-hidden="true"
-                className="block transition-all -rotate-180 text-md ">
-                &rarr;
-              </span>
-            </a>
-          </div>
+            />
+          ))}
         </div>
       </div>
 
