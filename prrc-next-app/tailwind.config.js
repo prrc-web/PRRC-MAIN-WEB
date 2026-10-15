@@ -11,6 +11,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        // --- legacy tokens ---
         navheaderstart: '#112233',
         navheadermid: '#334455',
         navheaderend: '#112233',
@@ -20,6 +21,17 @@ module.exports = {
         monochrome2: '#bcceff',
         switch1: '#daf7f4',
         switch2: '#2d928d',
+
+        // --- brand palette (Dory, 2026-10-15) ---
+        // Any utility works: bg-techieBlue, text-whiteSands, border-quantumBlue,
+        // ring-electricGreen, and opacity modifiers like bg-oreBlue/60.
+        techieBlue: '#182952', //  Techie Blue
+        whiteSands: '#efefef', //  White Sands
+        oreBlue: '#0b1535', //  Ore Blue
+        cloudCircut: '#d8e2e7', //  Cloud Circut
+        graphiteSky: '#767f8c', //  Graphite Sky
+        quantumBlue: '#0064ff', //  Quantum Blue
+        electricGreen: '#c3ea24', //  Electric Green
       },
 
       animation: {
