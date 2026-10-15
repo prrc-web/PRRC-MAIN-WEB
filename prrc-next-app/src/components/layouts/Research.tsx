@@ -4,7 +4,7 @@ import ResearchGroupCards from '../ResearchGroups/ResearchGroupCards';
 
 export default function Research() {
   return (
-    <div>
+    <div className="min-h-screen bg-[#182952]">
       <ResearchHeader />
 
       <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
