@@ -251,8 +251,9 @@ export default function Footer() {
                 target="_blank"
                 className="text-teal-700 max-w-sm transition hover:text-teal-700/75">
                 <span className="sr-only">New Mexico Tech Website</span>
+                {/* SWAP POINT: Mountain_White.png (NMT logo) deleted 2026-10-15. */}
                 <img
-                  src="/Mountain_White.png"
+                  src="/PRRClogolightoldtransparent.png"
                   alt="NMTlogo"
                   className="max-w-40"
                 />

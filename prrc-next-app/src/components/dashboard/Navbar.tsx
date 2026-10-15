@@ -42,8 +42,10 @@ export default function Navbar() {
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <a href="https://www.nmt.edu/" className="hidden md:block">
+            {/* SWAP POINT: Mountain_White.png (NMT logo) deleted 2026-10-15 —
+                awaiting Dory's replacement asset. Filler keeps the navbar rendering. */}
             <img
-              src="/Mountain_White.png"
+              src="/PRRClogolightoldtransparent.png"
               alt="New Mexico Tech Logo"
               className="h-20 max-w-[10em] object-contain object-end"
             />
