@@ -1,9 +1,23 @@
 import React from 'react';
 import TopoField from '../backgrounds/TopoField';
 
+/**
+ * The bottom eighth of the header fades to fully transparent, so the component
+ * dissolves into the page background instead of ending on a hard edge.
+ * Stops: fully opaque to 87.5%, then 0% opacity at 100% (the bottom 1/8 = 12.5%).
+ *
+ * A mask rather than an overlay: it makes the component itself transparent and
+ * lets whatever is behind it show through, so it stays decoupled from the page
+ * background colour.
+ */
+const BOTTOM_FADE_MASK =
+  'linear-gradient(to bottom, #000 87.5%, transparent 100%)';
+
 const ResearchHeader = () => {
   return (
-    <section className="relative w-full lg:h-screen lg:place-content-center">
+    <section
+      className="relative w-full lg:h-screen lg:place-content-center"
+      style={{ WebkitMaskImage: BOTTOM_FADE_MASK, maskImage: BOTTOM_FADE_MASK }}>
       {/* Animated WebGL topographic field background */}
       <TopoField className="absolute inset-0 w-full h-full" />
       {/* Subtle dark wash behind text so it stays crisp over the contour lines */}
