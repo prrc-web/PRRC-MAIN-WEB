@@ -25,10 +25,13 @@ module.exports = {
         // --- brand palette (Dory, 2026-10-15) ---
         // Any utility works: bg-techieBlue, text-whiteSands, border-quantumBlue,
         // ring-electricGreen, and opacity modifiers like bg-oreBlue/60.
+        // NOTE: techieBlue, oreBlue and the legacy nmtblue are three distinct dark
+        // navies on purpose — they are part of the style guide, used intentionally.
+        // Do not consolidate them.
         techieBlue: '#182952', //  Techie Blue
         whiteSands: '#efefef', //  White Sands
         oreBlue: '#0b1535', //  Ore Blue
-        cloudCircut: '#d8e2e7', //  Cloud Circut
+        cloudCircuit: '#d8e2e7', //  Cloud Circuit
         graphiteSky: '#767f8c', //  Graphite Sky
         quantumBlue: '#0064ff', //  Quantum Blue
         electricGreen: '#c3ea24', //  Electric Green
