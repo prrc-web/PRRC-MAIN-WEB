@@ -1,25 +1,69 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import ResearchHeader from '../headers/ResearchHeaders';
 import ResearchGroupCards from '../ResearchGroups/ResearchGroupCards';
+import ResearchSearch from '../ResearchGroups/ResearchSearch';
+import { RESEARCH_GROUPS } from '../../data/researchGroups';
+import { RESEARCH_TAGS } from '../../data/researchTags';
+import { searchResearchGroups } from '../../lib/searchResearchGroups';
 
 export default function Research() {
+  const [query, setQuery] = useState('');
+
+  // Client-side on purpose: eight groups is a few kB, so filtering in memory is
+  // instant and needs no endpoint, debounce or loading state. When the corpus
+  // outgrows that, swap searchResearchGroups() for a fetch — the call site stays.
+  const results = useMemo(
+    () => searchResearchGroups(RESEARCH_GROUPS, RESEARCH_TAGS, { query }),
+    [query],
+  );
+
+  const trimmedQuery = query.trim();
+
   return (
     <div className="min-h-screen bg-techieBlue">
       <ResearchHeader />
 
       <div className="mx-auto mt-20 w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: 9 }).map((_, i) => (
-            <ResearchGroupCards
-              key={i}
-              name=""
-              title=""
-              imageUrl="/PRRClogolightoldtransparent.png"
-              description=""
-              href="#"
-            />
-          ))}
-        </div>
+        <ResearchSearch
+          value={query}
+          onChange={setQuery}
+          onClear={() => setQuery('')}
+          resultCount={results.length}
+          totalCount={RESEARCH_GROUPS.length}
+          placeholder="Search research groups — try “carbon capture”, “produced water”, “Permian Basin”"
+        />
+
+        {results.length > 0 ? (
+          <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {results.map(({ group }) => (
+              <ResearchGroupCards
+                key={group.slug}
+                name={group.title}
+                title={group.leadScientist}
+                imageUrl={group.imageUrl}
+                description={group.description}
+                href="#"
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-10 rounded-lg border border-graphiteSky/30 bg-oreBlue/40 p-8 text-center">
+            <p className="text-cloudCircuit">
+              No research groups match{' '}
+              <span className="font-semibold text-whiteSands">“{trimmedQuery}”</span>.
+            </p>
+            <p className="mt-2 text-sm text-graphiteSky">
+              Try a broader term — for example “carbon capture”, “produced water” or “Permian
+              Basin”.
+            </p>
+            <button
+              type="button"
+              onClick={() => setQuery('')}
+              className="mt-5 rounded-md border border-quantumBlue/60 px-4 py-2 text-sm font-medium text-quantumBlue transition-colors hover:bg-quantumBlue hover:text-whiteSands">
+              Clear search
+            </button>
+          </div>
+        )}
       </div>
 
       {/* <div className="container">
