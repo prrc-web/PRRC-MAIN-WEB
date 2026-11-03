@@ -29,9 +29,9 @@ const ResearchGroupPage = ({ group }: ResearchGroupPageProps) => {
         {/* SECTION 2 of 4 — heading in place, content still to come. */}
         <section aria-labelledby="at-a-glance">
           <SectionHeading
-            titleId="at-a-glance"
+            headerId="at-a-glance"
             title="At a Glance"
-            subtitle="Recent Projects and Materials"
+            header="Recent Projects and Materials"
           />
           <div className="mt-12">{/* Projects and materials will render here. */}</div>
         </section>
