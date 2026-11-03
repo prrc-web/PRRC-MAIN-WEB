@@ -1,44 +1,34 @@
 import React from 'react';
-import Link from 'next/link';
 import type { ResearchGroup } from '../../data/researchGroups';
+import ResearchGroupHeader from '../headers/ResearchGroupHeader';
 
 interface ResearchGroupPageProps {
   group: ResearchGroup;
 }
 
 /**
- * Individual research-group page — SCAFFOLD, intentionally blank.
+ * Individual research-group page — four content sections.
  *
- * Only two things are here on purpose: the group's name (so you can tell which
- * page you're on) and a way back to the index. The empty <main> below reserves
- * height so the fixed footer doesn't ride up under the heading.
+ *   1. Hero: "Project Overview" + the group's name + its mission.  ✅ built
+ *   2. ─┐
+ *   3.  ├ reserved — content not written yet
+ *   4. ─┘
  *
- * Everything else belongs inside <main>: description, imagery, tag chips
- * linking to related groups, lead-scientist block, publications. When this
- * fills in, the data comes from the same RESEARCH_GROUPS entry that the index
- * and the search already read, so there is one source of truth.
+ * Only section 1 exists so far. The empty <main> holds the space so the footer
+ * doesn't ride up under the hero until 2–4 land.
  *
- * `pt` clears the fixed navbar (~112px tall at desktop).
+ * Everything on this page comes from the group's entry in RESEARCH_GROUPS — the
+ * same record the index and the search read — so the group's name and mission
+ * are stated in exactly one place.
  */
 const ResearchGroupPage = ({ group }: ResearchGroupPageProps) => {
   return (
     <div className="min-h-screen bg-oreBlue">
-      <div className="mx-auto w-full max-w-7xl px-4 pt-32 sm:px-6 lg:px-8">
-        <Link
-          href="/ResearchPage"
-          className="type-subheader inline-flex items-center gap-2 text-sm text-cloudCircuit transition-colors hover:text-whiteSands">
-          <span aria-hidden="true">&larr;</span>
-          All research groups
-        </Link>
+      {/* SECTION 1 of 4 */}
+      <ResearchGroupHeader title={group.title} mission={group.description} />
 
-        <h1 className="type-header mt-6 text-3xl text-balance text-whiteSands sm:text-4xl">
-          {group.title}
-        </h1>
-      </div>
-
-      {/* Empty on purpose — reserved for the group's content. */}
       <main className="mx-auto min-h-[50vh] w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        {/* TODO: group description, imagery, tags, lead scientist, publications. */}
+        {/* SECTIONS 2–4 — reserved. */}
       </main>
     </div>
   );
