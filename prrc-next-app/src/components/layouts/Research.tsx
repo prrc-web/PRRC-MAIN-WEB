@@ -100,7 +100,7 @@ export default function Research() {
                 title={group.leadScientist}
                 imageUrl={group.imageUrl}
                 description={group.description}
-                href="#"
+                href={`/ResearchPage/${group.slug}`}
               />
             ))}
           </div>
