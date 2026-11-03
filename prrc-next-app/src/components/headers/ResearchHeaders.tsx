@@ -2,16 +2,16 @@ import React from 'react';
 import TopoField from '../backgrounds/TopoField';
 
 /**
- * The bottom eighth of the header fades to fully transparent, so the component
+ * The bottom quarter of the header fades to fully transparent, so the component
  * dissolves into the page background instead of ending on a hard edge.
- * Stops: fully opaque to 87.5%, then 0% opacity at 100% (the bottom 1/8 = 12.5%).
+ * Stops: fully opaque to 75%, then 0% opacity at 100% (the bottom 1/4 = 25%).
  *
  * A mask rather than an overlay: it makes the component itself transparent and
  * lets whatever is behind it show through, so it stays decoupled from the page
  * background colour.
  */
 const BOTTOM_FADE_MASK =
-  'linear-gradient(to bottom, #000 87.5%, transparent 100%)';
+  'linear-gradient(to bottom, #000 75%, transparent 100%)';
 
 const ResearchHeader = () => {
   return (
