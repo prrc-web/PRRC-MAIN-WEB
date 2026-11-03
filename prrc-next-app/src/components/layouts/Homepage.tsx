@@ -113,12 +113,14 @@ export default function Homepage() {
           <a
             className="group box-content size-80 relative rounded-xl block bg-black h-full bg-black  object-cover  "
             href="https://youtu.be/PGU6WgMjhsY">
-            <div className="aspect-w-16 aspect-h-9">
+            <div className="relative aspect-w-16 aspect-h-9">
               <img
-                className="w-full object-cover rounded-t-xl opacity-85 transition-opacity group-hover:opacity-45 overflow-hidden"
+                className="w-full object-cover rounded-t-xl overflow-hidden"
                 src="/pumpjackTX.jpg"
                 alt="Blog Image"
               />
+              {/* 50% black scrim over the photo, fades in on hover (replaces the old opacity-85 -> 45 fade). */}
+              <div className="pointer-events-none absolute inset-0 rounded-t-xl bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
             <div className="p-4 md:p-5">
               <p className=" text-xs uppercase text-switch2">Watch</p>
@@ -132,12 +134,14 @@ export default function Homepage() {
           <a
             className="group box-content size-80 relative rounded-xl block bg-black h-full bg-black  object-cover  "
             href="https://www.linkedin.com/posts/petroleum-recovery-research-center_geothermalenergy-cleanenergy-energytransition-activity-7303483893087682560-Obbp?utm_source=share&utm_medium=member_desktop&rcm=ACoAACb8E4cBi7W-zkynSkJS81r6LMWxW4AdYq8">
-            <div className="aspect-w-16 aspect-h-9">
+            <div className="relative aspect-w-16 aspect-h-9">
               <img
-                className="w-full object-cover rounded-t-xl opacity-85 transition-opacity group-hover:opacity-45 overflow-hidden"
+                className="w-full object-cover rounded-t-xl overflow-hidden"
                 src="/PRRClogolightoldtransparent.png"
                 alt="Blog Image"
               />
+              {/* 50% black scrim over the photo, fades in on hover (replaces the old opacity-85 -> 45 fade). */}
+              <div className="pointer-events-none absolute inset-0 rounded-t-xl bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
             <div className="p-4 md:p-5">
               <p className=" text-xs uppercase text-switch2">Read</p>
@@ -154,12 +158,14 @@ export default function Homepage() {
           <a
             className="group box-content size-80 relative rounded-xl block bg-black h-full bg-black  object-cover  "
             href="https://www.linkedin.com/posts/petroleum-recovery-research-center_ccus2025-carbonmanagement-geologicalstorage-activity-7302473832123047936-4CmU?utm_source=share&utm_medium=member_desktop&rcm=ACoAACb8E4cBi7W-zkynSkJS81r6LMWxW4AdYq8">
-            <div className="aspect-w-16 aspect-h-9">
+            <div className="relative aspect-w-16 aspect-h-9">
               <img
-                className="w-full h-60 object-cover rounded-t-xl opacity-85 transition-opacity group-hover:opacity-45 overflow-hidden"
+                className="w-full h-60 object-cover rounded-t-xl overflow-hidden"
                 src="/CCUS.jpeg"
                 alt="Blog Image"
               />
+              {/* 50% black scrim over the photo, fades in on hover (replaces the old opacity-85 -> 45 fade). */}
+              <div className="pointer-events-none absolute inset-0 rounded-t-xl bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
             <div className="p-4 md:p-5">
               <p className=" text-xs uppercase text-switch2">Join</p>
@@ -175,12 +181,14 @@ export default function Homepage() {
           <a
             className="group box-content size-80 relative rounded-xl block bg-black h-full bg-black  object-cover  "
             href="https://www.linkedin.com/posts/petroleum-recovery-research-center_steminnm-newmexicotech-nmtday2025-activity-7298413137215598592-Fqpn?utm_source=share&utm_medium=member_desktop&rcm=ACoAACb8E4cBi7W-zkynSkJS81r6LMWxW4AdYq8">
-            <div className="aspect-w-16 aspect-h-9">
+            <div className="relative aspect-w-16 aspect-h-9">
               <img
-                className="w-full h-60 object-cover rounded-t-xl opacity-85 transition-opacity group-hover:opacity-45 overflow-hidden"
+                className="w-full h-60 object-cover rounded-t-xl overflow-hidden"
                 src="/earthscienceday.jpeg"
                 alt="Blog Image"
               />
+              {/* 50% black scrim over the photo, fades in on hover (replaces the old opacity-85 -> 45 fade). */}
+              <div className="pointer-events-none absolute inset-0 rounded-t-xl bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
             <div className="p-4 md:p-5">
               <p className=" text-xs uppercase text-switch2">Watch</p>

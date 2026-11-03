@@ -35,6 +35,8 @@ const StaffCard: React.FC<StaffCardProps> = ({
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 h-full w-full object-contain"
           />
+          {/* 50% black scrim over the backdrop, fades in on hover. */}
+          <div className="pointer-events-none absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
           <div className="relative p-2 sm:p-6 lg:p-2">
             <p className="text-sm font-medium uppercase tracking-widest text-switch2">

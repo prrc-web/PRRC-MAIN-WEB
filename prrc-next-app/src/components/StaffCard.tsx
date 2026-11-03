@@ -6,7 +6,7 @@ export const StaffCard = ({ data }: { data: Staff }) => {
   const imageUrl = headshot?.url || '/prrcblankuser.jpeg';
 
   return (
-    <div className="relative overflow-hidden bg-whiteSands border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all flex flex-col h-full">
+    <div className="group relative overflow-hidden bg-whiteSands border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all flex flex-col h-full">
       {/* Card backdrop: PRRC logo (WhiteBG) fills the card behind the content. */}
       <img
         src="/PRRC-Logo-WhiteBG.png"
@@ -14,6 +14,8 @@ export const StaffCard = ({ data }: { data: Staff }) => {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 h-full w-full object-contain"
       />
+      {/* 50% black scrim over the backdrop, fades in on hover. */}
+      <div className="pointer-events-none absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       <div className="relative flex p-4 gap-4 items-start">
         <img 
           src={imageUrl} 
