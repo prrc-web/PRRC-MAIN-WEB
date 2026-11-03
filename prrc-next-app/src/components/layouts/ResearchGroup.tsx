@@ -13,7 +13,7 @@ interface ResearchGroupPageProps {
  *   1. Hero: "Project Overview" + the group's name + its mission.  ✅
  *   2. "At a Glance" / "Recent Projects and Materials".            ✅ heading only
  *   3. "Personnel".                                                ✅ heading only
- *   4.   reserved — content not written yet
+ *   4. "Publications".                                             ✅ heading only
  *
  * Everything on this page comes from the group's entry in RESEARCH_GROUPS — the
  * same record the index and the search read — so the group's name and mission
@@ -42,7 +42,11 @@ const ResearchGroupPage = ({ group }: ResearchGroupPageProps) => {
           <div className="mt-12">{/* Personnel will render here. */}</div>
         </section>
 
-        {/* SECTION 4 — reserved. */}
+        {/* SECTION 4 of 4 — header in place, content still to come. */}
+        <section aria-labelledby="publications" className="mt-24 sm:mt-32">
+          <SectionHeading headerId="publications" header="Publications" />
+          <div className="mt-12">{/* Publications will render here. */}</div>
+        </section>
       </main>
     </div>
   );
