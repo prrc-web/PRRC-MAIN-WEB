@@ -51,11 +51,13 @@ const ResearchHeader = () => {
           </div>
           </div>
 
-          {/* Placeholder illustration — temporary stand-in for the bespoke vector
-              Dory is drawing. Replaced the lab-coat photo 2026-10-14. */}
+          {/* PRRC logo — replaced the AddressingKeyTechnicalChallenges.svg
+              filler (which itself replaced the lab-coat photo 2026-10-14).
+              Decorative here: the heading beside it carries the meaning. */}
           <img
-            src="/AddressingKeyTechnicalChallenges.svg"
-            alt="Research illustration"
+            src="/PRRC-Logo-WhiteBG.png"
+            alt=""
+            aria-hidden="true"
             className="h-auto w-[clamp(200px,52vw,500px)] opacity-60 select-none pointer-events-none"
           />
         </div>
