@@ -8,9 +8,11 @@ import TopoField from '../backgrounds/TopoField';
  * type stays crisp over the contour lines, and a mask that fades the bottom
  * quarter into the page background.
  *
- * Tailored to the group: "Project Overview" takes the place of "Our Research",
- * the group's own name sits under it as the subheader, and the mission copy
- * runs underneath as body text.
+ * Tailored to the group, and following the type system rather than the wording:
+ *   "Project Overview" — Title: 500 Medium, all caps, tracked (kicker)
+ *   group's name       — Primary Header: 800 Extra Bold, and the page's h1
+ *   mission            — Body: 400 Regular
+ * The kicker is a <p>, so the outline stays one h1 (the group) per page.
  *
  * Top padding is deliberately deeper below lg: the navbar is fixed and grows to
  * ~185px around tablet widths when its links wrap, so the back link would
@@ -47,14 +49,17 @@ const ResearchGroupHeader = ({ title, mission }: ResearchGroupHeaderProps) => {
               All research groups
             </Link>
 
-            <h1 className="mt-6 text-4xl font-extrabold text-white sm:text-5xl">
+            {/* Title role: 500 Medium, all caps, tracked. */}
+            <p className="type-title mt-6 text-sm tracking-widest text-white sm:text-base">
               Project{' '}
-              <strong className="font-extrabold text-indigo-300">Overview</strong>
-            </h1>
+              <strong className="font-medium text-indigo-300">Overview</strong>
+            </p>
 
-            <h2 className="type-subheader mt-4 text-2xl text-balance text-whiteSands sm:text-3xl">
+            {/* Header role: Extra Bold. The group's name is the page's subject,
+                so it carries the h1. */}
+            <h1 className="type-header mt-3 text-3xl text-balance text-whiteSands sm:text-4xl lg:text-5xl">
               {title}
-            </h2>
+            </h1>
 
             <p className="type-body mt-4 text-base text-pretty text-gray-300 sm:text-lg/relaxed">
               {mission}
