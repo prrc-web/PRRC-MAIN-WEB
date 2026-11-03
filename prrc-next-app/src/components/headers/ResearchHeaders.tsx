@@ -28,7 +28,6 @@ const ResearchHeader = () => {
           <h1 className="text-4xl font-extrabold text-white sm:text-5xl">
             Our
             <strong className="font-extrabold text-indigo-300"> Research </strong>
-            Groups
           </h1>
 
           <p className="mt-4 text-base font-medium text-pretty text-gray-300 sm:text-lg/relaxed">
