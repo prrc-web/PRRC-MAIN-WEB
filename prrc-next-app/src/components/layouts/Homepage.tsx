@@ -119,12 +119,12 @@ export default function Homepage() {
                 src="/pumpjackTX.jpg"
                 alt="Blog Image"
               />
-              {/* 50% black scrim over the photo, fades in on hover (replaces the old opacity-85 -> 45 fade). */}
-              <div className="pointer-events-none absolute inset-0 rounded-t-xl bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              {/* 85% black scrim over the photo, fades in on hover (replaces the old opacity-85 -> 45 fade). */}
+              <div className="pointer-events-none absolute inset-0 rounded-t-xl bg-black/85 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
             <div className="p-4 md:p-5">
               <p className=" text-xs uppercase text-switch2">Watch</p>
-              <h3 className="mt-2 mb-4 text-lg font-medium text-gray-300 font-sans group-hover:opacity-70">
+              <h3 className="mt-2 mb-4 text-lg font-medium text-gray-300 font-sans transition-colors duration-300 group-hover:text-white">
                 New Mexico and PRRC Lead in CO₂ Sequestration.
               </h3>
               <p className=" text-sm text-gray-400"></p>
@@ -140,12 +140,12 @@ export default function Homepage() {
                 src="/PRRClogolightoldtransparent.png"
                 alt="Blog Image"
               />
-              {/* 50% black scrim over the photo, fades in on hover (replaces the old opacity-85 -> 45 fade). */}
-              <div className="pointer-events-none absolute inset-0 rounded-t-xl bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              {/* 85% black scrim over the photo, fades in on hover (replaces the old opacity-85 -> 45 fade). */}
+              <div className="pointer-events-none absolute inset-0 rounded-t-xl bg-black/85 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
             <div className="p-4 md:p-5">
               <p className=" text-xs uppercase text-switch2">Read</p>
-              <h3 className="mt-2 mb-4 text-lg font-medium text-gray-300 font-sans group-hover:opacity-70">
+              <h3 className="mt-2 mb-4 text-lg font-medium text-gray-300 font-sans transition-colors duration-300 group-hover:text-white">
                 Exciting discussions last Tuesday on New Mexico geothermal
                 energy at New Mexico Institute of Mining and Technology!
               </h3>
@@ -164,12 +164,12 @@ export default function Homepage() {
                 src="/CCUS.jpeg"
                 alt="Blog Image"
               />
-              {/* 50% black scrim over the photo, fades in on hover (replaces the old opacity-85 -> 45 fade). */}
-              <div className="pointer-events-none absolute inset-0 rounded-t-xl bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              {/* 85% black scrim over the photo, fades in on hover (replaces the old opacity-85 -> 45 fade). */}
+              <div className="pointer-events-none absolute inset-0 rounded-t-xl bg-black/85 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
             <div className="p-4 md:p-5">
               <p className=" text-xs uppercase text-switch2">Join</p>
-              <h3 className="mt-2 mb-4 text-lg font-medium text-gray-300 font-sans group-hover:opacity-70">
+              <h3 className="mt-2 mb-4 text-lg font-medium text-gray-300 font-sans transition-colors duration-300 group-hover:text-white">
                 Join Our Researchers at SPE CCUS Houston 2025!
               </h3>
               <p className=" text-sm text-gray-400"></p>
@@ -187,12 +187,12 @@ export default function Homepage() {
                 src="/earthscienceday.jpeg"
                 alt="Blog Image"
               />
-              {/* 50% black scrim over the photo, fades in on hover (replaces the old opacity-85 -> 45 fade). */}
-              <div className="pointer-events-none absolute inset-0 rounded-t-xl bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              {/* 85% black scrim over the photo, fades in on hover (replaces the old opacity-85 -> 45 fade). */}
+              <div className="pointer-events-none absolute inset-0 rounded-t-xl bg-black/85 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
             <div className="p-4 md:p-5">
               <p className=" text-xs uppercase text-switch2">Watch</p>
-              <h3 className="mt-2 mb-4 text-lg font-medium text-gray-300 font-sans group-hover:opacity-70">
+              <h3 className="mt-2 mb-4 text-lg font-medium text-gray-300 font-sans transition-colors duration-300 group-hover:text-white">
                 The Petroleum Recovery Research Center was at the Roundhouse for
                 New Mexico Tech Day and Earth Science Day!
               </h3>
