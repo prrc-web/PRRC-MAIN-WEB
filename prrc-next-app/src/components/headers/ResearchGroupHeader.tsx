@@ -67,7 +67,7 @@ const ResearchGroupHeader = ({ title, mission }: ResearchGroupHeaderProps) => {
             src="/PRRC-Logo-WhiteBG.png"
             alt=""
             aria-hidden="true"
-            className="h-auto w-[clamp(200px,52vw,500px)] select-none pointer-events-none opacity-60"
+            className="h-auto w-[clamp(200px,52vw,500px)] select-none pointer-events-none opacity-80"
           />
         </div>
       </div>

@@ -58,7 +58,7 @@ const ResearchHeader = () => {
             src="/PRRC-Logo-WhiteBG.png"
             alt=""
             aria-hidden="true"
-            className="h-auto w-[clamp(200px,52vw,500px)] opacity-60 select-none pointer-events-none"
+            className="h-auto w-[clamp(200px,52vw,500px)] opacity-80 select-none pointer-events-none"
           />
         </div>
       </div>
