@@ -41,10 +41,24 @@ export default function Research() {
       <ResearchHeader />
 
       <div className="mx-auto mt-20 w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        {/* Section intro. PLACEHOLDER COPY — the outreach coordinator supplies
+            the real blurb; this only reserves the space so the layout is final.
+            Centered to match the band of cards below it, not the left-aligned
+            label + field row. */}
+        <div className="text-center">
+          <h2 className="type-header text-2xl tracking-widest text-whiteSands sm:text-4xl">
+            RESEARCH GROUPS
+          </h2>
+          <p className="type-subheader mx-auto mt-4 max-w-2xl text-base text-pretty text-cloudCircuit sm:text-lg/relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+
         {/* Label and field share one row so the container's left margin stays
             put; the field gives up the width the label needs. Below sm they
             stack, label above the field. */}
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
           <label
             htmlFor="research-search"
             className="type-subheader shrink-0 text-lg text-whiteSands">
