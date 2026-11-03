@@ -46,7 +46,7 @@ const ResearchTagFilter: React.FC<ResearchTagFilterProps> = ({
             aria-pressed={isSelected}
             onClick={() => onToggle(tag.slug)}
             className={[
-              'rounded-full border px-3 py-1.5 text-sm font-medium transition-colors',
+              'type-title rounded-full border px-3 py-1.5 text-sm transition-colors',
               isSelected
                 ? 'border-quantumBlue bg-quantumBlue text-whiteSands'
                 : 'border-graphiteSky/50 text-cloudCircuit hover:border-quantumBlue hover:text-whiteSands',

@@ -27,11 +27,11 @@ const ResearchGroupCards: React.FC<ResearchGroupCardsProps> = ({
           <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/23 to-transparent h-[50%] pointer-events-none" />
 
           <div className="relative p-2 sm:p-6 lg:p-2">
-            <p className="text-sm font-medium uppercase tracking-widest text-switch2">
+            <p className="type-title text-sm tracking-widest text-switch2">
               {title}
             </p>
 
-            <p className="text-l font-bold text-white sm:text-2xl">{name}</p>
+            <p className="text-l font-extrabold text-white sm:text-2xl">{name}</p>
 
             <div className="mt-32 sm:mt-48 lg:mt-52">
               <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">

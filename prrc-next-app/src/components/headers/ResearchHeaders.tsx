@@ -25,13 +25,13 @@ const ResearchHeader = () => {
       <div className="relative z-20 mx-auto w-screen max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
         <div className="flex flex-col lg:flex-row items-start justify-center lg:items-center lg:justify-between gap-10 lg:gap-16">
           <div className="w-full min-w-0 max-w-prose text-left">
-          <h1 className="text-4xl font-bold text-white sm:text-5xl">
+          <h1 className="text-4xl font-extrabold text-white sm:text-5xl">
             Our
-            <strong className="text-indigo-300"> Research </strong>
+            <strong className="font-extrabold text-indigo-300"> Research </strong>
             Groups
           </h1>
 
-          <p className="mt-4 text-base text-pretty text-gray-300 sm:text-lg/relaxed">
+          <p className="mt-4 text-base font-medium text-pretty text-gray-300 sm:text-lg/relaxed">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque,
             nisi. Natus, provident accusamus impedit minima harum corporis
             iusto.

@@ -6,10 +6,16 @@ module.exports = {
   ],
 
   theme: {
-    fontFamily: {
-      header: ['"Times New Roman"', 'Times', 'serif'],
-    },
     extend: {
+      // Montserrat only. The CSS variable is defined by next/font in _app.tsx;
+      // weights map to the type roles documented in styles/globals.css:
+      //   800 Extra Bold -> primary headers
+      //   500 Medium     -> subheaders, and titles (all caps)
+      //   400 Regular    -> body
+      fontFamily: {
+        sans: ['var(--font-montserrat)', 'Helvetica', 'Arial', 'sans-serif'],
+        header: ['var(--font-montserrat)', 'Helvetica', 'Arial', 'sans-serif'],
+      },
       colors: {
         // --- legacy tokens ---
         navheaderstart: '#112233',

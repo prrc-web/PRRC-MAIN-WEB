@@ -44,7 +44,7 @@ body {
   font-size: 3.5rem;
   font-weight: 300;
   line-height: 1.2;
-  font-family: Times, Helvetica, Arial, 'sans-serif';
+  font-family: inherit;
 }
 .col-svg-waves {
   display: flex;
@@ -140,13 +140,65 @@ body {
   }
 }
 @layer base {
-  h1,
+  /* ---------------------------------------------------------------------
+     Typography — Montserrat (loaded in pages/_app.tsx).
+     One typeface, three weights, four roles. Do not introduce another family.
+
+       Primary headers : 800 Extra Bold
+       Subheaders      : 500 Medium
+       Titles          : 500 Medium, ALL CAPS  (tags, card labels)
+       Body            : 400 Regular
+
+     The role classes below exist for text that isn't a semantic heading
+     (.type-header / .type-subheader / .type-title / .type-body).
+     --------------------------------------------------------------------- */
+  /* Sane sans default outside the app wrapper, so nothing can ever fall back
+     to the UA's Times default. The real font-family is applied by next/font on
+     the wrapper in _app.tsx. Do NOT reference var(--font-montserrat) here: the
+     variable lives on that wrapper, and an unresolvable var() invalidates the
+     whole declaration, which drops html straight back to Times. */
+  html {
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  body {
+    font-weight: 400;
+  }
+
+  h1 {
+    font-weight: 800;
+  }
+
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-family: 'Times New Roman', Times, serif; /* Direct CSS */
+    font-weight: 500;
+  }
+}
+
+@layer components {
+  /* Primary header — Montserrat Extra Bold */
+  .type-header {
+    font-weight: 800;
+  }
+
+  /* Subheader — Montserrat Medium */
+  .type-subheader {
+    font-weight: 500;
+  }
+
+  /* Title — Montserrat Medium, all caps (tags, card labels) */
+  .type-title {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.075em;
+  }
+
+  /* Body — Montserrat Regular */
+  .type-body {
+    font-weight: 400;
   }
 }
 
