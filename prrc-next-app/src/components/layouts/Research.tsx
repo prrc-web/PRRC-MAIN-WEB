@@ -41,12 +41,25 @@ export default function Research() {
       <ResearchHeader />
 
       <div className="mx-auto mt-20 w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-        <ResearchSearch
-          value={query}
-          onChange={setQuery}
-          onClear={() => setQuery('')}
-          placeholder="Search research groups — try “carbon capture”, “produced water”, “Permian Basin”"
-        />
+        {/* Label and field share one row so the container's left margin stays
+            put; the field gives up the width the label needs. Below sm they
+            stack, label above the field. */}
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+          <label
+            htmlFor="research-search"
+            className="type-subheader shrink-0 text-lg text-whiteSands">
+            Find a Group
+          </label>
+
+          <div className="min-w-0 flex-1">
+            <ResearchSearch
+              value={query}
+              onChange={setQuery}
+              onClear={() => setQuery('')}
+              placeholder="Search research groups — try “carbon capture”, “produced water”, “Permian Basin”"
+            />
+          </div>
+        </div>
 
         {/* Tag chips sit directly below the field as a browse affordance.
             Selection is AND-ed — see ResearchTagFilter. */}

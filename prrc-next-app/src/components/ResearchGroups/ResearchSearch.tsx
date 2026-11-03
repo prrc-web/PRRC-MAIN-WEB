@@ -38,10 +38,9 @@ const ResearchSearch: React.FC<ResearchSearchProps> = ({
         event.preventDefault();
         onSubmit?.(value);
       }}>
-      <label htmlFor="research-search" className="sr-only">
-        Search research groups
-      </label>
-
+      {/* The input id is a stable anchor: the page renders the visible
+          <label htmlFor="research-search"> beside this component, so no second
+          (sr-only) label lives here — one field, one accessible name. */}
       <div className="flex items-center gap-3 rounded-lg border border-graphiteSky/40 bg-whiteSands px-4 py-3 shadow-sm transition-colors focus-within:border-quantumBlue focus-within:ring-2 focus-within:ring-quantumBlue/40">
         <svg
           aria-hidden="true"
