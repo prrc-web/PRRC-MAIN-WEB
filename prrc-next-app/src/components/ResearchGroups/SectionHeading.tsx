@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface SectionHeadingProps {
-  /** Kicker above the header — Montserrat Medium, ALL CAPS (title role). */
-  title: string;
+  /** Optional kicker above the header — Montserrat Medium, ALL CAPS (title role). */
+  title?: string;
   /** The section's header — Montserrat Extra Bold (primary header role). */
   header: string;
   /** Optional supporting line, body weight. */
@@ -28,11 +28,13 @@ interface SectionHeadingProps {
 const SectionHeading = ({ title, header, description, headerId, className }: SectionHeadingProps) => {
   return (
     <div className={['text-center', className].filter(Boolean).join(' ')}>
-      <p className="type-title text-sm tracking-widest text-cloudCircuit sm:text-base">{title}</p>
+      {title && (
+        <p className="type-title text-sm tracking-widest text-cloudCircuit sm:text-base">{title}</p>
+      )}
 
       <h2
         id={headerId}
-        className="type-header mt-3 text-3xl text-balance text-whiteSands sm:text-4xl">
+        className={`type-header text-3xl text-balance text-whiteSands sm:text-4xl${title ? ' mt-3' : ''}`}>
         {header}
       </h2>
 
