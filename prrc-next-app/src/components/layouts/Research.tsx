@@ -2,22 +2,39 @@ import React, { useMemo, useState } from 'react';
 import ResearchHeader from '../headers/ResearchHeaders';
 import ResearchGroupCards from '../ResearchGroups/ResearchGroupCards';
 import ResearchSearch from '../ResearchGroups/ResearchSearch';
+import ResearchTagFilter from '../ResearchGroups/ResearchTagFilter';
 import { RESEARCH_GROUPS } from '../../data/researchGroups';
 import { RESEARCH_TAGS } from '../../data/researchTags';
 import { searchResearchGroups } from '../../lib/searchResearchGroups';
 
 export default function Research() {
   const [query, setQuery] = useState('');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   // Client-side on purpose: eight groups is a few kB, so filtering in memory is
   // instant and needs no endpoint, debounce or loading state. When the corpus
   // outgrows that, swap searchResearchGroups() for a fetch — the call site stays.
   const results = useMemo(
-    () => searchResearchGroups(RESEARCH_GROUPS, RESEARCH_TAGS, { query }),
-    [query],
+    () =>
+      searchResearchGroups(RESEARCH_GROUPS, RESEARCH_TAGS, {
+        query,
+        tagSlugs: selectedTags,
+      }),
+    [query, selectedTags],
   );
 
   const trimmedQuery = query.trim();
+  const hasFilters = trimmedQuery.length > 0 || selectedTags.length > 0;
+
+  const toggleTag = (slug: string) =>
+    setSelectedTags((current) =>
+      current.includes(slug) ? current.filter((item) => item !== slug) : [...current, slug],
+    );
+
+  const clearAll = () => {
+    setQuery('');
+    setSelectedTags([]);
+  };
 
   return (
     <div className="min-h-screen bg-techieBlue">
@@ -28,10 +45,24 @@ export default function Research() {
           value={query}
           onChange={setQuery}
           onClear={() => setQuery('')}
-          resultCount={results.length}
-          totalCount={RESEARCH_GROUPS.length}
           placeholder="Search research groups — try “carbon capture”, “produced water”, “Permian Basin”"
         />
+
+        {/* Tag chips sit directly below the field as a browse affordance.
+            Selection is AND-ed — see ResearchTagFilter. */}
+        <ResearchTagFilter
+          className="mt-5"
+          tags={RESEARCH_TAGS}
+          selectedTagSlugs={selectedTags}
+          onToggle={toggleTag}
+          onClear={() => setSelectedTags([])}
+        />
+
+        <p role="status" aria-live="polite" className="mt-5 text-sm text-cloudCircuit">
+          {results.length === RESEARCH_GROUPS.length
+            ? `Showing all ${RESEARCH_GROUPS.length} research groups`
+            : `Showing ${results.length} of ${RESEARCH_GROUPS.length} research groups`}
+        </p>
 
         {results.length > 0 ? (
           <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -49,19 +80,33 @@ export default function Research() {
         ) : (
           <div className="mt-10 rounded-lg border border-graphiteSky/30 bg-oreBlue/40 p-8 text-center">
             <p className="text-cloudCircuit">
-              No research groups match{' '}
-              <span className="font-semibold text-whiteSands">“{trimmedQuery}”</span>.
+              {trimmedQuery && selectedTags.length > 0 ? (
+                <>
+                  No research groups match{' '}
+                  <span className="font-semibold text-whiteSands">“{trimmedQuery}”</span> with all
+                  of the selected tags.
+                </>
+              ) : trimmedQuery ? (
+                <>
+                  No research groups match{' '}
+                  <span className="font-semibold text-whiteSands">“{trimmedQuery}”</span>.
+                </>
+              ) : (
+                <>No research group carries all of the selected tags.</>
+              )}
             </p>
             <p className="mt-2 text-sm text-graphiteSky">
-              Try a broader term — for example “carbon capture”, “produced water” or “Permian
-              Basin”.
+              Try removing a tag, or a broader term — for example “carbon capture”, “produced water”
+              or “Permian Basin”.
             </p>
-            <button
-              type="button"
-              onClick={() => setQuery('')}
-              className="mt-5 rounded-md border border-quantumBlue/60 px-4 py-2 text-sm font-medium text-quantumBlue transition-colors hover:bg-quantumBlue hover:text-whiteSands">
-              Clear search
-            </button>
+            {hasFilters && (
+              <button
+                type="button"
+                onClick={clearAll}
+                className="mt-5 rounded-md border border-quantumBlue/60 px-4 py-2 text-sm font-medium text-quantumBlue transition-colors hover:bg-quantumBlue hover:text-whiteSands">
+                Clear all filters
+              </button>
+            )}
           </div>
         )}
       </div>

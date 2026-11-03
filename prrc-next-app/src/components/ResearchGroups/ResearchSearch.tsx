@@ -9,10 +9,6 @@ export interface ResearchSearchProps {
   placeholder?: string;
   /** Extra classes for the outer form, e.g. to set a max width. */
   className?: string;
-  /** How many groups currently match. Omit to hide the count line. */
-  resultCount?: number;
-  /** Total groups in the unfiltered list, used for the "N of M" line. */
-  totalCount?: number;
   /** Renders a clear button once there is something to clear. */
   onClear?: () => void;
 }
@@ -21,15 +17,10 @@ export interface ResearchSearchProps {
  * Research search bar.
  *
  * Controlled and presentational: it renders the field and reports changes, and
- * holds no filtering or matching logic of its own — that lives in
- * lib/searchResearchGroups.ts. The parent owns the query so the field, the card
- * grid and the count all read from one source of truth.
- *
- * Tags are intentionally NOT rendered here. Per Dory, tags stay hidden on the
- * research groups index and only appear on a group's own info page. The tag
- * filter capability still exists in the search engine, so when staff-bio tags
- * start linking in (e.g. /ResearchPage?tag=carbon-capture) an active-filter chip
- * can be added here without reworking anything.
+ * holds no filtering logic of its own. Matching lives in
+ * lib/searchResearchGroups.ts; the tag chips are a sibling component
+ * (ResearchTagFilter). The parent owns the query so the field, the chips, the
+ * result count and the card grid all read from one source of truth.
  */
 const ResearchSearch: React.FC<ResearchSearchProps> = ({
   value,
@@ -37,12 +28,8 @@ const ResearchSearch: React.FC<ResearchSearchProps> = ({
   onSubmit,
   placeholder = 'Search research groups…',
   className = '',
-  resultCount,
-  totalCount,
   onClear,
 }) => {
-  const showCount = typeof resultCount === 'number' && typeof totalCount === 'number';
-
   return (
     <form
       role="search"
@@ -86,14 +73,6 @@ const ResearchSearch: React.FC<ResearchSearchProps> = ({
           </button>
         )}
       </div>
-
-      {showCount && (
-        <p role="status" aria-live="polite" className="mt-3 text-sm text-cloudCircuit">
-          {resultCount === totalCount
-            ? `Showing all ${totalCount} research groups`
-            : `Showing ${resultCount} of ${totalCount} research groups`}
-        </p>
-      )}
     </form>
   );
 };
