@@ -6,8 +6,15 @@ export const StaffCard = ({ data }: { data: Staff }) => {
   const imageUrl = headshot?.url || '/prrcblankuser.jpeg';
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all flex flex-col h-full">
-      <div className="flex p-4 gap-4 items-start">
+    <div className="relative overflow-hidden bg-whiteSands border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all flex flex-col h-full">
+      {/* Card backdrop: PRRC logo (WhiteBG) fills the card behind the content. */}
+      <img
+        src="/PRRC-Logo-WhiteBG.png"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 h-full w-full object-contain"
+      />
+      <div className="relative flex p-4 gap-4 items-start">
         <img 
           src={imageUrl} 
           alt={data.name} 
@@ -19,7 +26,7 @@ export const StaffCard = ({ data }: { data: Staff }) => {
           <p className="text-xs text-gray-500 uppercase tracking-wide mt-1">{data.position}</p>
         </div>
       </div>
-      <div className="px-4 pb-4 mt-auto">
+      <div className="relative px-4 pb-4 mt-auto">
         <div className="pt-3 border-t border-gray-100 text-sm space-y-1">
             <div className="flex items-center gap-2 text-gray-600">
                 <span>📧</span> <a href={`mailto:${data.contactInfo?.email}`} className="hover:text-blue-600">{data.contactInfo?.email}</a>

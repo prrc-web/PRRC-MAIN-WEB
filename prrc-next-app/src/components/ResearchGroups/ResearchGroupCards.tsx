@@ -3,7 +3,7 @@ import React from 'react';
 interface ResearchGroupCardsProps {
   name: string;
   title: string;
-  imageUrl: string;
+  imageUrl: string; // reserved — card backdrop is the PRRC logo image
   description: string;
   href?: string;
 }
@@ -11,27 +11,29 @@ interface ResearchGroupCardsProps {
 const ResearchGroupCards: React.FC<ResearchGroupCardsProps> = ({
   name,
   title,
-  imageUrl,
   description,
   href = '#',
 }) => {
   return (
     <div className="box-content size-90 border-0">
-      <a href={href} className="group relative block bg-black h-full">
+      <a
+        href={href}
+        className="group relative block h-full bg-whiteSands">
         <div className="relative h-full w-full overflow-hidden">
+          {/* Card backdrop: PRRC logo (WhiteBG) fills the card behind the text. */}
           <img
-            alt={name}
-            src={imageUrl}
-            className="absolute inset-0 h-120 w-full object-cover opacity-85 transition-opacity group-hover:opacity-45"
+            src="/PRRC-Logo-WhiteBG.png"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 h-full w-full object-contain"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/23 to-transparent h-[50%] pointer-events-none" />
 
           <div className="relative p-2 sm:p-6 lg:p-2">
             <p className="type-title text-sm tracking-widest text-switch2">
               {title}
             </p>
 
-            <p className="text-l font-extrabold text-white sm:text-2xl">{name}</p>
+            <p className="text-l font-extrabold text-oreBlue sm:text-2xl">{name}</p>
 
             <div className="mt-32 sm:mt-48 lg:mt-52">
               <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
@@ -43,7 +45,7 @@ const ResearchGroupCards: React.FC<ResearchGroupCardsProps> = ({
                     &rarr;
                   </span>
                 </div>
-                <p className="text-sm text-white pt-1">{description}</p>
+                <p className="text-sm text-oreBlue pt-1">{description}</p>
               </div>
             </div>
           </div>
