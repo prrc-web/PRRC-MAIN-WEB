@@ -37,7 +37,7 @@ export default function Research() {
   };
 
   return (
-    <div className="min-h-screen bg-techieBlue">
+    <div className="min-h-screen bg-oreBlue">
       <ResearchHeader />
 
       <div className="mx-auto mt-20 w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
@@ -78,7 +78,7 @@ export default function Research() {
             ))}
           </div>
         ) : (
-          <div className="mt-10 rounded-lg border border-graphiteSky/30 bg-oreBlue/40 p-8 text-center">
+          <div className="mt-10 rounded-lg border border-graphiteSky/30 bg-techieBlue/60 p-8 text-center">
             <p className="text-cloudCircuit">
               {trimmedQuery && selectedTags.length > 0 ? (
                 <>
