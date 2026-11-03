@@ -58,7 +58,7 @@ export default function Research() {
         {/* Label and field share one row so the container's left margin stays
             put; the field gives up the width the label needs. Below sm they
             stack, label above the field. */}
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
           <label
             htmlFor="research-search"
             className="type-subheader shrink-0 text-lg text-whiteSands">
