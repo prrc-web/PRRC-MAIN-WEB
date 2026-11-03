@@ -61,9 +61,10 @@ const ResearchGroupHeader = ({ title, mission }: ResearchGroupHeaderProps) => {
             </p>
           </div>
 
-          {/* Placeholder illustration — same stand-in as the index hero. */}
+          {/* PRRC logo — replaces the AddressingKeyTechnicalChallenges.svg
+              filler. Square source (700x700), so it renders as a square mark. */}
           <img
-            src="/AddressingKeyTechnicalChallenges.svg"
+            src="/PRRC-Logo-WhiteBG.png"
             alt=""
             aria-hidden="true"
             className="h-auto w-[clamp(200px,52vw,500px)] select-none pointer-events-none opacity-60"
