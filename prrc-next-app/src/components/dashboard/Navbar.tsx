@@ -42,12 +42,20 @@ export default function Navbar() {
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <a href="https://www.nmt.edu/" className="hidden md:block">
-            {/* SWAP POINT: Mountain_White.png (NMT logo) deleted 2026-10-15 —
-                awaiting Dory's replacement asset. Filler keeps the navbar rendering. */}
+            {/* PRRC logo, 2026 lockup (Cloud Circuit). Replaces the
+                PRRClogolightoldtransparent.png filler on 2026-11-05.
+                The artwork is a 3.26:1 wordmark, so the old `max-w-[10em]` cap
+                (160px) pinched it. 190px is the widest it can go without the
+                flex row wrapping to a second line at >=1280px — the row is
+                336px of title + 709px of menu inside a 1248px content box, so
+                anything over ~215px pushes the logo onto its own row and grows
+                the navbar from 113px to 161px. Navbar height is unchanged.
+                NOTE: the filename is "Circut", as supplied — do not "fix" the
+                spelling, it is the literal path. */}
             <img
-              src="/PRRClogolightoldtransparent.png"
-              alt="New Mexico Tech Logo"
-              className="h-20 max-w-[10em] object-contain object-end"
+              src="/PRRC-Logo-2026-Cloud-Circut-web.svg"
+              alt="Petroleum Recovery Research Center"
+              className="h-20 w-auto max-w-[190px] object-contain"
             />
           </a>
           <button
