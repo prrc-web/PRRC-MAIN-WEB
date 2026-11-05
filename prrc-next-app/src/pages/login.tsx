@@ -30,7 +30,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ padding: 20 }} className="text-whiteSands">
       <h1>Sign in</h1>
       <form onSubmit={onSubmit}>
         <div>

@@ -21,7 +21,8 @@ interface ResearchGroupPageProps {
  */
 const ResearchGroupPage = ({ group }: ResearchGroupPageProps) => {
   return (
-    <div className="min-h-screen bg-oreBlue">
+    // Transparent shell — the Ore Blue + topography canvas lives on <body>.
+    <div className="min-h-screen bg-transparent">
       {/* SECTION 1 of 4 */}
       <ResearchGroupHeader title={group.title} mission={group.description} />
 

@@ -37,7 +37,10 @@ export default function Research() {
   };
 
   return (
-    <div className="min-h-screen bg-oreBlue">
+    // Page shell is transparent on purpose: the Ore Blue + topography canvas
+    // is painted once, globally, on <body> (styles/globals.css). An opaque
+    // bg-oreBlue here would hide it while looking identical.
+    <div className="min-h-screen bg-transparent">
       <ResearchHeader />
 
       <div className="mx-auto mt-20 w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">

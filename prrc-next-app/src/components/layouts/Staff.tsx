@@ -21,16 +21,16 @@ export default function Staff() {
     <>
       <div>
         <div className="max-w-screen-xl mx-auto px-4 my-10 md:my-20">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-center text-nmtblue pt-10 md:pt-20 mb-5">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-center text-whiteSands pt-10 md:pt-20 mb-5">
             At the Petroleum Recovery Research Center, our staff focuses on
             research and engineering.
           </h1>
-          <div className="h-20 w-full bg-gradient-to-b from-white to-nmtblue"></div>
+          <div className="h-20 w-full bg-gradient-to-b from-oreBlue to-nmtblue"></div>
         </div>
 
         <div className="max-w-screen-xl mx-auto px-4 py-15 sm:px-6 lg:px-8 lg:py-14">
           <div className="max-w-2xl mx-auto text-center lg:mb-7">
-            <p className="text-4xl md:text-4xl md:leading-tight py-5 text-nmtblue">
+            <p className="text-4xl md:text-4xl md:leading-tight py-5 text-whiteSands">
               Meet our Staff
             </p>
           </div>
@@ -84,7 +84,7 @@ export default function Staff() {
             </div>
           </div>
         </div>
-        <p className="mt-1 text-gray-500 max-w-2xl text-lg mx-auto text-center px-4 pb-20 ">
+        <p className="mt-1 text-cloudCircuit max-w-2xl text-lg mx-auto text-center px-4 pb-20 ">
           Our dedicated staff powers every success at the PRRC. By driving
           innovative research and sustaining critical engineering operations,
           they achieve transformative advancements in petroleum recovery.

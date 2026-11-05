@@ -7,15 +7,15 @@ export default function Publications() {
       <PublicationsHeader />
       <div className="flex flex-1 items-center justify-center">
         <div className="mx-auto max-w-2xl px-4 py-8 text-center">
-          <h1 className="text-5xl font-semibold tracking-loose text-gray-900">
+          <h1 className="text-5xl font-semibold tracking-loose text-whiteSands">
             Our Publications Archive is under maitenance.
           </h1>
 
-          <p className="mt-7 text-2xl text-gray-800">
+          <p className="mt-7 text-2xl text-cloudCircuit">
             We appreciate your patience as we work to restore the archive.
           </p>
-          <div className="mt-10 border-t border-gray-400">
-            <p className="mt-10 text-gray-500">
+          <div className="mt-10 border-t border-graphiteSky/40">
+            <p className="mt-10 text-cloudCircuit">
               Since the 1970s, PRRC has been at the forefront of research in
               diverse oil and gas-related fields, continually evolving over the
               years. While our early publications were archived in physical

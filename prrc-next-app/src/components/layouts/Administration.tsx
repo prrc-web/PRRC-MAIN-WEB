@@ -12,16 +12,16 @@ export default function Administration() {
     <>
       <div>
         <div className="max-w-screen-xl mx-auto px-4 my-10 md:my-20">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-center text-nmtblue pt-10 md:pt-20 mb-5">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-center text-whiteSands pt-10 md:pt-20 mb-5">
             Our administrative team ensures all managerial operations at the
             Petroleum Recovery Research Center.
           </h1>
-          <div className="h-20 w-full bg-gradient-to-b from-white to-nmtblue"></div>
+          <div className="h-20 w-full bg-gradient-to-b from-oreBlue to-nmtblue"></div>
         </div>
 
         <div className="max-w-screen-xl mx-auto px-4 py-15 sm:px-6 lg:px-8 lg:py-14">
           <div className="max-w-2xl mx-auto text-center lg:mb-7">
-            <p className="text-4xl md:text-4xl md:leading-tight py-5 text-nmtblue">
+            <p className="text-4xl md:text-4xl md:leading-tight py-5 text-whiteSands">
               Meet our Administration
             </p>
           </div>
@@ -48,7 +48,7 @@ export default function Administration() {
             </div>
           </div>
         </div>
-        <p className="mt-1 text-gray-500 max-w-2xl text-lg mx-auto text-center px-4 pb-20">
+        <p className="mt-1 text-cloudCircuit max-w-2xl text-lg mx-auto text-center px-4 pb-20">
           Behind every success at the PRRC is our dedicated admin. By supporting
           efficient operations through coordination of workflows, they lay the
           foundation for transformative research advancements.

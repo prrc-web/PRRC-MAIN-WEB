@@ -373,7 +373,7 @@ export default function Education() {
         </div>
       </section>
 
-      <h2 className="text-xl md:text-2xl font-medium text-gray-900 text-center px-4 md:px-50 mt-8 md:mt-50 mb-8 md:mb-50">
+      <h2 className="text-xl md:text-2xl font-medium text-whiteSands text-center px-4 md:px-50 mt-8 md:mt-50 mb-8 md:mb-50">
         We value everyone of our students and all of our staff. Thanks for being
         a part of the New Mexico Tech Family!
       </h2>
