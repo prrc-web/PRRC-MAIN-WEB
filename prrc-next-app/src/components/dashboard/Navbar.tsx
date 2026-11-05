@@ -44,18 +44,24 @@ export default function Navbar() {
           <a href="https://www.nmt.edu/" className="hidden md:block">
             {/* PRRC logo, 2026 lockup (Cloud Circuit). Replaces the
                 PRRClogolightoldtransparent.png filler on 2026-11-05.
-                The artwork is a 3.26:1 wordmark, so the old `max-w-[10em]` cap
-                (160px) pinched it. 190px is the widest it can go without the
-                flex row wrapping to a second line at >=1280px — the row is
-                336px of title + 709px of menu inside a 1248px content box, so
-                anything over ~215px pushes the logo onto its own row and grows
-                the navbar from 113px to 161px. Navbar height is unchanged.
+                Two dials matter here because the artwork is a 3.26:1 wordmark:
+                  - height: set to 60px (Dory asked for "h-15"; Tailwind's scale
+                    jumps 14 -> 16, so there is no h-15 and this is the explicit
+                    equivalent, 3.75rem).
+                  - width: max-w-* is what actually sizes the mark, because
+                    object-contain fits the 3.26:1 art inside the box. At 190px
+                    the mark rendered 190x58.5 inside an 80px-tall box, so
+                    dropping height alone would have changed nothing visible.
+                    165px => mark 165x50.6.
+                Ceiling if this is ever raised again: 336px of title + 709px of
+                menu inside a 1248px content box wraps the row past ~215px,
+                which pushes the logo to its own line and grows the navbar.
                 NOTE: the filename is "Circut", as supplied — do not "fix" the
                 spelling, it is the literal path. */}
             <img
               src="/PRRC-Logo-2026-Cloud-Circut-web.svg"
               alt="Petroleum Recovery Research Center"
-              className="h-20 w-auto max-w-[190px] object-contain"
+              className="h-[60px] w-auto max-w-[165px] object-contain"
             />
           </a>
           <button
