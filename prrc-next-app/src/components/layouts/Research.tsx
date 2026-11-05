@@ -1,13 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import ResearchHeader from '../headers/ResearchHeaders';
 import ResearchGroupCards from '../ResearchGroups/ResearchGroupCards';
 import ResearchSearch from '../ResearchGroups/ResearchSearch';
 import ResearchTagFilter from '../ResearchGroups/ResearchTagFilter';
-import Parallax from '../motion/Parallax';
 import { RESEARCH_GROUPS } from '../../data/researchGroups';
 import { RESEARCH_TAGS } from '../../data/researchTags';
 import { searchResearchGroups } from '../../lib/searchResearchGroups';
-import { refreshParallax } from '../../lib/parallax';
 
 export default function Research() {
   const [query, setQuery] = useState('');
@@ -28,12 +26,6 @@ export default function Research() {
   const trimmedQuery = query.trim();
   const hasFilters = trimmedQuery.length > 0 || selectedTags.length > 0;
 
-  // Filtering reflows the grid, so the cards' scroll positions move without a
-  // scroll event to notice it. Re-measure once the DOM has settled.
-  useEffect(() => {
-    refreshParallax();
-  }, [results]);
-
   const toggleTag = (slug: string) =>
     setSelectedTags((current) =>
       current.includes(slug) ? current.filter((item) => item !== slug) : [...current, slug],
@@ -53,75 +45,63 @@ export default function Research() {
             the real blurb; this only reserves the space so the layout is final.
             Centered to match the band of cards below it, not the left-aligned
             label + field row. */}
-        <Parallax distance={24}>
-          <div className="text-center">
-            <h2 className="type-header text-2xl tracking-widest text-whiteSands sm:text-4xl">
-              RESEARCH GROUPS
-            </h2>
-            <p className="type-subheader mx-auto mt-4 max-w-2xl text-base text-pretty text-cloudCircuit sm:text-lg/relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-          </div>
-        </Parallax>
-
-        {/* Label, field, chips and the live count move as one block: they are
-            read together, so they drift together. The distance is larger than
-            the intro's above, which is what gives the two layers their depth. */}
-        <Parallax distance={48}>
-          {/* Label and field share one row so the container's left margin stays
-              put; the field gives up the width the label needs. Below sm they
-              stack, label above the field. */}
-          <div className="mt-20 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
-            <label
-              htmlFor="research-search"
-              className="type-subheader shrink-0 text-lg text-whiteSands">
-              Find a Group
-            </label>
-
-            <div className="min-w-0 flex-1">
-              <ResearchSearch
-                value={query}
-                onChange={setQuery}
-                onClear={() => setQuery('')}
-                placeholder="Search research groups — try “carbon capture”, “produced water”, “Permian Basin”"
-              />
-            </div>
-          </div>
-
-          {/* Tag chips sit directly below the field as a browse affordance.
-              Selection is AND-ed — see ResearchTagFilter. */}
-          <ResearchTagFilter
-            className="mt-5"
-            tags={RESEARCH_TAGS}
-            selectedTagSlugs={selectedTags}
-            onToggle={toggleTag}
-            onClear={() => setSelectedTags([])}
-          />
-
-          <p role="status" aria-live="polite" className="mt-5 text-sm text-cloudCircuit">
-            {results.length === RESEARCH_GROUPS.length
-              ? `Showing all ${RESEARCH_GROUPS.length} research groups`
-              : `Showing ${results.length} of ${RESEARCH_GROUPS.length} research groups`}
+        <div className="text-center">
+          <h2 className="type-header text-2xl tracking-widest text-whiteSands sm:text-4xl">
+            RESEARCH GROUPS
+          </h2>
+          <p className="type-subheader mx-auto mt-4 max-w-2xl text-base text-pretty text-cloudCircuit sm:text-lg/relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
-        </Parallax>
+        </div>
+
+        {/* Label and field share one row so the container's left margin stays
+            put; the field gives up the width the label needs. Below sm they
+            stack, label above the field. */}
+        <div className="mt-20 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+          <label
+            htmlFor="research-search"
+            className="type-subheader shrink-0 text-lg text-whiteSands">
+            Find a Group
+          </label>
+
+          <div className="min-w-0 flex-1">
+            <ResearchSearch
+              value={query}
+              onChange={setQuery}
+              onClear={() => setQuery('')}
+              placeholder="Search research groups — try “carbon capture”, “produced water”, “Permian Basin”"
+            />
+          </div>
+        </div>
+
+        {/* Tag chips sit directly below the field as a browse affordance.
+            Selection is AND-ed — see ResearchTagFilter. */}
+        <ResearchTagFilter
+          className="mt-5"
+          tags={RESEARCH_TAGS}
+          selectedTagSlugs={selectedTags}
+          onToggle={toggleTag}
+          onClear={() => setSelectedTags([])}
+        />
+
+        <p role="status" aria-live="polite" className="mt-5 text-sm text-cloudCircuit">
+          {results.length === RESEARCH_GROUPS.length
+            ? `Showing all ${RESEARCH_GROUPS.length} research groups`
+            : `Showing ${results.length} of ${RESEARCH_GROUPS.length} research groups`}
+        </p>
 
         {results.length > 0 ? (
           <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {results.map(({ group }, index) => (
-              // Stepped distance: on a three-column grid each column leads the
-              // next slightly, which turns a flat block of cards into a shallow
-              // wave. The step is small enough that gaps can only open, never
-              // close — see the note on distance in lib/parallax.
-              <Parallax key={group.slug} distance={40 + (index % 3) * 8}>
-                <ResearchGroupCards
-                  name={group.title}
-                  title={group.leadScientist}
-                  imageUrl={group.imageUrl}
-                  description={group.description}
-                  href={`/ResearchPage/${group.slug}`}
-                />
-              </Parallax>
+            {results.map(({ group }) => (
+              <ResearchGroupCards
+                key={group.slug}
+                name={group.title}
+                title={group.leadScientist}
+                imageUrl={group.imageUrl}
+                description={group.description}
+                href={`/ResearchPage/${group.slug}`}
+              />
             ))}
           </div>
         ) : (
