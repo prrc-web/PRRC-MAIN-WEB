@@ -15,6 +15,14 @@ import UlmerScholleStaff from '../StaffCards/UlmerScholleStaff';
 import WangStaff from '../StaffCards/WangStaff';
 import YuStaff from '../StaffCards/YuStaff';
 import ZhangStaff from '../StaffCards/ZhangStaff';
+// Administration cards moved here from components/layouts/Administration.tsx so
+// staff and administration can live on one page. Card order is that page's order.
+import BalchAdmin from '../AdminCards/BalchInfo';
+import RaneyAdmin from '../AdminCards/RaneyInfo';
+import WeiAdmin from '../AdminCards/WeiInfo';
+import CarrilloAdmin from '../AdminCards/CarilloInfo';
+import BenalilAdmin from '../AdminCards/BenalilInfo';
+import MclemorAdmin from '../AdminCards/MclemorInfo';
 
 export default function Staff() {
   return (
@@ -28,6 +36,49 @@ export default function Staff() {
           <div className="h-20 w-full bg-gradient-to-b from-oreBlue to-nmtblue"></div>
         </div>
 
+        {/* Category 1 — Administration. Heading uses the primary header weight
+            (.type-header, Montserrat 800) and is centred, using the same size and
+            tracking as the category heading on the research index. */}
+        <section
+          aria-labelledby="administration-heading"
+          className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center lg:mb-7">
+            <h2
+              id="administration-heading"
+              className="type-header text-2xl tracking-widest text-whiteSands sm:text-4xl">
+              Administration
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 py-10">
+            <div className="h-full">
+              <BalchAdmin />
+            </div>
+            <div className="h-full">
+              <RaneyAdmin />
+            </div>
+            <div className="h-full">
+              <WeiAdmin />
+            </div>
+            <div className="h-full">
+              <CarrilloAdmin />
+            </div>
+            <div className="h-full">
+              <BenalilAdmin />
+            </div>
+            <div className="h-full">
+              <MclemorAdmin />
+            </div>
+          </div>
+
+          <p className="mt-1 text-cloudCircuit max-w-2xl text-lg mx-auto text-center px-4 pb-10 sm:pb-16">
+            Behind every success at the PRRC is our dedicated admin. By
+            supporting efficient operations through coordination of workflows,
+            they lay the foundation for transformative research advancements.
+          </p>
+        </section>
+
+        {/* Category 2 — Staff. Unchanged: same heading, same card order. */}
         <div className="max-w-screen-xl mx-auto px-4 py-15 sm:px-6 lg:px-8 lg:py-14">
           <div className="max-w-2xl mx-auto text-center lg:mb-7">
             <p className="text-4xl md:text-4xl md:leading-tight py-5 text-whiteSands">
