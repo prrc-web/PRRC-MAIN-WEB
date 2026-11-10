@@ -24,11 +24,25 @@ export interface ResearchSearchResult {
 const WEIGHT = {
   title: 10,
   tag: 8,
+  keyword: 6,
   lead: 4,
   description: 2,
 } as const;
 
 const normalise = (value: string): string => value.toLowerCase();
+
+const escapeRegExp = (value: string): string => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/**
+ * Word-start matcher, so "ai" cannot hit "available" and "gas" cannot hit
+ * "gaskets". Terms of three characters or fewer also require a word end, which
+ * is what keeps the synonyms "AI", "EOR" and "IFT" honest.
+ *
+ * Prefix matching (no trailing boundary above three characters) is deliberate:
+ * it lets "sequest" and "geolog" still land, at no cost in false positives.
+ */
+const termMatcher = (term: string): RegExp =>
+  new RegExp(`\\b${escapeRegExp(term)}${term.length <= 3 ? '\\b' : ''}`);
 
 /**
  * Synchronous, dependency-free search over an in-memory group list.
@@ -39,7 +53,9 @@ const normalise = (value: string): string => value.toLowerCase();
  * swap for a fetch — keep the signature and nothing else has to change.
  *
  * Tag hits are matched against each tag's name AND its synonyms, which is what
- * lets "sequestration" find the Carbon Capture group.
+ * lets "sequestration" find a group tagged Carbon Management. Group-specific
+ * jargon comes from ResearchGroup.keywords instead, so a narrow term matches the
+ * one group it belongs to rather than everything sharing a broad tag.
  */
 export function searchResearchGroups(
   groups: ResearchGroup[],
@@ -48,6 +64,8 @@ export function searchResearchGroups(
 ): ResearchSearchResult[] {
   const tagsBySlug = new Map(tags.map((tag) => [tag.slug, tag]));
   const terms = normalise(query).split(/\s+/).filter(Boolean);
+  // Compiled once per search, not once per group.
+  const matchers = terms.map((term) => ({ term, pattern: termMatcher(term) }));
 
   const results: ResearchSearchResult[] = [];
 
@@ -67,6 +85,8 @@ export function searchResearchGroups(
     const lead = normalise(group.leadScientist);
     const description = normalise(group.description);
 
+    const keywordHaystack = normalise((group.keywords ?? []).join(' '));
+
     const tagHaystacks = group.tagSlugs
       .map((slug) => tagsBySlug.get(slug))
       .filter((tag): tag is ResearchTag => Boolean(tag))
@@ -76,12 +96,13 @@ export function searchResearchGroups(
     const matchedTerms: string[] = [];
     let everyTermHit = true;
 
-    for (const term of terms) {
+    for (const { term, pattern } of matchers) {
       let termScore = 0;
-      if (title.includes(term)) termScore += WEIGHT.title;
-      if (tagHaystacks.some((haystack) => haystack.includes(term))) termScore += WEIGHT.tag;
-      if (lead.includes(term)) termScore += WEIGHT.lead;
-      if (description.includes(term)) termScore += WEIGHT.description;
+      if (pattern.test(title)) termScore += WEIGHT.title;
+      if (tagHaystacks.some((haystack) => pattern.test(haystack))) termScore += WEIGHT.tag;
+      if (keywordHaystack && pattern.test(keywordHaystack)) termScore += WEIGHT.keyword;
+      if (pattern.test(lead)) termScore += WEIGHT.lead;
+      if (pattern.test(description)) termScore += WEIGHT.description;
 
       if (termScore === 0) {
         everyTermHit = false;

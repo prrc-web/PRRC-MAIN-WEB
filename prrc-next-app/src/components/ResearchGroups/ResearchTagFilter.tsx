@@ -7,6 +7,12 @@ export interface ResearchTagFilterProps {
   onToggle: (slug: string) => void;
   /** Renders a "Clear tags" affordance once something is selected. */
   onClear?: () => void;
+  /**
+   * Optional per-tag group counts. When supplied, each chip shows its count and
+   * a zero-count chip is disabled rather than clickable, so the full vocabulary
+   * stays visible without offering a filter that can only ever return nothing.
+   */
+  counts?: Record<string, number>;
   className?: string;
 }
 
@@ -17,15 +23,16 @@ export interface ResearchTagFilterProps {
  * unrelated tags can therefore legitimately return nothing — the page shows an
  * empty state for that rather than silently widening the search.
  *
- * Labels come straight from ResearchTag.name. A few are long ("Wettability &
- * Surface Chemistry") and will wrap onto extra rows; if that reads badly, add a
- * shortName to the tag data and render that here instead.
+ * Labels come straight from ResearchTag.name and are upper-cased by .type-title.
+ * The vocabulary is intentionally broader than the current group list (see
+ * researchTags.ts), hence the count + disabled treatment.
  */
 const ResearchTagFilter: React.FC<ResearchTagFilterProps> = ({
   tags,
   selectedTagSlugs,
   onToggle,
   onClear,
+  counts,
   className = '',
 }) => {
   const selected = new Set(selectedTagSlugs);
@@ -38,20 +45,38 @@ const ResearchTagFilter: React.FC<ResearchTagFilterProps> = ({
       className={`flex flex-wrap items-center gap-2 ${className}`}>
       {tags.map((tag) => {
         const isSelected = selected.has(tag.slug);
+        // A missing entry means zero, not "unknown": the vocabulary is allowed to
+        // be broader than the group list, and those categories must read as empty.
+        const count = counts ? (counts[tag.slug] ?? 0) : undefined;
+        const isEmpty = count === 0;
 
         return (
           <button
             key={tag.slug}
             type="button"
-            aria-pressed={isSelected}
+            disabled={isEmpty}
+            aria-pressed={isEmpty ? undefined : isSelected}
+            aria-label={
+              count === undefined
+                ? undefined
+                : `${tag.name} — ${count} ${count === 1 ? 'group' : 'groups'}`
+            }
+            title={isEmpty ? `No research group is tagged ${tag.name} yet` : undefined}
             onClick={() => onToggle(tag.slug)}
             className={[
               'type-title rounded-full border px-3 py-1.5 text-sm transition-colors',
-              isSelected
-                ? 'border-quantumBlue bg-quantumBlue text-whiteSands'
-                : 'border-graphiteSky/50 text-cloudCircuit hover:border-quantumBlue hover:text-whiteSands',
+              isEmpty
+                ? 'cursor-not-allowed border-graphiteSky/20 text-graphiteSky'
+                : isSelected
+                  ? 'border-quantumBlue bg-quantumBlue text-whiteSands'
+                  : 'border-graphiteSky/50 text-cloudCircuit enabled:hover:border-quantumBlue enabled:hover:text-whiteSands',
             ].join(' ')}>
             {tag.name}
+            {count !== undefined && (
+              <span aria-hidden="true" className="ml-1.5 text-[11px] tabular-nums opacity-70">
+                {count}
+              </span>
+            )}
           </button>
         );
       })}

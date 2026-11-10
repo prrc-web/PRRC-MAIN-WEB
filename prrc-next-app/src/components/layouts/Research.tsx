@@ -26,6 +26,19 @@ export default function Research() {
   const trimmedQuery = query.trim();
   const hasFilters = trimmedQuery.length > 0 || selectedTags.length > 0;
 
+  // How many groups carry each tag. Derived, never hand-maintained: the chips
+  // dim themselves the moment a category has no group (or light up when one is
+  // added), so the vocabulary can stay broader than the current group list.
+  const tagCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const group of RESEARCH_GROUPS) {
+      for (const slug of group.tagSlugs) {
+        counts[slug] = (counts[slug] ?? 0) + 1;
+      }
+    }
+    return counts;
+  }, []);
+
   const toggleTag = (slug: string) =>
     setSelectedTags((current) =>
       current.includes(slug) ? current.filter((item) => item !== slug) : [...current, slug],
@@ -79,10 +92,12 @@ export default function Research() {
         </div>
 
         {/* Tag chips sit directly below the field as a browse affordance.
-            Selection is AND-ed — see ResearchTagFilter. */}
+            Selection is AND-ed — see ResearchTagFilter. Chips whose category has
+            no group yet render dimmed and disabled, so no chip is a dead end. */}
         <ResearchTagFilter
           className="mt-5"
           tags={RESEARCH_TAGS}
+          counts={tagCounts}
           selectedTagSlugs={selectedTags}
           onToggle={toggleTag}
           onClear={() => setSelectedTags([])}

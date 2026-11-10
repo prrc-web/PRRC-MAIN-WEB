@@ -7,9 +7,30 @@
  * "sequestration" all resolve to the same tag, instead of us maintaining four
  * near-duplicate tags forever.
  *
- * DRAFT — derived from copy that already lives in this repo (the eight group
- * descriptions formerly commented out in layouts/Research.tsx, the old Navbar
- * megamenu, Aboutus.tsx and the staff bios). Prune or reword freely.
+ * REVISED (supervisor feedback): the first draft was built bottom-up from PRRC's
+ * own project language and came out too specific — "CO2 Flooding", "Reservoir
+ * Sweep & Conformance", "Permian Basin" are methods and places, not things an
+ * external reader scans a page for. This set is topic-level and externally
+ * legible: twelve broad energy categories.
+ *
+ * Where did the specific vocabulary go? Two places, on purpose:
+ *   1. `synonyms` here — category-level words and near-synonyms, search-only,
+ *      never displayed. Anything that is one facet of a category (nanoparticles,
+ *      WAG, wettability) stays OUT, because a synonym sits on the tag and would
+ *      therefore match every group carrying that tag.
+ *   2. `keywords` on each group in researchGroups.ts — the jargon that belongs to
+ *      one group only, so "CO2 foam" finds the gas-flooding group and nothing
+ *      else. Precise recall without polluting the taxonomy.
+ *
+ * Names are stored in title case; the chip renders them upper-case via
+ * .type-title. Slugs are stable identifiers — do not change one without
+ * migrating `tagSlugs` in researchGroups.ts.
+ *
+ * Some categories have no group yet (geothermal, renewables, grid, critical
+ * minerals, policy). They stay in the vocabulary on purpose: the index shows
+ * every chip with its group count and disables the zero-count ones, so the
+ * taxonomy reads as the lab's remit rather than hiding categories, and a chip
+ * lights up by itself the day a group is tagged for it.
  *
  * Backend note: this is the shape the Payload `tags` collection should mirror
  * ({ name, slug, synonyms[] }), so swapping this module for an API call later
@@ -23,41 +44,113 @@ export interface ResearchTag {
 
 export const RESEARCH_TAGS: ResearchTag[] = [
   {
-    slug: 'carbon-capture',
-    name: 'Carbon Capture',
+    slug: 'oil-gas',
+    name: 'Oil & Gas',
+    synonyms: [
+      'petroleum',
+      'oil and gas',
+      'oilfield',
+      'upstream',
+      'hydrocarbon',
+      'hydrocarbons',
+      'hydrocarbon recovery',
+      'independent oil and gas',
+    ],
+  },
+  {
+    slug: 'carbon-management',
+    name: 'Carbon Management',
     synonyms: [
       'CCUS',
-      'carbon capture utilization and storage',
-      'carbon capture and storage',
       'CCS',
+      'carbon capture',
+      'carbon capture and storage',
+      'carbon capture utilization and storage',
       'CO2 capture',
+      'CO2 storage',
+      'carbon storage',
+      'geologic carbon storage',
       'carbon sequestration',
       'sequestration',
-      'geologic carbon storage',
-      'carbon storage',
-      'CO2 storage',
+      'CO2 injection',
+      'decarbonization',
+      'emissions',
     ],
   },
   {
-    slug: 'produced-water',
-    name: 'Produced Water',
+    slug: 'geothermal-energy',
+    name: 'Geothermal Energy',
+    synonyms: ['geothermal', 'geothermal systems', 'heat recovery', 'enhanced geothermal'],
+  },
+  {
+    slug: 'water-environment',
+    name: 'Water & Environment',
     synonyms: [
+      'produced water',
       'oilfield water',
-      'oilfield brine',
       'brine',
-      'produced water treatment',
       'water treatment',
-      'membrane technology',
       'water reuse',
+      'water management',
+      'membrane technology',
+      'membranes',
       'saltwater',
       'salinity',
+      'environment',
+      'environmental',
+      'sustainability',
     ],
   },
   {
-    slug: 'permian-basin',
-    name: 'Permian Basin',
+    slug: 'renewable-energy',
+    name: 'Renewable Energy',
+    synonyms: ['renewables', 'solar', 'wind', 'bioenergy', 'hydrogen', 'energy transition'],
+  },
+  {
+    slug: 'energy-systems-grid',
+    name: 'Energy Systems & Grid',
+    synonyms: ['grid', 'power systems', 'grid integration', 'energy systems', 'load management'],
+  },
+  {
+    slug: 'critical-minerals-mining',
+    name: 'Critical Minerals & Mining',
     synonyms: [
+      'critical minerals',
+      'mining',
+      'mineral extraction',
+      'mineral resources',
+      'lithium',
+      'rare earth',
+      'rare earth elements',
+    ],
+  },
+  {
+    slug: 'advanced-materials',
+    name: 'Advanced Materials',
+    synonyms: ['advanced materials', 'materials science', 'materials engineering'],
+  },
+  {
+    slug: 'data-science-ai',
+    name: 'Data Science & AI',
+    synonyms: [
+      'data science',
+      'machine learning',
+      'artificial intelligence',
+      'AI',
+      'data analytics',
+      'modeling',
+    ],
+  },
+  {
+    slug: 'geology-geosciences',
+    name: 'Geology & Geosciences',
+    synonyms: [
+      'geology',
+      'geoscience',
+      'geosciences',
+      'basin',
       'Permian',
+      'Permian Basin',
       'Delaware Basin',
       'West Texas',
       'southeastern New Mexico',
@@ -65,116 +158,22 @@ export const RESEARCH_TAGS: ResearchTag[] = [
     ],
   },
   {
-    slug: 'enhanced-oil-recovery',
-    name: 'Enhanced Oil Recovery',
-    synonyms: ['EOR', 'improved oil recovery', 'IOR', 'tertiary recovery'],
-  },
-  {
-    slug: 'co2-flooding',
-    name: 'CO2 Flooding',
-    synonyms: [
-      'CO2 EOR',
-      'CO2 injection',
-      'WAG',
-      'water alternating gas',
-      'miscible flooding',
-      'immiscible flooding',
-      'CO2 foam',
-    ],
-  },
-  {
-    slug: 'reservoir-sweep',
-    name: 'Reservoir Sweep & Conformance',
-    synonyms: [
-      'sweep efficiency',
-      'conformance control',
-      'conformance',
-      'mobility control',
-      'water shutoff',
-      'thief zone',
-      'flow heterogeneity',
-      'channeling',
-    ],
-  },
-  {
-    slug: 'surfactants-polymers',
-    name: 'Surfactants & Polymers',
-    synonyms: [
-      'ASP',
-      'alkali surfactant polymer',
-      'alkali-surfactant-polymer',
-      'chemical flooding',
-      'polymer flooding',
-      'surfactant flooding',
-    ],
-  },
-  {
-    slug: 'wettability',
-    name: 'Wettability & Surface Chemistry',
-    synonyms: [
-      'wettability alteration',
-      'wettability',
-      'surface chemistry',
-      'interfacial tension',
-      'IFT',
-      'contact angle',
-      'asphaltene',
-      'crude oil brine rock',
-      'COBR',
-    ],
-  },
-  {
-    slug: 'reservoir-characterization',
-    name: 'Reservoir Characterization',
-    synonyms: [
-      'petrophysics',
-      'rock properties',
-      'core analysis',
-      'core flooding',
-      'formation evaluation',
-      'log analysis',
-      'reservoir description',
-    ],
-  },
-  {
-    slug: 'simulation-geomodeling',
-    name: 'Simulation & Geomodeling',
-    synonyms: [
-      'numerical simulation',
-      'reservoir simulation',
-      'geostatistics',
-      'geomodeling',
-      'computational intelligence',
-      'machine learning',
-      'fuzzy logic',
-      'data analytics',
-      'modeling',
-    ],
-  },
-  {
-    slug: 'advanced-materials',
-    name: 'Advanced Materials & Nanotechnology',
-    synonyms: [
-      'nanotechnology',
-      'nanoparticles',
-      'nanomaterials',
-      'advanced materials',
-      'carbon fiber',
-      'titanium',
-      'nanoscale',
-    ],
+    slug: 'energy-policy-economics',
+    name: 'Energy Policy & Economics',
+    synonyms: ['policy', 'economics', 'regulation', 'energy policy', 'economic analysis'],
   },
   {
     slug: 'outreach-technology-transfer',
     name: 'Outreach & Technology Transfer',
     synonyms: [
+      'outreach',
       'technology transfer',
       'public data',
       'industry outreach',
       'ISOG',
       'training',
-      'independent oil and gas',
-      'outreach',
+      'education',
+      'outreach and technology transfer',
     ],
   },
 ];
