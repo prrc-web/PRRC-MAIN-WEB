@@ -26,23 +26,16 @@ export default function Research() {
   const trimmedQuery = query.trim();
   const hasFilters = trimmedQuery.length > 0 || selectedTags.length > 0;
 
-  // How many groups carry each tag. Derived, never hand-maintained, so the chip
-  // row always reflects the group list. Categories with no group yet stay in
-  // researchTags.ts and simply do not render — they appear by themselves the
-  // moment a group is tagged for them, with no code change.
-  const tagCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    for (const group of RESEARCH_GROUPS) {
-      for (const slug of group.tagSlugs) {
-        counts[slug] = (counts[slug] ?? 0) + 1;
-      }
-    }
-    return counts;
-  }, []);
-
+  // Only tags attached to at least one group get a chip. Derived, never
+  // hand-maintained, so the row always reflects the group list. Categories with
+  // no group yet stay in researchTags.ts and simply do not render — they appear
+  // by themselves the moment a group is tagged for them, with no code change.
   const visibleTags = useMemo(
-    () => RESEARCH_TAGS.filter((tag) => (tagCounts[tag.slug] ?? 0) > 0),
-    [tagCounts],
+    () =>
+      RESEARCH_TAGS.filter((tag) =>
+        RESEARCH_GROUPS.some((group) => group.tagSlugs.includes(tag.slug)),
+      ),
+    [],
   );
 
   const toggleTag = (slug: string) =>
@@ -103,7 +96,6 @@ export default function Research() {
         <ResearchTagFilter
           className="mt-5"
           tags={visibleTags}
-          counts={tagCounts}
           selectedTagSlugs={selectedTags}
           onToggle={toggleTag}
           onClear={() => setSelectedTags([])}

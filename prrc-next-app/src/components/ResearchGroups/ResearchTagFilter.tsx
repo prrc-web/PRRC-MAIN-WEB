@@ -7,13 +7,6 @@ export interface ResearchTagFilterProps {
   onToggle: (slug: string) => void;
   /** Renders a "Clear tags" affordance once something is selected. */
   onClear?: () => void;
-  /**
-   * Optional per-tag group counts, rendered as a badge on each chip. Callers are
-   * expected to filter the tag list down to tags that are actually attached to a
-   * group (see layouts/Research.tsx) — this component only renders what it is
-   * given.
-   */
-  counts?: Record<string, number>;
   className?: string;
 }
 
@@ -24,17 +17,19 @@ export interface ResearchTagFilterProps {
  * unrelated tags can therefore legitimately return nothing — the page shows an
  * empty state for that rather than silently widening the search.
  *
- * Labels come straight from ResearchTag.name and are upper-cased by .type-title.
- * The vocabulary is deliberately broader than the current group list (see
- * researchTags.ts); the caller hides unattached categories rather than showing a
- * chip that cannot match anything.
+ * Labels come straight from ResearchTag.name and are upper-cased by .type-title;
+ * nothing else is shown. Deliberately no per-tag group count: a visitor browsing
+ * by topic has no use for "1 group", and a count on a chip reads as a result set
+ * they have to interpret before clicking.
+ *
+ * The vocabulary is broader than the current group list (see researchTags.ts);
+ * the caller passes only tags attached to a group, so no chip is a dead end.
  */
 const ResearchTagFilter: React.FC<ResearchTagFilterProps> = ({
   tags,
   selectedTagSlugs,
   onToggle,
   onClear,
-  counts,
   className = '',
 }) => {
   const selected = new Set(selectedTagSlugs);
@@ -47,18 +42,12 @@ const ResearchTagFilter: React.FC<ResearchTagFilterProps> = ({
       className={`flex flex-wrap items-center gap-2 ${className}`}>
       {tags.map((tag) => {
         const isSelected = selected.has(tag.slug);
-        const count = counts?.[tag.slug];
 
         return (
           <button
             key={tag.slug}
             type="button"
             aria-pressed={isSelected}
-            aria-label={
-              count === undefined
-                ? undefined
-                : `${tag.name} — ${count} ${count === 1 ? 'group' : 'groups'}`
-            }
             onClick={() => onToggle(tag.slug)}
             className={[
               'type-title rounded-full border px-3 py-1.5 text-sm transition-colors',
@@ -67,11 +56,6 @@ const ResearchTagFilter: React.FC<ResearchTagFilterProps> = ({
                 : 'border-graphiteSky/50 text-cloudCircuit hover:border-quantumBlue hover:text-whiteSands',
             ].join(' ')}>
             {tag.name}
-            {count !== undefined && (
-              <span aria-hidden="true" className="ml-1.5 text-[11px] tabular-nums opacity-70">
-                {count}
-              </span>
-            )}
           </button>
         );
       })}
