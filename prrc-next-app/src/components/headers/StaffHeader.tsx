@@ -30,7 +30,7 @@ const StaffHeader = () => {
         <div className="flex flex-col lg:flex-row items-start justify-center lg:items-center lg:justify-between gap-10 lg:gap-16">
           <div className="w-full min-w-0 max-w-prose text-left">
             <h1 className="text-4xl font-extrabold text-white sm:text-5xl">
-              Our
+              Meet Our
               <strong className="font-extrabold text-indigo-300"> Staff </strong>
             </h1>
 
