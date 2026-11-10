@@ -1,5 +1,5 @@
 import React from 'react';
-import StaffHeader from '../headers/StaffHeaders';
+import StaffHeader from '../headers/StaffHeader';
 import AmosuStaff from '../StaffCards/AmosuStaff';
 import AmpohmahStaff from '../StaffCards/AmpomahStaff';
 import BuiStaff from '../StaffCards/BuiStaff';
@@ -28,13 +28,7 @@ export default function Staff() {
   return (
     <>
       <div>
-        <div className="max-w-screen-xl mx-auto px-4 my-10 md:my-20">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-center text-whiteSands pt-10 md:pt-20 mb-5">
-            At the Petroleum Recovery Research Center, our staff focuses on
-            research and engineering.
-          </h1>
-          <div className="h-20 w-full bg-gradient-to-b from-oreBlue to-nmtblue"></div>
-        </div>
+        <StaffHeader />
 
         {/* Category 1 — Administration. Heading uses the primary header weight
             (.type-header, Montserrat 800) and is centred, using the same size and
