@@ -35,8 +35,10 @@ const StaffHeader = () => {
             </h1>
 
             <p className="mt-4 text-base font-medium text-pretty text-gray-300 sm:text-lg/relaxed">
-              At the Petroleum Recovery Research Center, our staff focuses on
-              research and engineering.
+              Our dedicated staff powers every success at the PRRC. By driving
+              innovative research and sustaining critical engineering
+              operations, they achieve transformative advancements in petroleum
+              recovery.
             </p>
 
             <div className="mt-4 flex gap-4 sm:mt-6" />
