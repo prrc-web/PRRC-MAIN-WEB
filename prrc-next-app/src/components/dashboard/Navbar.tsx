@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ADMIN_ROUTES } from '@/lib/config';
 import { useEffect, useState } from 'react';
 import { getCurrentUser, logoutUser } from '@/lib/payload-api';
 import { User } from '@/types/payload-types';
@@ -99,13 +98,6 @@ export default function Navbar() {
                 className="block py-2 px-3 text-gray-300 hover:text-switch2 rounded-sm md:bg-transparent md:p-0 "
                 aria-current="page">
                 Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                href={ADMIN_ROUTES.FRONTEND_ADMIN}
-                className="block py-2 px-3 text-gray-300  rounded-sm  md:p-0 hover:text-switch2 ">
-                Administration
               </Link>
             </li>
             <li>

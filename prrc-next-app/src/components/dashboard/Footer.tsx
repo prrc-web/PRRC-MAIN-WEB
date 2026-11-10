@@ -1,13 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { ADMIN_ROUTES } from '@/lib/config';
 
 export default function Footer() {
   const router = useRouter();
-
-  const routeToAdministraionPage = () => {
-    router.push(ADMIN_ROUTES.FRONTEND_ADMIN);
-  };
 
   const routeToStaffPage = () => {
     router.push('/StaffPage');
@@ -56,15 +51,6 @@ export default function Footer() {
             <p className="text-lg font-medium text-white">About Us</p>
 
             <ul className="mt-8 space-y-4 text-sm">
-              <li>
-                <a
-                  className="text-gray-300 transition hover:text-switch2"
-                  href={ADMIN_ROUTES.FRONTEND_ADMIN}
-                  onClick={routeToAdministraionPage}>
-                  Administration
-                </a>
-              </li>
-
               <li>
                 <a
                   className="text-gray-300 transition hover:text-switch2"
@@ -371,16 +357,6 @@ export default function Footer() {
     //         </div>
     //         <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
     //           <h6 className="text-uppercase mb-4 text-white">Quick Access</h6>
-    //           <p>
-    //             <a
-    //               onMouseEnter={() => (document.body.style.cursor = 'pointer')}
-    //               onMouseLeave={() => (document.body.style.cursor = 'default')}
-    //               onClick={routeToAdministraionPage}
-    //               className="text-reset"
-    //               aria-current="admin page">
-    //               Administration
-    //             </a>
-    //           </p>
     //           <p>
     //             <a
     //               onMouseEnter={() => (document.body.style.cursor = 'pointer')}
