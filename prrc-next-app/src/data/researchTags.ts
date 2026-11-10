@@ -27,10 +27,10 @@
  * migrating `tagSlugs` in researchGroups.ts.
  *
  * Some categories have no group yet (geothermal, renewables, grid, critical
- * minerals, policy). They stay in the vocabulary on purpose: the index shows
- * every chip with its group count and disables the zero-count ones, so the
- * taxonomy reads as the lab's remit rather than hiding categories, and a chip
- * lights up by itself the day a group is tagged for it.
+ * minerals, policy) and are expected to gain one later. They stay in this list
+ * on purpose: the index derives its chips from this vocabulary, so a category
+ * renders only once a group declares its slug — adding the group is all it takes,
+ * no code change here.
  *
  * Backend note: this is the shape the Payload `tags` collection should mirror
  * ({ name, slug, synonyms[] }), so swapping this module for an API call later

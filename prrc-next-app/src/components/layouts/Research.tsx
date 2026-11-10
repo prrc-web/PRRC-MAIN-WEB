@@ -26,9 +26,10 @@ export default function Research() {
   const trimmedQuery = query.trim();
   const hasFilters = trimmedQuery.length > 0 || selectedTags.length > 0;
 
-  // How many groups carry each tag. Derived, never hand-maintained: the chips
-  // dim themselves the moment a category has no group (or light up when one is
-  // added), so the vocabulary can stay broader than the current group list.
+  // How many groups carry each tag. Derived, never hand-maintained, so the chip
+  // row always reflects the group list. Categories with no group yet stay in
+  // researchTags.ts and simply do not render — they appear by themselves the
+  // moment a group is tagged for them, with no code change.
   const tagCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     for (const group of RESEARCH_GROUPS) {
@@ -38,6 +39,11 @@ export default function Research() {
     }
     return counts;
   }, []);
+
+  const visibleTags = useMemo(
+    () => RESEARCH_TAGS.filter((tag) => (tagCounts[tag.slug] ?? 0) > 0),
+    [tagCounts],
+  );
 
   const toggleTag = (slug: string) =>
     setSelectedTags((current) =>
@@ -92,11 +98,11 @@ export default function Research() {
         </div>
 
         {/* Tag chips sit directly below the field as a browse affordance.
-            Selection is AND-ed — see ResearchTagFilter. Chips whose category has
-            no group yet render dimmed and disabled, so no chip is a dead end. */}
+            Selection is AND-ed — see ResearchTagFilter. Only tags attached to at
+            least one group are shown, so no chip is a dead end. */}
         <ResearchTagFilter
           className="mt-5"
-          tags={RESEARCH_TAGS}
+          tags={visibleTags}
           counts={tagCounts}
           selectedTagSlugs={selectedTags}
           onToggle={toggleTag}

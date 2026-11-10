@@ -8,9 +8,10 @@ export interface ResearchTagFilterProps {
   /** Renders a "Clear tags" affordance once something is selected. */
   onClear?: () => void;
   /**
-   * Optional per-tag group counts. When supplied, each chip shows its count and
-   * a zero-count chip is disabled rather than clickable, so the full vocabulary
-   * stays visible without offering a filter that can only ever return nothing.
+   * Optional per-tag group counts, rendered as a badge on each chip. Callers are
+   * expected to filter the tag list down to tags that are actually attached to a
+   * group (see layouts/Research.tsx) — this component only renders what it is
+   * given.
    */
   counts?: Record<string, number>;
   className?: string;
@@ -24,8 +25,9 @@ export interface ResearchTagFilterProps {
  * empty state for that rather than silently widening the search.
  *
  * Labels come straight from ResearchTag.name and are upper-cased by .type-title.
- * The vocabulary is intentionally broader than the current group list (see
- * researchTags.ts), hence the count + disabled treatment.
+ * The vocabulary is deliberately broader than the current group list (see
+ * researchTags.ts); the caller hides unattached categories rather than showing a
+ * chip that cannot match anything.
  */
 const ResearchTagFilter: React.FC<ResearchTagFilterProps> = ({
   tags,
@@ -45,31 +47,24 @@ const ResearchTagFilter: React.FC<ResearchTagFilterProps> = ({
       className={`flex flex-wrap items-center gap-2 ${className}`}>
       {tags.map((tag) => {
         const isSelected = selected.has(tag.slug);
-        // A missing entry means zero, not "unknown": the vocabulary is allowed to
-        // be broader than the group list, and those categories must read as empty.
-        const count = counts ? (counts[tag.slug] ?? 0) : undefined;
-        const isEmpty = count === 0;
+        const count = counts?.[tag.slug];
 
         return (
           <button
             key={tag.slug}
             type="button"
-            disabled={isEmpty}
-            aria-pressed={isEmpty ? undefined : isSelected}
+            aria-pressed={isSelected}
             aria-label={
               count === undefined
                 ? undefined
                 : `${tag.name} — ${count} ${count === 1 ? 'group' : 'groups'}`
             }
-            title={isEmpty ? `No research group is tagged ${tag.name} yet` : undefined}
             onClick={() => onToggle(tag.slug)}
             className={[
               'type-title rounded-full border px-3 py-1.5 text-sm transition-colors',
-              isEmpty
-                ? 'cursor-not-allowed border-graphiteSky/20 text-graphiteSky'
-                : isSelected
-                  ? 'border-quantumBlue bg-quantumBlue text-whiteSands'
-                  : 'border-graphiteSky/50 text-cloudCircuit enabled:hover:border-quantumBlue enabled:hover:text-whiteSands',
+              isSelected
+                ? 'border-quantumBlue bg-quantumBlue text-whiteSands'
+                : 'border-graphiteSky/50 text-cloudCircuit hover:border-quantumBlue hover:text-whiteSands',
             ].join(' ')}>
             {tag.name}
             {count !== undefined && (
