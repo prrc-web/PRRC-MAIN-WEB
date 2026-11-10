@@ -42,6 +42,14 @@ export default function Staff() {
               className="type-header text-2xl tracking-widest text-whiteSands sm:text-4xl">
               Administration
             </h2>
+
+            {/* Body copy moved up from below the cards to sit under the
+                heading, in the subheading weight (.type-subheader, 500). */}
+            <p className="type-subheader mx-auto mt-4 max-w-2xl text-base text-pretty text-cloudCircuit sm:text-lg/relaxed">
+              Behind every success at the PRRC is our dedicated admin. By
+              supporting efficient operations through coordination of workflows,
+              they lay the foundation for transformative research advancements.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 py-10">
@@ -65,11 +73,6 @@ export default function Staff() {
             </div>
           </div>
 
-          <p className="mt-1 text-cloudCircuit max-w-2xl text-lg mx-auto text-center px-4 pb-10 sm:pb-16">
-            Behind every success at the PRRC is our dedicated admin. By
-            supporting efficient operations through coordination of workflows,
-            they lay the foundation for transformative research advancements.
-          </p>
         </section>
 
         {/* Category 2 — Staff. Unchanged: same heading, same card order. */}
