@@ -1,7 +1,6 @@
 import React from 'react';
 import CarrilloAdmin from '../AdminCards/CarilloInfo';
 import BalchAdmin from '../AdminCards/BalchInfo';
-import BenalilAdmin from '../AdminCards/BenalilInfo';
 import MclemorAdmin from '../AdminCards/MclemorInfo';
 import RaneyAdmin from '../AdminCards/RaneyInfo';
 import AdministrationHeader from '../headers/AdministrationHeader';
@@ -37,9 +36,6 @@ export default function News() {
             </div>
             <div className="h-full">
               <CarrilloAdmin />
-            </div>
-            <div className="h-full">
-              <BenalilAdmin />
             </div>
             <div className="h-full">
               <MclemorAdmin />

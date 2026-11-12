@@ -23,7 +23,7 @@ const StaffCard: React.FC<StaffCardProps> = ({
   resumeLink,
 }) => {
   return (
-    <div className="box-content size-90 border-0">
+    <div className="h-[30rem] w-full border-0">
       <a
         href={href}
         className="group relative block h-full bg-whiteSands">
@@ -45,7 +45,7 @@ const StaffCard: React.FC<StaffCardProps> = ({
 
             <p className="text-l font-bold text-oreBlue transition-colors duration-300 group-hover:text-white sm:text-2xl">{name}</p>
 
-            <div className="mt-32 sm:mt-48 lg:mt-52">
+            <div className="mt-24 sm:mt-32 lg:mt-36">
               <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
                 <div className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-switch2">
                   See more
@@ -55,7 +55,7 @@ const StaffCard: React.FC<StaffCardProps> = ({
                     &rarr;
                   </span>
                 </div>
-                <p className="text-sm text-oreBlue transition-colors duration-300 group-hover:text-white pt-1">{description}</p>
+                <p className="line-clamp-2 text-sm text-oreBlue transition-colors duration-300 group-hover:text-white pt-1">{description}</p>
 
                 {/* Contact Information */}
                 {phone && (

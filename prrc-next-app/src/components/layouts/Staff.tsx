@@ -1,6 +1,5 @@
 import React from 'react';
 import StaffHeader from '../headers/StaffHeader';
-import AmosuStaff from '../StaffCards/AmosuStaff';
 import AmpohmahStaff from '../StaffCards/AmpomahStaff';
 import BuiStaff from '../StaffCards/BuiStaff';
 import CatherStaff from '../StaffCards/CatherStaff';
@@ -21,7 +20,6 @@ import BalchAdmin from '../AdminCards/BalchInfo';
 import RaneyAdmin from '../AdminCards/RaneyInfo';
 import WeiAdmin from '../AdminCards/WeiInfo';
 import CarrilloAdmin from '../AdminCards/CarilloInfo';
-import BenalilAdmin from '../AdminCards/BenalilInfo';
 import MclemorAdmin from '../AdminCards/MclemorInfo';
 
 export default function Staff() {
@@ -66,9 +64,6 @@ export default function Staff() {
               <CarrilloAdmin />
             </div>
             <div className="h-full">
-              <BenalilAdmin />
-            </div>
-            <div className="h-full">
               <MclemorAdmin />
             </div>
           </div>
@@ -85,9 +80,6 @@ export default function Staff() {
 
           {/* Responsive grid with consistent spacing */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 py-10">
-            <div className="h-full">
-              <AmosuStaff />
-            </div>
             <div className="h-full">
               <AmpohmahStaff />
             </div>
