@@ -1,5 +1,5 @@
 /**
- * The eight research groups.
+ * The nine research groups.
  *
  * Transcribed from the block that had been commented out in
  * `components/layouts/Research.tsx`, so the wording is PRRC's own copy, not
@@ -102,13 +102,35 @@ export const RESEARCH_GROUPS: ResearchGroup[] = [
     ],
   },
   {
+    // PLACEHOLDER RECORD — Dory has no GREAT copy yet. The card, the route and
+    // the group page all derive from this entry, so filling in `description`,
+    // `leadScientist` and `keywords` is the only change needed once it arrives.
+    // No keywords on purpose: inventing jargon would make GREAT match searches
+    // it has no claim to.
+    slug: 'great',
+    title: 'GREAT',
+    leadScientist: '',
+    description:
+      'A research group at the PRRC. Its overview, personnel and current projects will be published here as the group provides them.',
+    imageUrl: FILLER_IMAGE,
+    tagSlugs: ['critical-minerals-mining', 'energy-systems-grid', 'geothermal-energy'],
+    keywords: [],
+  },
+  {
     slug: 'isog',
     title: 'Industry Service & Outreach Group (ISOG)',
     leadScientist: '',
     description:
       'Makes public data available in intuitive and user-friendly formats and works with other organizations to provide information about new or under-used technologies available to the independent oil and gas community.',
     imageUrl: FILLER_IMAGE,
-    tagSlugs: ['outreach-technology-transfer'],
+    tagSlugs: [
+      'outreach-technology-transfer',
+      'energy-systems-grid',
+      'critical-minerals-mining',
+      'energy-policy-economics',
+      'geothermal-energy',
+      'renewable-energy',
+    ],
     keywords: [
       'public data',
       'ISOG',
@@ -166,7 +188,13 @@ export const RESEARCH_GROUPS: ResearchGroup[] = [
     description:
       'Develops new technologies using computational intelligence, geostatistics and fuzzy logic to solve the unique problems encountered in reservoir characterization and numerical simulation of oil and gas reservoirs using data of all scales.',
     imageUrl: FILLER_IMAGE,
-    tagSlugs: ['data-science-ai', 'geology-geosciences'],
+    tagSlugs: [
+      'data-science-ai',
+      'geology-geosciences',
+      'critical-minerals-mining',
+      'energy-policy-economics',
+      'geothermal-energy',
+    ],
     keywords: [
       'REACT',
       'computational intelligence',

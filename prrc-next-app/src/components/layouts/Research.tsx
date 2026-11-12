@@ -11,7 +11,7 @@ export default function Research() {
   const [query, setQuery] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
-  // Client-side on purpose: eight groups is a few kB, so filtering in memory is
+  // Client-side on purpose: nine groups is a few kB, so filtering in memory is
   // instant and needs no endpoint, debounce or loading state. When the corpus
   // outgrows that, swap searchResearchGroups() for a fetch — the call site stays.
   const results = useMemo(
@@ -25,18 +25,6 @@ export default function Research() {
 
   const trimmedQuery = query.trim();
   const hasFilters = trimmedQuery.length > 0 || selectedTags.length > 0;
-
-  // Only tags attached to at least one group get a chip. Derived, never
-  // hand-maintained, so the row always reflects the group list. Categories with
-  // no group yet stay in researchTags.ts and simply do not render — they appear
-  // by themselves the moment a group is tagged for them, with no code change.
-  const visibleTags = useMemo(
-    () =>
-      RESEARCH_TAGS.filter((tag) =>
-        RESEARCH_GROUPS.some((group) => group.tagSlugs.includes(tag.slug)),
-      ),
-    [],
-  );
 
   const toggleTag = (slug: string) =>
     setSelectedTags((current) =>
@@ -90,12 +78,14 @@ export default function Research() {
           </div>
         </div>
 
-        {/* Tag chips sit directly below the field as a browse affordance.
-            Selection is AND-ed — see ResearchTagFilter. Only tags attached to at
-            least one group are shown, so no chip is a dead end. */}
+        {/* Tag chips sit directly below the field as a browse affordance and
+            list the full vocabulary, including categories that no group claims
+            yet — those are the topics the lab intends to work in, and hiding
+            them made the taxonomy look narrower than it is. Selection is
+            AND-ed — see ResearchTagFilter. */}
         <ResearchTagFilter
           className="mt-5"
-          tags={visibleTags}
+          tags={RESEARCH_TAGS}
           selectedTagSlugs={selectedTags}
           onToggle={toggleTag}
           onClear={() => setSelectedTags([])}

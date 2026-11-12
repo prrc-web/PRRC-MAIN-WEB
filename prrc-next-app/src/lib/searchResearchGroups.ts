@@ -47,7 +47,7 @@ const termMatcher = (term: string): RegExp =>
 /**
  * Synchronous, dependency-free search over an in-memory group list.
  *
- * Deliberately client-side: there are eight groups (a few kB), so filtering in
+ * Deliberately client-side: there are nine groups (a few kB), so filtering in
  * memory is instant and needs no endpoint, debounce or loading state. When the
  * corpus grows enough to justify a backend query, this is the one function to
  * swap for a fetch — keep the signature and nothing else has to change.

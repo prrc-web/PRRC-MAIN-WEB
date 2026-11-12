@@ -26,11 +26,11 @@
  * .type-title. Slugs are stable identifiers — do not change one without
  * migrating `tagSlugs` in researchGroups.ts.
  *
- * Some categories have no group yet (geothermal, renewables, grid, critical
- * minerals, policy) and are expected to gain one later. They stay in this list
- * on purpose: the index derives its chips from this vocabulary, so a category
- * renders only once a group declares its slug — adding the group is all it takes,
- * no code change here.
+ * Every category renders a chip, whether or not a group carries it yet. The
+ * index used to hide zero-count tags; that hid five whole topics from visitors,
+ * so the chips are now the full vocabulary and the mapping to groups lives only
+ * in researchGroups.ts. Selecting a category no group claims simply reaches the
+ * page's existing empty state, which offers a clear-all.
  *
  * Backend note: this is the shape the Payload `tags` collection should mirror
  * ({ name, slug, synonyms[] }), so swapping this module for an API call later
