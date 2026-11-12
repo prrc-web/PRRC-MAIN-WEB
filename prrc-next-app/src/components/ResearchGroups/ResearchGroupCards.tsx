@@ -15,7 +15,7 @@ const ResearchGroupCards: React.FC<ResearchGroupCardsProps> = ({
   href = '#',
 }) => {
   return (
-    <div className="box-content size-90 border-0">
+    <div className="h-[30rem] w-full border-0">
       <a
         href={href}
         className="group relative block h-full bg-whiteSands">
@@ -30,15 +30,15 @@ const ResearchGroupCards: React.FC<ResearchGroupCardsProps> = ({
           {/* 85% black scrim over the backdrop, fades in on hover. */}
           <div className="pointer-events-none absolute inset-0 bg-black/85 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-          <div className="relative p-2 sm:p-6 lg:p-2">
-            <p className="type-title text-sm tracking-widest text-switch2">
+          <div className="relative flex h-full flex-col p-2 sm:p-6 lg:p-2">
+            <p className="shrink-0 type-title text-sm tracking-widest text-switch2">
               {title}
             </p>
 
-            <p className="text-l font-extrabold text-oreBlue transition-colors duration-300 group-hover:text-white sm:text-2xl">{name}</p>
+            <p className="shrink-0 text-l font-extrabold text-oreBlue transition-colors duration-300 group-hover:text-white sm:text-2xl">{name}</p>
 
-            <div className="mt-32 sm:mt-48 lg:mt-52">
-              <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+            <div className="mt-auto pb-1 pt-8">
+              <div className="translate-y-2 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
                 <div className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-switch2">
                   See more
                   <span
@@ -47,7 +47,7 @@ const ResearchGroupCards: React.FC<ResearchGroupCardsProps> = ({
                     &rarr;
                   </span>
                 </div>
-                <p className="text-sm text-oreBlue transition-colors duration-300 group-hover:text-white pt-1">{description}</p>
+                <p className="line-clamp-2 text-sm text-oreBlue transition-colors duration-300 group-hover:text-white pt-1">{description}</p>
               </div>
             </div>
           </div>
